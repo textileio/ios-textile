@@ -24,6 +24,7 @@
 #import "MessagesApi.h"
 #import "NotificationsApi.h"
 #import "ProfileApi.h"
+#import "ThreadsApi.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
@@ -55,6 +56,7 @@
     self.messagesApi = [[MessagesApi alloc] initWithTextile:self];
     self.notificationsApi = [[NotificationsApi alloc] initWithTextile:self];
     self.profileApi = [[ProfileApi alloc] initWithTextile:self];
+    self.threadsApi = [[ThreadsApi alloc] initWithTextile:self];
   }
   return self;
 }

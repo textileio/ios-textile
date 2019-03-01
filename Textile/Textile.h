@@ -25,6 +25,7 @@
 @class MessagesApi;
 @class NotificationsApi;
 @class ProfileApi;
+@class ThreadsApi;
 
 @interface Textile : NSObject
 
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) MessagesApi *messagesApi;
 @property (nonatomic, retain) NotificationsApi *notificationsApi;
 @property (nonatomic, retain) ProfileApi *profileApi;
+@property (nonatomic, retain) ThreadsApi *threadsApi;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
