@@ -15,6 +15,7 @@
 @class FeedApi;
 @class FilesApi;
 @class FlagsApi;
+@class IgnoresApi;
 @class MobileWalletAccount;
 @class Summary;
 
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) FeedApi *feed;
 @property (nonatomic, retain) FilesApi *files;
 @property (nonatomic, retain) FlagsApi *flags;
+@property (nonatomic, retain) IgnoresApi *ignores;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
