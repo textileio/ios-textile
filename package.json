@@ -1,0 +1,22 @@
+{
+  "name": "ios-textile",
+  "version": "1.0.0",
+  "description": "iOS bindings for go-textile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/textileio/ios-textile.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/textileio/ios-textile/issues"
+  },
+  "homepage": "https://github.com/textileio/ios-textile#readme",
+  "dependencies": {
+    "@textile/go-mobile": "1.0.0-rc48"
+  }
+}
