@@ -51,6 +51,7 @@
 		9344F6AF2229CD4B0006798F /* FilesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6AE2229CD4B0006798F /* FilesApi.m */; };
 		9344F6B22229DDBF0006798F /* FlagsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6B12229DDBF0006798F /* FlagsApi.m */; };
 		9344F6B52229DEE40006798F /* IgnoresApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6B42229DEE40006798F /* IgnoresApi.m */; };
+		9344F6B82229E1CA0006798F /* InvitesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6B72229E1CA0006798F /* InvitesApi.m */; };
 		93C532F122284B2E008DA154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F022284B2E008DA154 /* AppDelegate.m */; };
 		93C532F422284B2E008DA154 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F322284B2E008DA154 /* ViewController.m */; };
 		93C532F722284B2E008DA154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C532F522284B2E008DA154 /* Main.storyboard */; };
@@ -174,6 +175,8 @@
 		9344F6B12229DDBF0006798F /* FlagsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlagsApi.m; sourceTree = "<group>"; };
 		9344F6B32229DEE40006798F /* IgnoresApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IgnoresApi.h; sourceTree = "<group>"; };
 		9344F6B42229DEE40006798F /* IgnoresApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IgnoresApi.m; sourceTree = "<group>"; };
+		9344F6B62229E1CA0006798F /* InvitesApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitesApi.h; sourceTree = "<group>"; };
+		9344F6B72229E1CA0006798F /* InvitesApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitesApi.m; sourceTree = "<group>"; };
 		93C532EC22284B2E008DA154 /* TextileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C532EF22284B2E008DA154 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93C532F022284B2E008DA154 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				9344F6B12229DDBF0006798F /* FlagsApi.m */,
 				9344F6B32229DEE40006798F /* IgnoresApi.h */,
 				9344F6B42229DEE40006798F /* IgnoresApi.m */,
+				9344F6B62229E1CA0006798F /* InvitesApi.h */,
+				9344F6B72229E1CA0006798F /* InvitesApi.m */,
 			);
 			path = Textile;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				9344F69D22298C960006798F /* Message.pbobjc.m in Sources */,
 				9344F69F22298C960006798F /* View.pbobjc.m in Sources */,
 				9344F6A222298C960006798F /* CafeService.pbobjc.m in Sources */,
+				9344F6B82229E1CA0006798F /* InvitesApi.m in Sources */,
 				9344F66F2228A40B0006798F /* GPBExtensionRegistry.m in Sources */,
 				9344F69E22298C960006798F /* Model.pbobjc.m in Sources */,
 				9344F66A2228A40B0006798F /* GPBRootObject.m in Sources */,
