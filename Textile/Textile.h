@@ -17,6 +17,7 @@
 @class FlagsApi;
 @class IgnoresApi;
 @class InvitesApi;
+@class IpfsApi;
 @class MobileWalletAccount;
 @class Summary;
 
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) FlagsApi *flags;
 @property (nonatomic, retain) IgnoresApi *ignores;
 @property (nonatomic, retain) InvitesApi *invites;
+@property (nonatomic, retain) IpfsApi *ipfsApi;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;

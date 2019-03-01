@@ -16,6 +16,7 @@
 #import "FlagsApi.h"
 #import "IgnoresApi.h"
 #import "InvitesApi.h"
+#import "IpfsApi.h"
 #import <Mobile/Mobile.h>
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
@@ -43,6 +44,7 @@
     self.flags = [[FlagsApi alloc] initWithTextile:self];
     self.ignores = [[IgnoresApi alloc] initWithTextile:self];
     self.invites = [[InvitesApi alloc] initWithTextile:self];
+    self.ipfsApi = [[IpfsApi alloc] initWithTextile:self];
   }
   return self;
 }
