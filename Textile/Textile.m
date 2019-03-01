@@ -13,6 +13,7 @@
 #import "ContactsApi.h"
 #import "FeedApi.h"
 #import "FilesApi.h"
+#import "FlagsApi.h"
 #import <Mobile/Mobile.h>
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
@@ -37,6 +38,7 @@
     self.contacts = [[ContactsApi alloc] initWithTextile:self];
     self.feed = [[FeedApi alloc] initWithTextile:self];
     self.files = [[FilesApi alloc] initWithTextile:self];
+    self.flags = [[FlagsApi alloc] initWithTextile:self];
   }
   return self;
 }
