@@ -11,6 +11,7 @@
 #import "CafesApi.h"
 #import "CommentsApi.h"
 #import "ContactsApi.h"
+#import "FeedApi.h"
 #import <Mobile/Mobile.h>
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
@@ -33,6 +34,7 @@
     self.cafes = [[CafesApi alloc] initWithTextile:self];
     self.comments = [[CommentsApi alloc] initWithTextile:self];
     self.contacts = [[ContactsApi alloc] initWithTextile:self];
+    self.feed = [[FeedApi alloc] initWithTextile:self];
   }
   return self;
 }

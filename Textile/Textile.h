@@ -12,6 +12,7 @@
 @class CafesApi;
 @class CommentsApi;
 @class ContactsApi;
+@class FeedApi;
 @class MobileWalletAccount;
 @class Summary;
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) CafesApi *cafes;
 @property (nonatomic, retain) CommentsApi *comments;
 @property (nonatomic, retain) ContactsApi *contacts;
+@property (nonatomic, retain) FeedApi *feed;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
