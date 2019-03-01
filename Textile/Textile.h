@@ -21,6 +21,7 @@
 @class LikesApi;
 @class LogsApi;
 @class MessagesApi;
+@class NotificationsApi;
 @class MobileWalletAccount;
 @class Summary;
 
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) LikesApi *likesApi;
 @property (nonatomic, retain) LogsApi *logsApi;
 @property (nonatomic, retain) MessagesApi *messagesApi;
+@property (nonatomic, retain) NotificationsApi *notificationsApi;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
