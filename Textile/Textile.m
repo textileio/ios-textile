@@ -18,6 +18,7 @@
 #import "InvitesApi.h"
 #import "IpfsApi.h"
 #import "LikesApi.h"
+#import "LogsApi.h"
 #import <Mobile/Mobile.h>
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
@@ -47,6 +48,7 @@
     self.invites = [[InvitesApi alloc] initWithTextile:self];
     self.ipfsApi = [[IpfsApi alloc] initWithTextile:self];
     self.likesApi = [[LikesApi alloc] initWithTextile:self];
+    self.logsApi = [[LogsApi alloc] initWithTextile:self];
   }
   return self;
 }
