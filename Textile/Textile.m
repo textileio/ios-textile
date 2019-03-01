@@ -7,6 +7,8 @@
 //
 
 #import "Textile.h"
+#import <Mobile/Mobile.h>
+#import "Messenger.h"
 #import "AccountApi.h"
 #import "CafesApi.h"
 #import "CommentsApi.h"
@@ -19,10 +21,9 @@
 #import "IpfsApi.h"
 #import "LikesApi.h"
 #import "LogsApi.h"
-#import <Mobile/Mobile.h>
+#import "MessagesApi.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
-#import "Messenger.h"
 
 @implementation Textile
 
@@ -49,6 +50,7 @@
     self.ipfsApi = [[IpfsApi alloc] initWithTextile:self];
     self.likesApi = [[LikesApi alloc] initWithTextile:self];
     self.logsApi = [[LogsApi alloc] initWithTextile:self];
+    self.messagesApi = [[MessagesApi alloc] initWithTextile:self];
   }
   return self;
 }

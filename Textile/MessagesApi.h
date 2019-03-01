@@ -1,0 +1,22 @@
+//
+//  MessagesApi.h
+//  Textile
+//
+//  Created by Aaron Sutula on 3/1/19.
+//  Copyright © 2019 Textile. All rights reserved.
+//
+
+#import "ApiModule.h"
+
+@class TextList;
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface MessagesApi : ApiModule
+
+- (NSString *)addMessage:(NSString *)threadId body:(NSString *)body error:(NSError *__autoreleasing *)error;
+- (TextList *)messages:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError *__autoreleasing *)error;
+
+@end
+
+NS_ASSUME_NONNULL_END
