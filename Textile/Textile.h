@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 @class MobileMobile;
+@class MobileWalletAccount;
+@class Summary;
 @class AccountApi;
 @class CafesApi;
 @class CommentsApi;
@@ -22,8 +24,7 @@
 @class LogsApi;
 @class MessagesApi;
 @class NotificationsApi;
-@class MobileWalletAccount;
-@class Summary;
+@class ProfileApi;
 
 @interface Textile : NSObject
 
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) LogsApi *logsApi;
 @property (nonatomic, retain) MessagesApi *messagesApi;
 @property (nonatomic, retain) NotificationsApi *notificationsApi;
+@property (nonatomic, retain) ProfileApi *profileApi;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
