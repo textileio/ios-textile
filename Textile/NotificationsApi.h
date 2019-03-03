@@ -7,8 +7,7 @@
 //
 
 #import "ApiModule.h"
-
-@class NotificationList;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

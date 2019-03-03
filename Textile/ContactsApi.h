@@ -7,13 +7,8 @@
 //
 
 #import "ApiModule.h"
-
-@class Contact;
-@class ContactList;
-@class ThreadList;
-@class MobileSearchHandle;
-@class ContactQuery;
-@class QueryOptions;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Query.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

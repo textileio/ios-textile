@@ -7,9 +7,8 @@
 //
 
 #import "ApiModule.h"
-
-@class FeedItemList;
-@class FeedRequest;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,10 +7,8 @@
 //
 
 #import "ApiModule.h"
-
-@class Thread;
-@class ThreadList;
-@class AddThreadConfig;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,8 +7,7 @@
 //
 
 #import "ApiModule.h"
-
-@class TextList;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

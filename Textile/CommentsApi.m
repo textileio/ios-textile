@@ -7,12 +7,11 @@
 //
 
 #import "CommentsApi.h"
-#import <Mobile/Mobile.h>
 
 @implementation CommentsApi
 
 - (NSString *)addComment:(NSString *)blockId body:(NSString *)body error:(NSError **)error {
-  return [self.textile.node addComment:blockId body:body error:error];
+  return [self.node addComment:blockId body:body error:error];
 }
 
 @end

@@ -7,21 +7,17 @@
 //
 
 #import "FilesApi.h"
-#import <Mobile/Mobile.h>
 #import "Callback.h"
-#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
-#import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
-#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 @implementation FilesApi
 
 - (FileIndex *)addSchema:(NSString *)jsonString error:(NSError **)error {
-  NSData *data = [self.textile.node addSchema:jsonString error:error];
+  NSData *data = [self.node addSchema:jsonString error:error];
   return [[FileIndex alloc] initWithData:data error:error];
 }
 
 - (MobilePreparedFiles *)prepareFiles:(NSString *)path threadId:(NSString *)threadId error:(NSError **)error {
-  NSData *data = [self.textile.node prepareFiles:path threadId:threadId error:error];
+  NSData *data = [self.node prepareFiles:path threadId:threadId error:error];
   return [[MobilePreparedFiles alloc] initWithData:data error:error];
 }
 
@@ -36,31 +32,31 @@
     }
   }];
 
-  [self.textile.node prepareFilesAsync:path threadId:threadId cb:cb];
+  [self.node prepareFilesAsync:path threadId:threadId cb:cb];
 }
 
 - (Block *)addFiles:(Directory *)directory threadId:(NSString *)threadId caption:(NSString *)caption error:(NSError **)error {
-  NSData *data = [self.textile.node addFiles:directory.data threadId:threadId caption:caption error:error];
+  NSData *data = [self.node addFiles:directory.data threadId:threadId caption:caption error:error];
   return [[Block alloc] initWithData:data error:error];
 }
 
 - (Block *)addFilesByTarget:(NSString *)target threadId:(NSString *)threadId caption:(NSString *)caption error:(NSError **)error {
-  NSData *data = [self.textile.node addFilesByTarget:target threadId:threadId caption:caption error:error];
+  NSData *data = [self.node addFilesByTarget:target threadId:threadId caption:caption error:error];
   return [[Block alloc] initWithData:data error:error];
 }
 
 - (FilesList *)files:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError **)error {
-  NSData *data = [self.textile.node files:offset limit:limit threadId:threadId error:error];
+  NSData *data = [self.node files:offset limit:limit threadId:threadId error:error];
   return [[FilesList alloc] initWithData:data error:error];
 }
 
 - (MobileFileData *)fileData:(NSString *)hash error:(NSError **)error {
-  NSData *data = [self.textile.node fileData:hash error:error];
+  NSData *data = [self.node fileData:hash error:error];
   return [[MobileFileData alloc] initWithData:data error:error];
 }
 
 - (MobileFileData *)imageFileDataForMinWidth:(NSString *)path minWidth:(long)minWidth error:(NSError **)error {
-  NSData *data = [self.textile.node imageFileDataForMinWidth:path minWidth:minWidth error:error];
+  NSData *data = [self.node imageFileDataForMinWidth:path minWidth:minWidth error:error];
   return [[MobileFileData alloc] initWithData:data error:error];
 }
 

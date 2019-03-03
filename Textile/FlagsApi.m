@@ -7,12 +7,11 @@
 //
 
 #import "FlagsApi.h"
-#import <Mobile/Mobile.h>
 
 @implementation FlagsApi
 
 - (NSString *)addFlag:(NSString *)blockId error:(NSError **)error {
-  return [self.textile.node addFlag:blockId error:error];
+  return [self.node addFlag:blockId error:error];
 }
 
 @end

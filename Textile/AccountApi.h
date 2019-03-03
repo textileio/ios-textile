@@ -6,13 +6,9 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ApiModule.h"
-
-@class ContactList;
-@class MobileSearchHandle;
-@class ThreadBackupQuery;
-@class QueryOptions;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Query.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

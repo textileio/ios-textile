@@ -7,12 +7,11 @@
 //
 
 #import "IgnoresApi.h"
-#import <Mobile/Mobile.h>
 
 @implementation IgnoresApi
 
 - (NSString *)addIgnore:(NSString *)blockId error:(NSError **)error {
-  return [self.textile.node addIgnore:blockId error:error];
+  return [self.node addIgnore:blockId error:error];
 }
 
 @end

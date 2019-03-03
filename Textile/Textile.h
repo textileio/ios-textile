@@ -7,31 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-@class MobileMobile;
-@class MobileWalletAccount;
-@class Summary;
-@class AccountApi;
-@class CafesApi;
-@class CommentsApi;
-@class ContactsApi;
-@class FeedApi;
-@class FilesApi;
-@class FlagsApi;
-@class IgnoresApi;
-@class InvitesApi;
-@class IpfsApi;
-@class LikesApi;
-@class LogsApi;
-@class MessagesApi;
-@class NotificationsApi;
-@class ProfileApi;
-@class ThreadsApi;
+#import "AccountApi.h"
+#import "CafesApi.h"
+#import "CommentsApi.h"
+#import "ContactsApi.h"
+#import "FeedApi.h"
+#import "FilesApi.h"
+#import "FlagsApi.h"
+#import "IgnoresApi.h"
+#import "InvitesApi.h"
+#import "IpfsApi.h"
+#import "LikesApi.h"
+#import "LogsApi.h"
+#import "MessagesApi.h"
+#import "NotificationsApi.h"
+#import "ProfileApi.h"
+#import "ThreadsApi.h"
 
 @interface Textile : NSObject
 
-+ (id)instance;
++ (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
++ (Textile *)instance;
 
-@property (nonatomic, strong) MobileMobile *node;
 @property (nonatomic, retain) AccountApi *account;
 @property (nonatomic, retain) CafesApi *cafes;
 @property (nonatomic, retain) CommentsApi *comments;

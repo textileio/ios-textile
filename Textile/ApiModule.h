@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Textile.h"
+#import <Mobile/Mobile.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ApiModule : NSObject
 
-@property (nonatomic, strong) Textile *textile;
+@property (nonatomic, strong) MobileMobile *node;
 
-- (instancetype)initWithTextile:(Textile *)textile;
+- (instancetype)initWithNode:(MobileMobile *)node;
 
 @end
 

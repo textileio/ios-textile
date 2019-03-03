@@ -59,6 +59,7 @@
 		9344F6C72229EDA10006798F /* NotificationsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6C62229EDA10006798F /* NotificationsApi.m */; };
 		9344F6CA2229F08D0006798F /* ProfileApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6C92229F08D0006798F /* ProfileApi.m */; };
 		9344F6CD2229F2A20006798F /* ThreadsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6CC2229F2A20006798F /* ThreadsApi.m */; };
+		9344F6FB222C71460006798F /* Textile.h in Headers */ = {isa = PBXBuildFile; fileRef = 93C5330B22284BD2008DA154 /* Textile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93C532F122284B2E008DA154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F022284B2E008DA154 /* AppDelegate.m */; };
 		93C532F422284B2E008DA154 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F322284B2E008DA154 /* ViewController.m */; };
 		93C532F722284B2E008DA154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C532F522284B2E008DA154 /* Main.storyboard */; };
@@ -68,6 +69,16 @@
 		93C5330D22284BD2008DA154 /* Textile.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5330C22284BD2008DA154 /* Textile.m */; };
 		93C5330E22284BD2008DA154 /* Textile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93C5330B22284BD2008DA154 /* Textile.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9344F6DA222BA7DD0006798F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93C532E422284B2E008DA154 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93C5330822284BD2008DA154;
+			remoteInfo = Textile;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		93C5330722284BD2008DA154 /* CopyFiles */ = {
@@ -434,6 +445,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		9344F6DF222C6F350006798F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9344F6FB222C71460006798F /* Textile.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		93C532EB22284B2E008DA154 /* TextileApp */ = {
 			isa = PBXNativeTarget;
@@ -446,6 +468,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9344F6DB222BA7DD0006798F /* PBXTargetDependency */,
 			);
 			name = TextileApp;
 			productName = TextileApp;
@@ -456,6 +479,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93C5330F22284BD2008DA154 /* Build configuration list for PBXNativeTarget "Textile" */;
 			buildPhases = (
+				9344F6DF222C6F350006798F /* Headers */,
 				93C5330522284BD2008DA154 /* Sources */,
 				93C5330622284BD2008DA154 /* Frameworks */,
 				93C5330722284BD2008DA154 /* CopyFiles */,
@@ -588,6 +612,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9344F6DB222BA7DD0006798F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93C5330822284BD2008DA154 /* Textile */;
+			targetProxy = 9344F6DA222BA7DD0006798F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		93C532F522284B2E008DA154 /* Main.storyboard */ = {
@@ -727,6 +759,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5VHA5U5FY8;
+				FRAMEWORK_SEARCH_PATHS = "./node_modules/@textile/go-mobile/dist/ios";
 				INFOPLIST_FILE = TextileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,6 +777,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5VHA5U5FY8;
+				FRAMEWORK_SEARCH_PATHS = "./node_modules/@textile/go-mobile/dist/ios";
 				INFOPLIST_FILE = TextileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

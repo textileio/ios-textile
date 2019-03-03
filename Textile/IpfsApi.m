@@ -7,12 +7,11 @@
 //
 
 #import "IpfsApi.h"
-#import <Mobile/Mobile.h>
 
 @implementation IpfsApi
 
 - (NSString *)peerId:(NSError *__autoreleasing *)error {
-  return [self.textile.node peerId:error];
+  return [self.node peerId:error];
 }
 
 @end

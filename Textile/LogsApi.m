@@ -7,13 +7,11 @@
 //
 
 #import "LogsApi.h"
-#import <Mobile/Mobile.h>
-#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 @implementation LogsApi
 
 - (void)setLogLevel:(LogLevel *)level error:(NSError *__autoreleasing *)error {
-  [self.textile.node setLogLevel:level.data error:error];
+  [self.node setLogLevel:level.data error:error];
 }
 
 @end

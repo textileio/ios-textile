@@ -10,10 +10,9 @@
 
 @implementation ApiModule
 
-- (instancetype)initWithTextile:(Textile *)textile {
-  self = [super init];
-  if (self) {
-    self.textile = textile;
+- (instancetype)initWithNode:(MobileMobile *)node {
+  if (self = [super init]) {
+    self.node = node;
   }
   return self;
 }

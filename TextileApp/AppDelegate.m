@@ -18,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
+  NSError *error;
+  NSString *recoveryPhrase = [Textile initializeWithDebug:TRUE logToDisk:FALSE error:&error];
+  if (recoveryPhrase) {
+    NSLog(@"recovery phrase: %@", recoveryPhrase);
+  }
+  if (error) {
+    NSLog(@"initialize error: %@", error.localizedDescription);
+  }
   return YES;
 }
 

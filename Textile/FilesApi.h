@@ -7,13 +7,9 @@
 //
 
 #import "ApiModule.h"
-
-@class FileIndex;
-@class MobilePreparedFiles;
-@class Block;
-@class Directory;
-@class FilesList;
-@class MobileFileData;
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/Mobile.pbobjc.h"
+#import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
