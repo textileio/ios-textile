@@ -6,11 +6,11 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CommentsApi : ApiModule
+@interface CommentsApi : NodeDependant
 
 - (NSString *)addComment:(NSString *)blockId body:(NSString *)body error:(NSError **)error;
 

@@ -6,9 +6,9 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 
-@implementation ApiModule
+@implementation NodeDependant
 
 - (instancetype)initWithNode:(MobileMobile *)node {
   if (self = [super init]) {

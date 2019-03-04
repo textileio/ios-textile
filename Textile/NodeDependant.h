@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ApiModule : NSObject
+@interface NodeDependant : NSObject
 
 @property (nonatomic, strong) MobileMobile *node;
 

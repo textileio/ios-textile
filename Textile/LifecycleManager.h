@@ -1,8 +1,8 @@
 //
-//  IpfsApi.h
+//  LifecycleManager.h
 //  Textile
 //
-//  Created by Aaron Sutula on 3/1/19.
+//  Created by Aaron Sutula on 3/3/19.
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IpfsApi : NodeDependant
-
-- (NSString *)peerId:(NSError *__autoreleasing *)error;
+@interface LifecycleManager : NodeDependant
 
 @end
 

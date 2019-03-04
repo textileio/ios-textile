@@ -6,12 +6,12 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileApi : ApiModule
+@interface ProfileApi : NodeDependant
 
 - (Contact *)profile:(NSError *__autoreleasing *)error;
 - (NSString *)username:(NSError *__autoreleasing *)error;

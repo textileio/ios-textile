@@ -6,13 +6,13 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Query.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AccountApi : ApiModule
+@interface AccountApi : NodeDependant
 
 - (NSString *)address;
 - (NSString *)seed;

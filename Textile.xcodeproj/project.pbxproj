@@ -34,7 +34,7 @@
 		9344F67C2228A40B0006798F /* Struct.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F65E2228A40A0006798F /* Struct.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9344F67F2228AD360006798F /* Messenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F67E2228AD360006798F /* Messenger.m */; };
 		9344F6822228B3D10006798F /* Callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6812228B3D10006798F /* Callback.m */; };
-		9344F6852228BF840006798F /* ApiModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6842228BF840006798F /* ApiModule.m */; };
+		9344F6852228BF840006798F /* NodeDependant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6842228BF840006798F /* NodeDependant.m */; };
 		9344F6872228C7390006798F /* libTextile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5330922284BD2008DA154 /* libTextile.a */; };
 		9344F68A2228C83A0006798F /* CafesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6892228C83A0006798F /* CafesApi.m */; };
 		9344F69C22298C960006798F /* ThreadsService.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F68D22298C960006798F /* ThreadsService.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -60,6 +60,8 @@
 		9344F6CA2229F08D0006798F /* ProfileApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6C92229F08D0006798F /* ProfileApi.m */; };
 		9344F6CD2229F2A20006798F /* ThreadsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6CC2229F2A20006798F /* ThreadsApi.m */; };
 		9344F6FB222C71460006798F /* Textile.h in Headers */ = {isa = PBXBuildFile; fileRef = 93C5330B22284BD2008DA154 /* Textile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9344F6FE222CA35D0006798F /* LifecycleManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9344F6FC222CA35D0006798F /* LifecycleManager.h */; };
+		9344F6FF222CA35D0006798F /* LifecycleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344F6FD222CA35D0006798F /* LifecycleManager.m */; };
 		93C532F122284B2E008DA154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F022284B2E008DA154 /* AppDelegate.m */; };
 		93C532F422284B2E008DA154 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C532F322284B2E008DA154 /* ViewController.m */; };
 		93C532F722284B2E008DA154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C532F522284B2E008DA154 /* Main.storyboard */; };
@@ -162,8 +164,8 @@
 		9344F67E2228AD360006798F /* Messenger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Messenger.m; sourceTree = "<group>"; };
 		9344F6802228B3D10006798F /* Callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
 		9344F6812228B3D10006798F /* Callback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Callback.m; sourceTree = "<group>"; };
-		9344F6832228BF840006798F /* ApiModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiModule.h; sourceTree = "<group>"; };
-		9344F6842228BF840006798F /* ApiModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApiModule.m; sourceTree = "<group>"; };
+		9344F6832228BF840006798F /* NodeDependant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeDependant.h; sourceTree = "<group>"; };
+		9344F6842228BF840006798F /* NodeDependant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeDependant.m; sourceTree = "<group>"; };
 		9344F6882228C83A0006798F /* CafesApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CafesApi.h; sourceTree = "<group>"; };
 		9344F6892228C83A0006798F /* CafesApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CafesApi.m; sourceTree = "<group>"; };
 		9344F68D22298C960006798F /* ThreadsService.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadsService.pbobjc.m; sourceTree = "<group>"; };
@@ -209,6 +211,8 @@
 		9344F6C92229F08D0006798F /* ProfileApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileApi.m; sourceTree = "<group>"; };
 		9344F6CB2229F2A20006798F /* ThreadsApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadsApi.h; sourceTree = "<group>"; };
 		9344F6CC2229F2A20006798F /* ThreadsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadsApi.m; sourceTree = "<group>"; };
+		9344F6FC222CA35D0006798F /* LifecycleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifecycleManager.h; sourceTree = "<group>"; };
+		9344F6FD222CA35D0006798F /* LifecycleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifecycleManager.m; sourceTree = "<group>"; };
 		93C532EC22284B2E008DA154 /* TextileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C532EF22284B2E008DA154 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93C532F022284B2E008DA154 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -405,8 +409,8 @@
 				9344F6812228B3D10006798F /* Callback.m */,
 				93C5330B22284BD2008DA154 /* Textile.h */,
 				93C5330C22284BD2008DA154 /* Textile.m */,
-				9344F6832228BF840006798F /* ApiModule.h */,
-				9344F6842228BF840006798F /* ApiModule.m */,
+				9344F6832228BF840006798F /* NodeDependant.h */,
+				9344F6842228BF840006798F /* NodeDependant.m */,
 				9344F55B222898A30006798F /* AccountApi.h */,
 				9344F55C222898A30006798F /* AccountApi.m */,
 				9344F6882228C83A0006798F /* CafesApi.h */,
@@ -439,6 +443,8 @@
 				9344F6C92229F08D0006798F /* ProfileApi.m */,
 				9344F6CB2229F2A20006798F /* ThreadsApi.h */,
 				9344F6CC2229F2A20006798F /* ThreadsApi.m */,
+				9344F6FC222CA35D0006798F /* LifecycleManager.h */,
+				9344F6FD222CA35D0006798F /* LifecycleManager.m */,
 			);
 			path = Textile;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9344F6FB222C71460006798F /* Textile.h in Headers */,
+				9344F6FE222CA35D0006798F /* LifecycleManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +583,7 @@
 				9344F66C2228A40B0006798F /* GPBWellKnownTypes.m in Sources */,
 				9344F6A62229961E0006798F /* CommentsApi.m in Sources */,
 				9344F6772228A40B0006798F /* Api.pbobjc.m in Sources */,
-				9344F6852228BF840006798F /* ApiModule.m in Sources */,
+				9344F6852228BF840006798F /* NodeDependant.m in Sources */,
 				9344F67C2228A40B0006798F /* Struct.pbobjc.m in Sources */,
 				9344F69D22298C960006798F /* Message.pbobjc.m in Sources */,
 				9344F69F22298C960006798F /* View.pbobjc.m in Sources */,
@@ -605,6 +612,7 @@
 				9344F6C42229E9C30006798F /* MessagesApi.m in Sources */,
 				9344F6752228A40B0006798F /* Any.pbobjc.m in Sources */,
 				9344F6A92229984A0006798F /* ContactsApi.m in Sources */,
+				9344F6FF222CA35D0006798F /* LifecycleManager.m in Sources */,
 				9344F6BB2229E58E0006798F /* IpfsApi.m in Sources */,
 				9344F6A022298C960006798F /* Query.pbobjc.m in Sources */,
 				9344F67F2228AD360006798F /* Messenger.m in Sources */,

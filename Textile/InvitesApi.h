@@ -6,12 +6,12 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface InvitesApi : ApiModule
+@interface InvitesApi : NodeDependant
 
 - (NSString *)addInvite:(NSString *)threadId inviteeId:(NSString *)inviteeId error:(NSError *__autoreleasing *)error;
 - (NewInvite *)addExternalInvite:(NSString *)threadId error:(NSError *__autoreleasing *)error;

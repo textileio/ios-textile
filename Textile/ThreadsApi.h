@@ -6,13 +6,13 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/View.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ThreadsApi : ApiModule
+@interface ThreadsApi : NodeDependant
 
 - (Thread *)addThread:(AddThreadConfig *)config error:(NSError *__autoreleasing *)error;
 - (void)addOrUpdateThread:(Thread *)thrd error:(NSError *__autoreleasing *)error;

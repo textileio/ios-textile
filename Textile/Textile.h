@@ -24,27 +24,42 @@
 #import "ProfileApi.h"
 #import "ThreadsApi.h"
 
+typedef NS_CLOSED_ENUM(NSInteger, TextileNodeState) {
+  TextileNodeStateStopped,
+  TextileNodeStateStarted,
+  TextileNodeStateOnline
+};
+
+@interface TextileNodeStatus : NSObject
+
+@property (nonatomic, readonly, assign) TextileNodeState nodeState;
+@property (nonatomic, readonly, strong) NSError *error;
+
+@end
+
 @interface Textile : NSObject
 
 + (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
 + (Textile *)instance;
 
-@property (nonatomic, retain) AccountApi *account;
-@property (nonatomic, retain) CafesApi *cafes;
-@property (nonatomic, retain) CommentsApi *comments;
-@property (nonatomic, retain) ContactsApi *contacts;
-@property (nonatomic, retain) FeedApi *feed;
-@property (nonatomic, retain) FilesApi *files;
-@property (nonatomic, retain) FlagsApi *flags;
-@property (nonatomic, retain) IgnoresApi *ignores;
-@property (nonatomic, retain) InvitesApi *invites;
-@property (nonatomic, retain) IpfsApi *ipfsApi;
-@property (nonatomic, retain) LikesApi *likesApi;
-@property (nonatomic, retain) LogsApi *logsApi;
-@property (nonatomic, retain) MessagesApi *messagesApi;
-@property (nonatomic, retain) NotificationsApi *notificationsApi;
-@property (nonatomic, retain) ProfileApi *profileApi;
-@property (nonatomic, retain) ThreadsApi *threadsApi;
+@property (atomic, readonly, strong) TextileNodeStatus *status;
+
+@property (nonatomic, readonly, strong) AccountApi *account;
+@property (nonatomic, readonly, strong) CafesApi *cafes;
+@property (nonatomic, readonly, strong) CommentsApi *comments;
+@property (nonatomic, readonly, strong) ContactsApi *contacts;
+@property (nonatomic, readonly, strong) FeedApi *feed;
+@property (nonatomic, readonly, strong) FilesApi *files;
+@property (nonatomic, readonly, strong) FlagsApi *flags;
+@property (nonatomic, readonly, strong) IgnoresApi *ignores;
+@property (nonatomic, readonly, strong) InvitesApi *invites;
+@property (nonatomic, readonly, strong) IpfsApi *ipfsApi;
+@property (nonatomic, readonly, strong) LikesApi *likesApi;
+@property (nonatomic, readonly, strong) LogsApi *logsApi;
+@property (nonatomic, readonly, strong) MessagesApi *messagesApi;
+@property (nonatomic, readonly, strong) NotificationsApi *notificationsApi;
+@property (nonatomic, readonly, strong) ProfileApi *profileApi;
+@property (nonatomic, readonly, strong) ThreadsApi *threadsApi;
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
 - (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;

@@ -6,12 +6,12 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 #import "../node_modules/@textile/go-mobile/dist/ios/protos/Model.pbobjc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CafesApi : ApiModule
+@interface CafesApi : NodeDependant
 
 - (void)registerCafe:(NSString *)host token:(NSString *)token error:(NSError **)error;
 - (CafeSession *)cafeSession:(NSString *)peerId error:(NSError **)error;

@@ -6,11 +6,11 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "ApiModule.h"
+#import "NodeDependant.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IgnoresApi : ApiModule
+@interface IgnoresApi : NodeDependant
 
 - (NSString *)addIgnore:(NSString *)blockId error:(NSError **)error;
 

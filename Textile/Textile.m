@@ -8,10 +8,34 @@
 
 #import "Textile.h"
 #import "Messenger.h"
+#import "LifecycleManager.h"
+
+@implementation TextileNodeStatus
+
+@end
 
 @interface Textile()
 
 @property (nonatomic, strong) MobileMobile *node;
+
+@property (nonatomic, strong) AccountApi *account;
+@property (nonatomic, strong) CafesApi *cafes;
+@property (nonatomic, strong) CommentsApi *comments;
+@property (nonatomic, strong) ContactsApi *contacts;
+@property (nonatomic, strong) FeedApi *feed;
+@property (nonatomic, strong) FilesApi *files;
+@property (nonatomic, strong) FlagsApi *flags;
+@property (nonatomic, strong) IgnoresApi *ignores;
+@property (nonatomic, strong) InvitesApi *invites;
+@property (nonatomic, strong) IpfsApi *ipfsApi;
+@property (nonatomic, strong) LikesApi *likesApi;
+@property (nonatomic, strong) LogsApi *logsApi;
+@property (nonatomic, strong) MessagesApi *messagesApi;
+@property (nonatomic, strong) NotificationsApi *notificationsApi;
+@property (nonatomic, strong) ProfileApi *profileApi;
+@property (nonatomic, strong) ThreadsApi *threadsApi;
+
+@property (nonatomic, strong) LifecycleManager *lifecycleManager;
 
 @end
 
@@ -40,6 +64,13 @@
     instnace = [[self alloc] init];
   });
   return instnace;
+}
+
+- (instancetype)init {
+  if (self = [super init]) {
+
+  }
+  return self;
 }
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error {
@@ -115,6 +146,8 @@
   self.notificationsApi = [[NotificationsApi alloc] initWithNode:self.node];
   self.profileApi = [[ProfileApi alloc] initWithNode:self.node];
   self.threadsApi = [[ThreadsApi alloc] initWithNode:self.node];
+
+  self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
 }
 
 @end
