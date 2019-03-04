@@ -8,7 +8,6 @@
 
 #import "LifecycleManager.h"
 #import <UIKit/UIKit.h>
-#import "Textile.h"
 
 typedef NS_CLOSED_ENUM(NSInteger, AppState) {
   AppStateNone,
@@ -18,7 +17,6 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 
 @interface LifecycleManager()
 
-@property (nonatomic, weak) Textile *textile;
 @property (nonatomic, assign) AppState appState;
 @property (nonatomic, strong) NSTimer *timer;
 
