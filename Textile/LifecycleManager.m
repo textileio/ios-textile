@@ -80,8 +80,8 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
   NSError *error;
   [self.node start:&error];
   if (error) {
-    if ([self.delegate respondsToSelector:@selector(textileNodeFailedToStartWithError:)]) {
-      [self.delegate textileNodeFailedToStartWithError:error];
+    if ([self.delegate respondsToSelector:@selector(nodeFailedToStartWithError:)]) {
+      [self.delegate nodeFailedToStartWithError:error];
     }
   }
 }
@@ -101,8 +101,8 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
   NSError *error;
   [self.node stop:&error];
   if(error) {
-    if ([self.delegate respondsToSelector:@selector(textileNodeFailedToStopWithError:)]) {
-      [self.delegate textileNodeFailedToStopWithError:error];
+    if ([self.delegate respondsToSelector:@selector(nodeFailedToStopWithError:)]) {
+      [self.delegate nodeFailedToStopWithError:error];
     }
   }
 }

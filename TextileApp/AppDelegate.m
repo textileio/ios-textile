@@ -57,23 +57,23 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)textileNodeDidStart {
+- (void)nodeDidStart {
   NSLog(@"delegate - node started");
 }
 
-- (void)textileNodeFailedToStartWithError:(NSError *)error {
+- (void)nodeFailedToStartWithError:(NSError *)error {
   NSLog(@"delegate - node failed to start: %@", error.localizedDescription);
 }
 
-- (void)textileNodeDidStop {
+- (void)nodeDidStop {
   NSLog(@"delegate - node stopped");
 }
 
-- (void)textileNodeFailedToStopWithError:(NSError *)error {
+- (void)nodeFailedToStopWithError:(NSError *)error {
   NSLog(@"delegate - node failed to stop: %@", error.localizedDescription);
 }
 
-- (void)textileNodeOnline {
+- (void)nodeOnline {
   NSLog(@"delegate - node online");
 }
 

@@ -15,19 +15,19 @@
 @protocol TextileDelegate <NSObject>
 
 @optional
-- (void)textileNodeDidStart;
+- (void)nodeDidStart;
 
 @optional
-- (void)textileNodeFailedToStartWithError:(NSError * _Nonnull)error;
+- (void)nodeFailedToStartWithError:(NSError * _Nonnull)error;
 
 @optional
-- (void)textileNodeDidStop;
+- (void)nodeDidStop;
 
 @optional
-- (void)textileNodeFailedToStopWithError:(NSError * _Nonnull)error;
+- (void)nodeFailedToStopWithError:(NSError * _Nonnull)error;
 
 @optional
-- (void)textileNodeOnline;
+- (void)nodeOnline;
 
 @optional
 - (void)notificationReceived:(Notification * _Nonnull)notification;

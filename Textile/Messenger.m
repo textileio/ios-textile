@@ -15,16 +15,16 @@
 
 - (void)notify: (MobileEvent *)event {
   if ([event.name  isEqual: @"NODE_START"]) {
-    if ([self.delegate respondsToSelector:@selector(textileNodeDidStart)]) {
-      [self.delegate textileNodeDidStart];
+    if ([self.delegate respondsToSelector:@selector(nodeDidStart)]) {
+      [self.delegate nodeDidStart];
     }
   } else if ([event.name  isEqual: @"NODE_STOP"]) {
-    if ([self.delegate respondsToSelector:@selector(textileNodeDidStop)]) {
-      [self.delegate textileNodeDidStop];
+    if ([self.delegate respondsToSelector:@selector(nodeDidStop)]) {
+      [self.delegate nodeDidStop];
     }
   } else if ([event.name  isEqual: @"NODE_ONLINE"]) {
-    if ([self.delegate respondsToSelector:@selector(textileNodeOnline)]) {
-      [self.delegate textileNodeOnline];
+    if ([self.delegate respondsToSelector:@selector(nodeOnline)]) {
+      [self.delegate nodeOnline];
     }
   } else if ([event.name  isEqual: @"WALLET_UPDATE"]) {
     NSError *error;
