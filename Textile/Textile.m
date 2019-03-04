@@ -10,11 +10,9 @@
 #import "Messenger.h"
 #import "LifecycleManager.h"
 
-@implementation TextileNodeStatus
-
-@end
-
 @interface Textile()
+
+@property (nonatomic, strong) Messenger *messenger;
 
 @property (nonatomic, strong) MobileMobile *node;
 
@@ -36,6 +34,14 @@
 @property (nonatomic, strong) ThreadsApi *threadsApi;
 
 @property (nonatomic, strong) LifecycleManager *lifecycleManager;
+
+- (NSString *_Nonnull)newWallet:(NSInteger)wordCount error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (MobileWalletAccount *_Nonnull)walletAccountAt:(NSString *_Nonnull)phrase index:(NSInteger)index password:(NSString *_Nullable)password error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (void)initRepo:(NSString *_Nonnull)seed repoPath:(NSString *_Nonnull)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (void)migrateRepo:(NSString *_Nonnull)repoPath error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (void)newTextile:(NSString *_Nonnull)repoPath debug:(BOOL)debug error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (void)start:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (void)stop:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
 
 @end
 
@@ -68,9 +74,15 @@
 
 - (instancetype)init {
   if (self = [super init]) {
-
+    self.messenger = [[Messenger alloc] init];
   }
   return self;
+}
+
+- (void)setDelegate:(id<TextileDelegate>)delegate {
+  _delegate = delegate;
+  self.lifecycleManager.delegate = delegate;
+  self.messenger.delegate = delegate;
 }
 
 - (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error {
@@ -104,7 +116,7 @@
     MobileRunConfig *config = [[MobileRunConfig alloc] init];
     config.repoPath = repoPath;
     config.debug = debug;
-    self.node = MobileNewTextile(config, [[Messenger alloc] init], error);
+    self.node = MobileNewTextile(config, self.messenger, error);
   }
 }
 
@@ -148,6 +160,7 @@
   self.threadsApi = [[ThreadsApi alloc] initWithNode:self.node];
 
   self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
+  self.lifecycleManager.delegate = self.delegate;
 }
 
 @end

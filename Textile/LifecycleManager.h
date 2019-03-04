@@ -7,10 +7,13 @@
 //
 
 #import "NodeDependant.h"
+#import "Textile.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LifecycleManager : NodeDependant
+
+@property (nonatomic, strong) id<TextileDelegate> _Nullable delegate;
 
 @end
 

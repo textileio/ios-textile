@@ -35,29 +35,76 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 }
 
 - (void)setup {
+  [NSNotificationCenter.defaultCenter
+   addObserverForName:UIApplicationDidBecomeActiveNotification
+   object:nil
+   queue:nil
+   usingBlock:^(NSNotification *notification) {
+     if (self.appState == AppStateForeground) {
+       return;
+     }
+     self.appState = AppStateForeground;
+     if ([self.timer isValid]) {
+       [self.timer invalidate];
+     } else {
+       [self startNode];
+     }
+   }
+  ];
 
-  UIApplicationState state = UIApplication.sharedApplication.applicationState;
-  NSLog(@"state: %li", (long)state);
+  [NSNotificationCenter.defaultCenter
+   addObserverForName:UIApplicationDidEnterBackgroundNotification
+   object:nil
+   queue:nil
+   usingBlock:^(NSNotification *notification) {
+     NSTimeInterval remaining = UIApplication.sharedApplication.backgroundTimeRemaining;
+     NSTimeInterval runFor = MAX(remaining - 10, 0);
+     if (self.appState == AppStateNone) {
+       self.appState = AppStateBackground;
+       if ([self.timer isValid]) {
+         [self stopNodeAfterDelay:runFor];
+       } else {
+         [self startNode];
+         [self stopNodeAfterDelay:runFor];
+       }
+     } else if(self.appState == AppStateForeground) {
+       self.appState = AppStateNone;
+       [self stopNodeAfterDelay:runFor];
+     }
+   }
+  ];
+}
 
-  [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
-    if (self.appState != AppStateForeground) {
-      self.appState = AppStateForeground;
-      NSLog(@"foreground");
+- (void)startNode {
+  [self.timer invalidate];
+  NSError *error;
+  [self.node start:&error];
+  if (error) {
+    if ([self.delegate respondsToSelector:@selector(textileNodeFailedToStartWithError:)]) {
+      [self.delegate textileNodeFailedToStartWithError:error];
     }
+  }
+}
+
+- (void)stopNodeAfterDelay:(NSTimeInterval)delay {
+  UIBackgroundTaskIdentifier bgTaskId = [UIApplication.sharedApplication beginBackgroundTaskWithName:@"RunNode" expirationHandler:^{
+    [self stopNode];
   }];
-
-  [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
-    NSTimeInterval remaining = UIApplication.sharedApplication.backgroundTimeRemaining;
-    if (self.appState == AppStateBackground) {
-      return;
-    }
-    if (self.appState == AppStateNone) {
-      NSLog(@"launched into background, %f seconds remaining", remaining);
-    } else if(self.appState == AppStateForeground) {
-      NSLog(@"transitioned to background, %f seconds remaining", remaining);
-    }
-    self.appState = AppStateBackground;
+  [self.timer invalidate];
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:delay repeats:FALSE block:^(NSTimer * _Nonnull timer) {
+    [self stopNode];
+    [UIApplication.sharedApplication endBackgroundTask:bgTaskId];
   }];
+}
+
+- (void)stopNode {
+  NSError *error;
+  [self.node stop:&error];
+  if(error) {
+    if ([self.delegate respondsToSelector:@selector(textileNodeFailedToStopWithError:)]) {
+      [self.delegate textileNodeFailedToStopWithError:error];
+    }
+  }
 }
 
 @end

@@ -213,6 +213,7 @@
 		9344F6CC2229F2A20006798F /* ThreadsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadsApi.m; sourceTree = "<group>"; };
 		9344F6FC222CA35D0006798F /* LifecycleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifecycleManager.h; sourceTree = "<group>"; };
 		9344F6FD222CA35D0006798F /* LifecycleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifecycleManager.m; sourceTree = "<group>"; };
+		934D1B71222DBAFE00E0DAD0 /* TextileDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextileDelegate.h; sourceTree = "<group>"; };
 		93C532EC22284B2E008DA154 /* TextileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C532EF22284B2E008DA154 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93C532F022284B2E008DA154 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -409,6 +410,7 @@
 				9344F6812228B3D10006798F /* Callback.m */,
 				93C5330B22284BD2008DA154 /* Textile.h */,
 				93C5330C22284BD2008DA154 /* Textile.m */,
+				934D1B71222DBAFE00E0DAD0 /* TextileDelegate.h */,
 				9344F6832228BF840006798F /* NodeDependant.h */,
 				9344F6842228BF840006798F /* NodeDependant.m */,
 				9344F55B222898A30006798F /* AccountApi.h */,

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <Textile/Textile.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <TextileDelegate>
 
 @end
 
@@ -19,13 +19,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
   NSError *error;
-  NSString *recoveryPhrase = [Textile initializeWithDebug:TRUE logToDisk:FALSE error:&error];
+  NSString *recoveryPhrase = [Textile initializeWithDebug:FALSE logToDisk:FALSE error:&error];
   if (recoveryPhrase) {
     NSLog(@"recovery phrase: %@", recoveryPhrase);
   }
   if (error) {
     NSLog(@"initialize error: %@", error.localizedDescription);
   }
+  Textile.instance.delegate = self;
   return YES;
 }
 
@@ -54,6 +55,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)textileNodeDidStart {
+  NSLog(@"delegate - node started");
+}
+
+- (void)textileNodeFailedToStartWithError:(NSError *)error {
+  NSLog(@"delegate - node failed to start: %@", error.localizedDescription);
+}
+
+- (void)textileNodeDidStop {
+  NSLog(@"delegate - node stopped");
+}
+
+- (void)textileNodeFailedToStopWithError:(NSError *)error {
+  NSLog(@"delegate - node failed to stop: %@", error.localizedDescription);
+}
+
+- (void)textileNodeOnline {
+  NSLog(@"delegate - node online");
 }
 
 
