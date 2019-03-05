@@ -15,12 +15,12 @@
 
 - (void)notify: (MobileEvent *)event {
   if ([event.name  isEqual: @"NODE_START"]) {
-    if ([self.delegate respondsToSelector:@selector(nodeDidStart)]) {
-      [self.delegate nodeDidStart];
+    if ([self.delegate respondsToSelector:@selector(nodeStarted)]) {
+      [self.delegate nodeStarted];
     }
   } else if ([event.name  isEqual: @"NODE_STOP"]) {
-    if ([self.delegate respondsToSelector:@selector(nodeDidStop)]) {
-      [self.delegate nodeDidStop];
+    if ([self.delegate respondsToSelector:@selector(nodeStopped)]) {
+      [self.delegate nodeStopped];
     }
   } else if ([event.name  isEqual: @"NODE_ONLINE"]) {
     if ([self.delegate respondsToSelector:@selector(nodeOnline)]) {

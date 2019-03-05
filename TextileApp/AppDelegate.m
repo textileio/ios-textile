@@ -57,7 +57,7 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)nodeDidStart {
+- (void)nodeStarted {
   NSLog(@"delegate - node started");
 }
 
@@ -65,7 +65,7 @@
   NSLog(@"delegate - node failed to start: %@", error.localizedDescription);
 }
 
-- (void)nodeDidStop {
+- (void)nodeStopped {
   NSLog(@"delegate - node stopped");
 }
 

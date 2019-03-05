@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol TextileDelegate <NSObject>
 
 @optional
-- (void)nodeDidStart;
+- (void)nodeStarted;
 
 @optional
 - (void)nodeFailedToStartWithError:(NSError *)error;
 
 @optional
-- (void)nodeDidStop;
+- (void)nodeStopped;
 
 @optional
 - (void)nodeFailedToStopWithError:(NSError *)error;
