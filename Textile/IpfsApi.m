@@ -10,7 +10,7 @@
 
 @implementation IpfsApi
 
-- (NSString *)peerId:(NSError *__autoreleasing *)error {
+- (NSString *)peerId:(NSError * _Nullable __autoreleasing *)error {
   return [self.node peerId:error];
 }
 

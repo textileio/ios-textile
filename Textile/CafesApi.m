@@ -10,30 +10,30 @@
 
 @implementation CafesApi
 
-- (void)registerCafe:(NSString *)host token:(NSString *)token error:(NSError **)error {
+- (void)registerCafe:(NSString *)host token:(NSString *)token error:(NSError * _Nullable __autoreleasing *)error {
   [self.node registerCafe:host token:token error:error];
 }
 
-- (CafeSession *)cafeSession:(NSString *)peerId error:(NSError **)error {
+- (CafeSession *)cafeSession:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node cafeSession:peerId error:error];
   return [[CafeSession alloc] initWithData:data error:error];
 }
 
-- (CafeSessionList *)cafeSessions:(NSError **)error {
+- (CafeSessionList *)cafeSessions:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node cafeSessions:error];
   return [[CafeSessionList alloc] initWithData:data error:error];
 }
 
-- (CafeSession *)refreshCafeSession:(NSString *)peerId error:(NSError **)error {
+- (CafeSession *)refreshCafeSession:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node refreshCafeSession:peerId error:error];
   return [[CafeSession alloc] initWithData:data error:error];
 }
 
-- (void)deregisterCafe:(NSString *)peerId error:(NSError **)error {
+- (void)deregisterCafe:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
   [self.node deregisterCafe:peerId error:error];
 }
 
-- (void)checkCafeMessages:(NSError **)error {
+- (void)checkCafeMessages:(NSError * _Nullable __autoreleasing *)error {
   [self.node checkCafeMessages:error];
 }
 

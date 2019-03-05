@@ -14,11 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ThreadsApi : NodeDependant
 
-- (Thread *)addThread:(AddThreadConfig *)config error:(NSError *__autoreleasing *)error;
-- (void)addOrUpdateThread:(Thread *)thrd error:(NSError *__autoreleasing *)error;
-- (Thread *)thread:(NSString *)threadId error:(NSError *__autoreleasing *)error;
-- (ThreadList *)threads:(NSError *__autoreleasing *)error;
-- (NSString *)removeThread:(NSString *)threadId error:(NSError *__autoreleasing *)error;
+- (Thread *)addThread:(AddThreadConfig *)config error:(NSError **)error;
+- (void)addOrUpdateThread:(Thread *)thrd error:(NSError **)error;
+- (Thread *)thread:(NSString *)threadId error:(NSError **)error;
+- (ThreadList *)threads:(NSError **)error;
+- (NSString *)removeThread:(NSString *)threadId error:(NSError **)error;
 
 @end
 

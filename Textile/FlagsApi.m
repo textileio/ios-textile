@@ -10,7 +10,7 @@
 
 @implementation FlagsApi
 
-- (NSString *)addFlag:(NSString *)blockId error:(NSError **)error {
+- (NSString *)addFlag:(NSString *)blockId error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addFlag:blockId error:error];
 }
 

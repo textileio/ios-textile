@@ -10,7 +10,7 @@
 
 @implementation CommentsApi
 
-- (NSString *)addComment:(NSString *)blockId body:(NSString *)body error:(NSError **)error {
+- (NSString *)addComment:(NSString *)blockId body:(NSString *)body error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addComment:blockId body:body error:error];
 }
 

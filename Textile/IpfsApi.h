@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IpfsApi : NodeDependant
 
-- (NSString *)peerId:(NSError *__autoreleasing *)error;
+- (NSString *)peerId:(NSError **)error;
 
 @end
 

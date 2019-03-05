@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LikesApi : NodeDependant
 
-- (NSString *)addLike:(NSString *)blockId error:(NSError *__autoreleasing *)error;
+- (NSString *)addLike:(NSString *)blockId error:(NSError **)error;
 
 @end
 

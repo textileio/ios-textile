@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Messenger : NSObject<MobileMessenger>
 
-@property (nonatomic, weak) id<TextileDelegate> delegate;
+@property (nonatomic, weak, nullable) id<TextileDelegate> delegate;
 
 @end
 

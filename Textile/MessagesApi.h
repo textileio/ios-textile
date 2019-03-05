@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessagesApi : NodeDependant
 
-- (NSString *)addMessage:(NSString *)threadId body:(NSString *)body error:(NSError *__autoreleasing *)error;
-- (TextList *)messages:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError *__autoreleasing *)error;
+- (NSString *)addMessage:(NSString *)threadId body:(NSString *)body error:(NSError **)error;
+- (TextList *)messages:(nullable NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError **)error;
 
 @end
 

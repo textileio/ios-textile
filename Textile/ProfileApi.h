@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileApi : NodeDependant
 
-- (Contact *)profile:(NSError *__autoreleasing *)error;
-- (NSString *)username:(NSError *__autoreleasing *)error;
-- (void)setUsername:(NSString *)username error:(NSError *__autoreleasing *)error;
-- (NSString *)avatar:(NSError *__autoreleasing *)error;
-- (void)setAvatar:(NSString *)hash error:(NSError *__autoreleasing *)error;
+- (Contact *)profile:(NSError **)error;
+- (NSString *)username:(NSError **)error;
+- (void)setUsername:(NSString *)username error:(NSError **)error;
+- (NSString *)avatar:(NSError **)error;
+- (void)setAvatar:(NSString *)hash error:(NSError **)error;
 
 @end
 

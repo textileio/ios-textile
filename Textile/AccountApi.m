@@ -18,20 +18,20 @@
   return self.node.seed;
 }
 
-- (NSData *)encrypt:(NSData *)data error:(NSError **)error {
+- (NSData *)encrypt:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node encrypt:data error:error];
 }
 
-- (NSData *)decrypt:(NSData *)data error:(NSError **)error {
+- (NSData *)decrypt:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node decrypt:data error:error];
 }
 
-- (ContactList *)accountPeers:(NSError **)error {
+- (ContactList *)accountPeers:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node accountPeers:error];
   return [[ContactList alloc] initWithData:data error:error];
 }
 
-- (MobileSearchHandle *)findThreadBackups:(ThreadBackupQuery *)query options:(QueryOptions *)options error:(NSError **)error {
+- (MobileSearchHandle *)findThreadBackups:(ThreadBackupQuery *)query options:(QueryOptions *)options error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node findThreadBackups:query.data options:options.data error:error];
 }
 

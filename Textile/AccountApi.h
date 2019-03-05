@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)address;
 - (NSString *)seed;
-- (NSData *)encrypt:(NSData *)data error:(NSError **)error;
-- (NSData *)decrypt:(NSData *)data error:(NSError **)error;
+- (nullable NSData *)encrypt:(NSData *)data error:(NSError **)error;
+- (nullable NSData *)decrypt:(NSData *)data error:(NSError **)error;
 - (ContactList *)accountPeers:(NSError **)error;
 - (MobileSearchHandle *)findThreadBackups:(ThreadBackupQuery *)query options:(QueryOptions *)options error:(NSError **)error;
 

@@ -10,7 +10,7 @@
 
 @implementation IgnoresApi
 
-- (NSString *)addIgnore:(NSString *)blockId error:(NSError **)error {
+- (NSString *)addIgnore:(NSString *)blockId error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addIgnore:blockId error:error];
 }
 

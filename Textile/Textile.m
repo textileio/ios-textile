@@ -25,29 +25,29 @@
 @property (nonatomic, strong) FlagsApi *flags;
 @property (nonatomic, strong) IgnoresApi *ignores;
 @property (nonatomic, strong) InvitesApi *invites;
-@property (nonatomic, strong) IpfsApi *ipfsApi;
-@property (nonatomic, strong) LikesApi *likesApi;
-@property (nonatomic, strong) LogsApi *logsApi;
-@property (nonatomic, strong) MessagesApi *messagesApi;
-@property (nonatomic, strong) NotificationsApi *notificationsApi;
-@property (nonatomic, strong) ProfileApi *profileApi;
-@property (nonatomic, strong) ThreadsApi *threadsApi;
+@property (nonatomic, strong) IpfsApi *ipfs;
+@property (nonatomic, strong) LikesApi *likes;
+@property (nonatomic, strong) LogsApi *logs;
+@property (nonatomic, strong) MessagesApi *messages;
+@property (nonatomic, strong) NotificationsApi *notifications;
+@property (nonatomic, strong) ProfileApi *profile;
+@property (nonatomic, strong) ThreadsApi *threads;
 
 @property (nonatomic, strong) LifecycleManager *lifecycleManager;
 
-- (NSString *_Nonnull)newWallet:(NSInteger)wordCount error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (MobileWalletAccount *_Nonnull)walletAccountAt:(NSString *_Nonnull)phrase index:(NSInteger)index password:(NSString *_Nullable)password error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (void)initRepo:(NSString *_Nonnull)seed repoPath:(NSString *_Nonnull)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (void)migrateRepo:(NSString *_Nonnull)repoPath error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (void)newTextile:(NSString *_Nonnull)repoPath debug:(BOOL)debug error:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (void)start:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
-- (void)stop:(NSError * _Nonnull __autoreleasing *_Nonnull)error;
+- (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
+- (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
+- (void)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError **)error;
+- (void)migrateRepo:(NSString *)repoPath error:(NSError **)error;
+- (void)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError **)error;
+- (void)start:(NSError **)error;
+- (void)stop:(NSError **)error;
 
 @end
 
 @implementation Textile
 
-+ (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError *__autoreleasing *)error {
++ (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
   NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
   NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-repo"];
   [Textile.instance newTextile:repoPath debug:debug error:error];
@@ -85,18 +85,18 @@
   self.messenger.delegate = delegate;
 }
 
-- (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error {
+- (NSString *)newWallet:(NSInteger)wordCount error:(NSError *__autoreleasing *)error {
   NSString *recoveryPhrase = MobileNewWallet(wordCount, error);
   return recoveryPhrase;
 }
 
-- (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error {
+- (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError *__autoreleasing *)error {
   NSData *data = MobileWalletAccountAt(phrase, index, password, error);
   MobileWalletAccount *account = [[MobileWalletAccount alloc] initWithData:data error:error];
   return account;
 }
 
-- (void)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError **)error {
+- (void)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
   MobileInitConfig *config = [[MobileInitConfig alloc] init];
   config.seed = seed;
   config.repoPath = repoPath;
@@ -105,7 +105,7 @@
   MobileInitRepo(config, error);
 }
 
-- (void)migrateRepo:(NSString *)repoPath error:(NSError **)error {
+- (void)migrateRepo:(NSString *)repoPath error:(NSError *__autoreleasing *)error {
   MobileMigrateConfig *config = [[MobileMigrateConfig alloc] init];
   config.repoPath = repoPath;
   MobileMigrateRepo(config, error);
@@ -120,11 +120,11 @@
   }
 }
 
-- (void)start:(NSError **)error {
+- (void)start:(NSError *__autoreleasing *)error {
   [self.node start:error];
 }
 
-- (void)stop:(NSError **)error {
+- (void)stop:(NSError *__autoreleasing *)error {
   [self.node stop:error];
 }
 
@@ -136,7 +136,7 @@
   return [self.node gitSummary];
 }
 
-- (Summary *)summary:(NSError **)error {
+- (Summary *)summary:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node summary:error];
   return [[Summary alloc] initWithData:data error:error];
 }
@@ -151,13 +151,13 @@
   self.flags = [[FlagsApi alloc] initWithNode:self.node];
   self.ignores = [[IgnoresApi alloc] initWithNode:self.node];
   self.invites = [[InvitesApi alloc] initWithNode:self.node];
-  self.ipfsApi = [[IpfsApi alloc] initWithNode:self.node];
-  self.likesApi = [[LikesApi alloc] initWithNode:self.node];
-  self.logsApi = [[LogsApi alloc] initWithNode:self.node];
-  self.messagesApi = [[MessagesApi alloc] initWithNode:self.node];
-  self.notificationsApi = [[NotificationsApi alloc] initWithNode:self.node];
-  self.profileApi = [[ProfileApi alloc] initWithNode:self.node];
-  self.threadsApi = [[ThreadsApi alloc] initWithNode:self.node];
+  self.ipfs = [[IpfsApi alloc] initWithNode:self.node];
+  self.likes = [[LikesApi alloc] initWithNode:self.node];
+  self.logs = [[LogsApi alloc] initWithNode:self.node];
+  self.messages = [[MessagesApi alloc] initWithNode:self.node];
+  self.notifications = [[NotificationsApi alloc] initWithNode:self.node];
+  self.profile = [[ProfileApi alloc] initWithNode:self.node];
+  self.threads = [[ThreadsApi alloc] initWithNode:self.node];
 
   self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
   self.lifecycleManager.delegate = self.delegate;

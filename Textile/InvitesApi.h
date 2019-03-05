@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InvitesApi : NodeDependant
 
-- (NSString *)addInvite:(NSString *)threadId inviteeId:(NSString *)inviteeId error:(NSError *__autoreleasing *)error;
-- (NewInvite *)addExternalInvite:(NSString *)threadId error:(NSError *__autoreleasing *)error;
-- (NSString *)acceptExternalInvite:(NSString *)inviteId key:(NSString *)key error:(NSError *__autoreleasing *)error;
+- (NSString *)addInvite:(NSString *)threadId inviteeId:(NSString *)inviteeId error:(NSError **)error;
+- (NewInvite *)addExternalInvite:(NSString *)threadId error:(NSError **)error;
+- (NSString *)acceptExternalInvite:(NSString *)inviteId key:(NSString *)key error:(NSError **)error;
 
 @end
 

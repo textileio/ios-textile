@@ -10,7 +10,7 @@
 
 @implementation LikesApi
 
-- (NSString *)addLike:(NSString *)blockId error:(NSError *__autoreleasing *)error {
+- (NSString *)addLike:(NSString *)blockId error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addLike:blockId error:error];
 }
 

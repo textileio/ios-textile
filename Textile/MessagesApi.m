@@ -10,12 +10,12 @@
 
 @implementation MessagesApi
 
-- (NSString *)addMessage:(NSString *)threadId body:(NSString *)body error:(NSError *__autoreleasing *)error {
+- (NSString *)addMessage:(NSString *)threadId body:(NSString *)body error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addMessage:threadId body:body error:error];
 }
 
-- (TextList *)messages:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError *__autoreleasing *)error {
-  NSData *data = [self.node messages:offset limit:limit threadId:threadId error:error];
+- (TextList *)messages:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node messages:offset != nil ? offset : @"" limit:limit threadId:threadId error:error];
   return [[TextList alloc] initWithData:data error:error];
 }
 

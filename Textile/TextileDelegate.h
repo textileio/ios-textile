@@ -12,46 +12,50 @@
 #ifndef TextileDelegate_h
 #define TextileDelegate_h
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol TextileDelegate <NSObject>
 
 @optional
 - (void)nodeDidStart;
 
 @optional
-- (void)nodeFailedToStartWithError:(NSError * _Nonnull)error;
+- (void)nodeFailedToStartWithError:(NSError *)error;
 
 @optional
 - (void)nodeDidStop;
 
 @optional
-- (void)nodeFailedToStopWithError:(NSError * _Nonnull)error;
+- (void)nodeFailedToStopWithError:(NSError *)error;
 
 @optional
 - (void)nodeOnline;
 
 @optional
-- (void)notificationReceived:(Notification * _Nonnull)notification;
+- (void)notificationReceived:(Notification *)notification;
 
 @optional
-- (void)threadUpdateReceived:(FeedItem * _Nonnull)feedItem;
+- (void)threadUpdateReceived:(FeedItem *)feedItem;
 
 // TODO: should we break this down into more specfic update events?
 @optional
-- (void)walletUpdateReceived:(WalletUpdate * _Nonnull)walletUpdate;
+- (void)walletUpdateReceived:(WalletUpdate *)walletUpdate;
 
 @optional
-- (void)queryDone:(NSString * _Nonnull)queryId;
+- (void)queryDone:(NSString *)queryId;
 
 @optional
-- (void)queryError:(NSString * _Nonnull)queryId error:(NSError * _Nonnull)error;
+- (void)queryError:(NSString *)queryId error:(NSError *)error;
 
 @optional
-- (void)clientThreadQueryResult:(NSString * _Nonnull)queryId clientThread:(CafeClientThread * _Nonnull)clientThread;
+- (void)clientThreadQueryResult:(NSString *)queryId clientThread:(CafeClientThread *)clientThread;
 
 @optional
-- (void)contactQueryResult:(NSString * _Nonnull)queryId contact:(Contact * _Nonnull)contact;
+- (void)contactQueryResult:(NSString *)queryId contact:(Contact *)contact;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 
 #endif /* TextileDelegate_h */

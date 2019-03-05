@@ -10,7 +10,7 @@
 
 @implementation LogsApi
 
-- (void)setLogLevel:(LogLevel *)level error:(NSError *__autoreleasing *)error {
+- (void)setLogLevel:(LogLevel *)level error:(NSError * _Nullable __autoreleasing *)error {
   [self.node setLogLevel:level.data error:error];
 }
 
