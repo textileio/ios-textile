@@ -1,0 +1,19 @@
+Pod::Spec.new do |s|
+  s.name                  = 'Textile'
+  s.version               = '1.0.0.pre.1'
+  s.summary               = 'Encrypted, recoverable, schema-based, cross-application data storage built on IPFS and LibP2P'
+  s.description           = <<-DESC
+                            The Textile pod provides iOS native access and helpers for the Textile platform.
+                            Learn more about Textile at https://github.com/textileio/go-textile.
+                          DESC
+  s.homepage              = 'https://github.com/textileio/ios-textile'
+  s.license               = { :type => 'MIT', :file => 'LICENSE' }
+  s.author                = { 'Textile' => 'contact@textile.io' }
+  s.source                = { :git => 'https://github.com/textileio/ios-textile.git', :tag => s.version.to_s }
+  s.ios.deployment_target = '10.0'
+  s.source_files          = 'Textile/Classes/**/*'
+  s.requires_arc          = true
+  s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1' }
+  s.dependency 'Protobuf', '~> 3.7'
+  s.dependency 'go-textile', '0.0.1.pre.rc51'
+end
