@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CafesApi : NodeDependant
 
-- (void)registerCafe:(NSString *)host token:(NSString *)token error:(NSError **)error;
-- (CafeSession *)cafeSession:(NSString *)peerId error:(NSError **)error;
-- (CafeSessionList *)cafeSessions:(NSError **)error;
-- (CafeSession *)refreshCafeSession:(NSString *)peerId error:(NSError **)error;
-- (void)deregisterCafe:(NSString *)peerId error:(NSError **)error;
-- (void)checkCafeMessages:(NSError **)error;
+- (void)register:(NSString *)host token:(NSString *)token error:(NSError **)error;
+- (CafeSession *)session:(NSString *)peerId error:(NSError **)error;
+- (CafeSessionList *)sessions:(NSError **)error;
+- (CafeSession *)refreshSession:(NSString *)peerId error:(NSError **)error;
+- (void)deregister:(NSString *)peerId error:(NSError **)error;
+- (void)checkMessages:(NSError **)error;
 
 @end
 

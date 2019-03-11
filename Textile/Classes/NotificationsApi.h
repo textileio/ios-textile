@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificationsApi : NodeDependant
 
-- (NotificationList *)notifications:(nullable NSString *)offset limit:(long)limit error:(NSError **)error;
-- (long)countUnreadNotifications;
-- (void)readNotification:(NSString *)notificationId error:(NSError **)error;
-- (void)readAllNotifications:(NSError **)error;
-- (NSString *)acceptInviteViaNotification:(NSString *)id_ error:(NSError **)error;
-- (void)ignoreInviteViaNotification:(NSString *)id_ error:(NSError **)error;
+- (NotificationList *)list:(nullable NSString *)offset limit:(long)limit error:(NSError **)error;
+- (long)countUnread;
+- (void)read:(NSString *)notificationId error:(NSError **)error;
+- (void)readAll:(NSError **)error;
+- (NSString *)acceptInvite:(NSString *)id_ error:(NSError **)error;
+- (void)ignoreInvite:(NSString *)id_ error:(NSError **)error;
 
 @end
 

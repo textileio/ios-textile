@@ -10,7 +10,7 @@
 
 @implementation ProfileApi
 
-- (Contact *)profile:(NSError * _Nullable __autoreleasing *)error {
+- (Contact *)get:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node profile:error];
   return [[Contact alloc] initWithData:data error:error];
 }

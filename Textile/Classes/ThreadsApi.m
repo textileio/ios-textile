@@ -10,26 +10,26 @@
 
 @implementation ThreadsApi
 
-- (Thread *)addThread:(AddThreadConfig *)config error:(NSError * _Nullable __autoreleasing *)error {
+- (Thread *)add:(AddThreadConfig *)config error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node addThread:config.data error:error];
   return [[Thread alloc] initWithData:data error:error];
 }
 
-- (void)addOrUpdateThread:(Thread *)thrd error:(NSError * _Nullable __autoreleasing *)error {
+- (void)addOrUpdate:(Thread *)thrd error:(NSError * _Nullable __autoreleasing *)error {
   [self.node addOrUpdateThread:thrd.data error:error];
 }
 
-- (Thread *)thread:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+- (Thread *)get:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node thread:threadId error:error];
   return [[Thread alloc] initWithData:data error:error];
 }
 
-- (ThreadList *)threads:(NSError * _Nullable __autoreleasing *)error {
+- (ThreadList *)list:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node threads:error];
   return [[ThreadList alloc] initWithData:data error:error];
 }
 
-- (NSString *)removeThread:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+- (NSString *)remove:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node removeThread:threadId error:error];
 }
 

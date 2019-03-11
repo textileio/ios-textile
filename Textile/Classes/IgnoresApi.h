@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IgnoresApi : NodeDependant
 
-- (NSString *)addIgnore:(NSString *)blockId error:(NSError **)error;
+- (NSString *)add:(NSString *)blockId error:(NSError **)error;
 
 @end
 

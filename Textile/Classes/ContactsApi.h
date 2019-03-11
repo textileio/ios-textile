@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactsApi : NodeDependant
 
-- (void)addContact:(Contact *)contact error:(NSError **)error;
-- (Contact *)contact:(NSString *)contactId error:(NSError **)error;
-- (ContactList *)contacts:(NSError **)error;
-- (void)removeContact:(NSString *)contactId error:(NSError **)error;
-- (ThreadList *)contactThreads:(NSString *)contactId error:(NSError **)error;
-- (MobileSearchHandle *)searchContacts:(ContactQuery *)query options:(QueryOptions *)options error:(NSError **)error;
+- (void)add:(Contact *)contact error:(NSError **)error;
+- (Contact *)get:(NSString *)contactId error:(NSError **)error;
+- (ContactList *)list:(NSError **)error;
+- (void)remove:(NSString *)contactId error:(NSError **)error;
+- (ThreadList *)threads:(NSString *)contactId error:(NSError **)error;
+- (MobileSearchHandle *)search:(ContactQuery *)query options:(QueryOptions *)options error:(NSError **)error;
 
 @end
 

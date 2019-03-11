@@ -26,7 +26,7 @@
   return [self.node decrypt:data error:error];
 }
 
-- (ContactList *)accountPeers:(NSError * _Nullable __autoreleasing *)error {
+- (ContactList *)peers:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node accountPeers:error];
   return [[ContactList alloc] initWithData:data error:error];
 }

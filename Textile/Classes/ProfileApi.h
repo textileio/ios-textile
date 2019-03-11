@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileApi : NodeDependant
 
-- (Contact *)profile:(NSError **)error;
+- (Contact *)get:(NSError **)error;
 - (NSString *)username:(NSError **)error;
 - (void)setUsername:(NSString *)username error:(NSError **)error;
 - (NSString *)avatar:(NSError **)error;

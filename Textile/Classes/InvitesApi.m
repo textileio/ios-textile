@@ -10,16 +10,16 @@
 
 @implementation InvitesApi
 
-- (NSString *)addInvite:(NSString *)threadId inviteeId:(NSString *)inviteeId error:(NSError * _Nullable __autoreleasing *)error {
+- (NSString *)add:(NSString *)threadId inviteeId:(NSString *)inviteeId error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node addInvite:threadId inviteeId:inviteeId error:error];
 }
 
-- (NewInvite *)addExternalInvite:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+- (NewInvite *)addExternal:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node addExternalInvite:threadId error:error];
   return [[NewInvite alloc] initWithData:data error:error];
 }
 
-- (NSString *)acceptExternalInvite:(NSString *)inviteId key:(NSString *)key error:(NSError * _Nullable __autoreleasing *)error {
+- (NSString *)acceptExternal:(NSString *)inviteId key:(NSString *)key error:(NSError * _Nullable __autoreleasing *)error {
   return [self.node acceptExternalInvite:inviteId key:key error:error];
 }
 

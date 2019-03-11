@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FlagsApi : NodeDependant
 
-- (NSString *)addFlag:(NSString *)blockId error:(NSError **)error;
+- (NSString *)add:(NSString *)blockId error:(NSError **)error;
 
 @end
 

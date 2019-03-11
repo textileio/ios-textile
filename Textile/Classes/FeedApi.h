@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FeedApi : NodeDependant
 
-- (FeedItemList *)feed:(FeedRequest *)request error:(NSError **)error;
+- (FeedItemList *)list:(FeedRequest *)request error:(NSError **)error;
 
 @end
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SchemasApi : NodeDependant
 
-- (FileIndex *)addSchema:(Node *)schemaNode error:(NSError **)error;
+- (FileIndex *)add:(Node *)schemaNode error:(NSError **)error;
 
 @end
 

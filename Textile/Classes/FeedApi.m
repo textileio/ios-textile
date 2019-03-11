@@ -10,7 +10,7 @@
 
 @implementation FeedApi
 
-- (FeedItemList *)feed:(FeedRequest *)request error:(NSError * _Nullable __autoreleasing *)error {
+- (FeedItemList *)list:(FeedRequest *)request error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node feed:request.data error:error];
   return [[FeedItemList alloc] initWithData:data error:error];
 }

@@ -10,7 +10,7 @@
 
 @implementation SchemasApi
 
-- (FileIndex *)addSchema:(Node *)schemaNode error:(NSError * _Nullable __autoreleasing *)error {
+- (FileIndex *)add:(Node *)schemaNode error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node addSchema:schemaNode.data error:error];
   return [[FileIndex alloc] initWithData:data error:error];
 }

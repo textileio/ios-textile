@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CommentsApi : NodeDependant
 
-- (NSString *)addComment:(NSString *)blockId body:(NSString *)body error:(NSError **)error;
+- (NSString *)add:(NSString *)blockId body:(NSString *)body error:(NSError **)error;
 
 @end
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LogsApi : NodeDependant
 
-- (void)setLogLevel:(LogLevel *)level error:(NSError **)error;
+- (void)setLevel:(LogLevel *)level error:(NSError **)error;
 
 @end
 
