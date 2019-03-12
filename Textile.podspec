@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'Textile'
-  s.version               = '1.0.0.pre.2'
+  s.version               = '1.0.0.pre.3'
   s.summary               = 'Encrypted, recoverable, schema-based, cross-application data storage built on IPFS and LibP2P'
   s.description           = <<-DESC
                             The Textile pod provides iOS native access and helpers for the Textile platform.
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.source_files          = 'Textile/Classes/**/*'
   s.requires_arc          = true
-  s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1', 'OTHER_LDFLAGS[arch=i386]' => '-Wl,-read_only_relocs,suppress' }
+  s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1' }
   s.dependency 'Protobuf', '~> 3.7'
-  s.dependency 'go-textile', '0.0.1.pre.rc51'
+  s.dependency 'go-textile', '0.0.3.pre.rc51'
 end

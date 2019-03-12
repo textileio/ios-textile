@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10E8209DBDB7C48EBF90E7A1 /* Textile.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Textile.podspec; path = ../Textile.podspec; sourceTree = "<group>"; };
+		10E8209DBDB7C48EBF90E7A1 /* Textile.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Textile.podspec; path = ../Textile.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		149816C3E29EA97773706D30 /* Pods_Textile_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Textile_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* Textile_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Textile_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
