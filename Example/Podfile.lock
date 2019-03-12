@@ -4,7 +4,7 @@ PODS:
     - Protobuf (~> 3.7)
   - Protobuf (3.7.0)
   - Specta (1.0.7)
-  - Textile (1.0.0.pre.3):
+  - Textile (1.0.0.pre.4):
     - go-textile (= 0.0.3.pre.rc51)
     - Protobuf (~> 3.7)
 
@@ -29,7 +29,7 @@ SPEC CHECKSUMS:
   go-textile: 4e8a267ee118547d142d8a0c9331f989465ed97d
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Textile: 680327311cd7a25fe026356a1ebf85fdfca1fa63
+  Textile: f9e0ecdbacf1a7fe09d85669288502c76b767e0c
 
 PODFILE CHECKSUM: f4090a0d00482c637168b689589b1d9dbae13838
 
