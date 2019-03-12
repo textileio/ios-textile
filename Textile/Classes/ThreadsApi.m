@@ -19,6 +19,10 @@
   [self.node addOrUpdateThread:thrd.data error:error];
 }
 
+- (void)rename:(NSString *)threadId name:(NSString *)name error:(NSError * _Nullable __autoreleasing *)error {
+  [self.node renameThread:threadId name:name error:error];
+}
+
 - (Thread *)get:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node thread:threadId error:error];
   return [[Thread alloc] initWithData:data error:error];
@@ -27,6 +31,11 @@
 - (ThreadList *)list:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node threads:error];
   return [[ThreadList alloc] initWithData:data error:error];
+}
+
+- (ContactList *)peers:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node threadPeers:threadId error:error];
+  return [[ContactList alloc] initWithData:data error:error];
 }
 
 - (NSString *)remove:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {

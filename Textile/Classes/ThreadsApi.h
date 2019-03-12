@@ -15,8 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Thread *)add:(AddThreadConfig *)config error:(NSError **)error;
 - (void)addOrUpdate:(Thread *)thrd error:(NSError **)error;
+- (void)rename:(NSString *)threadId name:(NSString *)name error:(NSError **)error;
 - (Thread *)get:(NSString *)threadId error:(NSError **)error;
 - (ThreadList *)list:(NSError **)error;
+- (ContactList *)peers:(NSString *)threadId error:(NSError **)error;
 - (NSString *)remove:(NSString *)threadId error:(NSError **)error;
 
 @end

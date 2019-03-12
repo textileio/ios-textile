@@ -1,11 +1,11 @@
 PODS:
   - Expecta (1.0.6)
-  - go-textile (0.0.3.pre.rc51):
+  - go-textile (1.0.0-rc52):
     - Protobuf (~> 3.7)
   - Protobuf (3.7.0)
   - Specta (1.0.7)
-  - Textile (1.0.0.pre.4):
-    - go-textile (= 0.0.3.pre.rc51)
+  - Textile (1.0.0.pre.5):
+    - go-textile (= 1.0.0-rc52)
     - Protobuf (~> 3.7)
 
 DEPENDENCIES:
@@ -26,10 +26,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  go-textile: 4e8a267ee118547d142d8a0c9331f989465ed97d
+  go-textile: 0fb75e2ab2ec8d4e7c68dcd07003c36f523e2d63
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Textile: f9e0ecdbacf1a7fe09d85669288502c76b767e0c
+  Textile: 2303c2e014c8cf93148aaa8bc9fd1e83fecadc2d
 
 PODFILE CHECKSUM: f4090a0d00482c637168b689589b1d9dbae13838
 
