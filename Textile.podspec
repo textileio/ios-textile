@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.source_files          = 'Textile/Classes/**/*'
   s.requires_arc          = true
+  # https://stackoverflow.com/questions/50024087/gomobile-bind-producing-library-with-pie-disabled-i386-arch
   s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1', 'OTHER_LDFLAGS[arch=i386]' => '-Wl,-read_only_relocs,suppress' }
   s.dependency 'Protobuf', '~> 3.7'
   s.dependency 'go-textile', '0.0.3.pre.rc51'
