@@ -27,9 +27,32 @@
   } else if ([event.name isEqual: @"WALLET_UPDATE"]) {
     NSError *error;
     WalletUpdate *walletUpdate = [[WalletUpdate alloc] initWithData:event.data error:&error];
-    // TODO: should we break this down into more specfic update events?
-    if (!error && [self.delegate respondsToSelector:@selector(walletUpdateReceived:)]) {
-      [self.delegate walletUpdateReceived:walletUpdate];
+    if (error) {
+      return;
+    }
+    switch (walletUpdate.type) {
+      case WalletUpdate_Type_ThreadAdded:
+        if ([self.delegate respondsToSelector:@selector(threadAdded:key:)]) {
+          [self.delegate threadAdded:walletUpdate.id_p key:walletUpdate.key];
+        }
+        break;
+      case WalletUpdate_Type_ThreadRemoved:
+        if ([self.delegate respondsToSelector:@selector(threadRemoved:key:)]) {
+          [self.delegate threadRemoved:walletUpdate.id_p key:walletUpdate.key];
+        }
+        break;
+      case WalletUpdate_Type_AccountPeerAdded:
+        if ([self.delegate respondsToSelector:@selector(accountPeerAdded:)]) {
+          [self.delegate accountPeerAdded:walletUpdate.id_p];
+        }
+        break;
+      case WalletUpdate_Type_AccountPeerRemoved:
+        if ([self.delegate respondsToSelector:@selector(accountPeerRemoved:)]) {
+          [self.delegate accountPeerRemoved:walletUpdate.id_p];
+        }
+        break;
+      default:
+        break;
     }
   } else if ([event.name isEqual: @"THREAD_UPDATE"]) {
     NSError *error;

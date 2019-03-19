@@ -11,12 +11,7 @@
 
 @implementation FilesApi
 
-- (MobilePreparedFiles *)prepare:(NSString *)path threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
-  NSData *data = [self.node prepareFiles:path threadId:threadId error:error];
-  return [[MobilePreparedFiles alloc] initWithData:data error:error];
-}
-
-- (void)prepareAsync:(NSString *)path threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError * _Nonnull))completion {
+- (void)prepare:(NSString *)data threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError * _Nonnull))completion {
   Callback *cb = [[Callback alloc] initWithCompletion:^(NSData *data, NSError *error) {
     if (error) {
       completion(nil, error);
@@ -26,7 +21,30 @@
       completion(files, error);
     }
   }];
-  [self.node prepareFilesAsync:path threadId:threadId cb:cb];
+  [self.node prepareFiles:data threadId:threadId cb:cb];
+}
+
+- (void)prepareByPath:(NSString *)path threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError * _Nonnull))completion {
+  Callback *cb = [[Callback alloc] initWithCompletion:^(NSData *data, NSError *error) {
+    if (error) {
+      completion(nil, error);
+    } else {
+      NSError *error;
+      MobilePreparedFiles *files = [[MobilePreparedFiles alloc] initWithData:data error:&error];
+      completion(files, error);
+    }
+  }];
+  [self.node prepareFilesByPath:path threadId:threadId cb:cb];
+}
+
+- (MobilePreparedFiles *)prepareSync:(NSString *)data threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *result = [self.node prepareFilesSync:data threadId:threadId error:error];
+  return [[MobilePreparedFiles alloc] initWithData:result error:error];
+}
+
+- (MobilePreparedFiles *)prepareByPathSync:(NSString *)path threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node prepareFilesByPathSync:path threadId:threadId error:error];
+  return [[MobilePreparedFiles alloc] initWithData:data error:error];
 }
 
 - (Block *)add:(Directory *)directory threadId:(NSString *)threadId caption:(NSString *)caption error:(NSError * _Nullable __autoreleasing *)error {
