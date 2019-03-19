@@ -13,8 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FilesApi : NodeDependant
 
-- (MobilePreparedFiles *)prepare:(NSString *)path threadId:(NSString *)threadId error:(NSError **)error;
-- (void)prepareAsync:(NSString *)path threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError *))completion;
+- (void)prepare:(NSString *)data threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError *))completion;
+- (void)prepareByPath:(NSString *)path threadId:(NSString *)threadId completion:(void (^)(MobilePreparedFiles * _Nullable, NSError *))completion;
+- (MobilePreparedFiles *)prepareSync :(NSString *)data threadId:(NSString *)threadId error:(NSError **)error;
+- (MobilePreparedFiles *)prepareByPathSync:(NSString *)path threadId:(NSString *)threadId error:(NSError **)error;
 - (Block *)add:(Directory *)directory threadId:(NSString *)threadId caption:(nullable NSString *)caption error:(NSError **)error;
 - (Block *)addByTarget:(NSString *)target threadId:(NSString *)threadId caption:(nullable NSString *)caption error:(NSError **)error;
 - (FilesList *)list:(nullable NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError **)error;

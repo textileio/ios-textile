@@ -36,9 +36,17 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)threadUpdateReceived:(FeedItem *)feedItem;
 
-// TODO: should we break this down into more specfic update events?
 @optional
-- (void)walletUpdateReceived:(WalletUpdate *)walletUpdate;
+- (void)threadAdded:(NSString *)threadId;
+
+@optional
+- (void)threadRemoved:(NSString *)threadId;
+
+@optional
+- (void)accountPeerAdded:(NSString *)peerId;
+
+@optional
+- (void)accountPeerRemoved:(NSString *)peerId;
 
 @optional
 - (void)queryDone:(NSString *)queryId;
