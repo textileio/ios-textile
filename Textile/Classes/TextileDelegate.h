@@ -37,10 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)threadUpdateReceived:(FeedItem *)feedItem;
 
 @optional
-- (void)threadAdded:(NSString *)threadId key:(NSString *)key;
+- (void)threadAdded:(NSString *)threadId;
 
 @optional
-- (void)threadRemoved:(NSString *)threadId key:(NSString *)key;
+- (void)threadRemoved:(NSString *)threadId;
 
 @optional
 - (void)accountPeerAdded:(NSString *)peerId;

@@ -32,13 +32,13 @@
     }
     switch (walletUpdate.type) {
       case WalletUpdate_Type_ThreadAdded:
-        if ([self.delegate respondsToSelector:@selector(threadAdded:key:)]) {
-          [self.delegate threadAdded:walletUpdate.id_p key:walletUpdate.key];
+        if ([self.delegate respondsToSelector:@selector(threadAdded:)]) {
+          [self.delegate threadAdded:walletUpdate.id_p];
         }
         break;
       case WalletUpdate_Type_ThreadRemoved:
-        if ([self.delegate respondsToSelector:@selector(threadRemoved:key:)]) {
-          [self.delegate threadRemoved:walletUpdate.id_p key:walletUpdate.key];
+        if ([self.delegate respondsToSelector:@selector(threadRemoved:)]) {
+          [self.delegate threadRemoved:walletUpdate.id_p];
         }
         break;
       case WalletUpdate_Type_AccountPeerAdded:
