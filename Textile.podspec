@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'Textile'
-  s.version               = '1.0.0.pre.5'
+  s.version               = '1.0.0.pre.6'
   s.summary               = 'Encrypted, recoverable, schema-based, cross-application data storage built on IPFS and LibP2P'
   s.description           = <<-DESC
                             The Textile pod provides iOS native access and helpers for the Textile platform.
