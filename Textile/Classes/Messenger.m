@@ -7,7 +7,9 @@
 //
 
 #import "Messenger.h"
-#import <TextileCore/TextileCore-umbrella.h>
+#import <TextileCore/Mobile.pbobjc.h>
+#import <TextileCore/Query.pbobjc.h>
+#import <TextileCore/Message.pbobjc.h>
 
 @implementation Messenger
 

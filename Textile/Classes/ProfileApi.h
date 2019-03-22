@@ -6,7 +6,7 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import <TextileCore/TextileCore-umbrella.h>
+#import <TextileCore/Model.pbobjc.h>
 #import "NodeDependant.h"
 
 NS_ASSUME_NONNULL_BEGIN
