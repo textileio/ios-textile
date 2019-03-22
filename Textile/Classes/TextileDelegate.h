@@ -6,7 +6,7 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import <go_textile/go-textile-umbrella.h>
+#import <TextileCore/TextileCore-umbrella.h>
 
 #ifndef TextileDelegate_h
 #define TextileDelegate_h

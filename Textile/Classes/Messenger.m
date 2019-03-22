@@ -7,7 +7,7 @@
 //
 
 #import "Messenger.h"
-#import <go_textile/go-textile-umbrella.h>
+#import <TextileCore/TextileCore-umbrella.h>
 
 @implementation Messenger
 

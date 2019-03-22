@@ -1,11 +1,11 @@
 PODS:
   - Expecta (1.0.6)
-  - go-textile (0.1.10-rc3):
-    - Protobuf (~> 3.7)
   - Protobuf (3.7.0)
   - Specta (1.0.7)
-  - Textile (1.0.0.pre.5):
-    - go-textile (~> 0.1.10-rc3)
+  - Textile (0.1.0.pre.1):
+    - Protobuf (~> 3.7)
+    - TextileCore (~> 0.1.10-rc3)
+  - TextileCore (0.1.10-rc3):
     - Protobuf (~> 3.7)
 
 DEPENDENCIES:
@@ -16,9 +16,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Expecta
-    - go-textile
     - Protobuf
     - Specta
+    - TextileCore
 
 EXTERNAL SOURCES:
   Textile:
@@ -26,10 +26,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  go-textile: 681e4faf55783c7f0693d07d547c83893f095734
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Textile: 0d2df49265c43cee4f41f3fe235594fe498fe860
+  Textile: aab3630908cc1468b6717ba8024bdf54cd10a547
+  TextileCore: 2e749011caa132f3ea413a16adc43e7efe9704b9
 
 PODFILE CHECKSUM: f4090a0d00482c637168b689589b1d9dbae13838
 
