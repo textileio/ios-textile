@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)queryError:(NSString *)queryId error:(NSError *)error;
 
 @optional
-- (void)clientThreadQueryResult:(NSString *)queryId clientThread:(CafeClientThread *)clientThread;
+- (void)clientThreadQueryResult:(NSString *)queryId thread:(Thread *)thread;
 
 @optional
 - (void)contactQueryResult:(NSString *)queryId contact:(Contact *)contact;
