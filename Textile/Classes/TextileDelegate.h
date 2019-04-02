@@ -32,6 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)nodeOnline;
 
 @optional
+- (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds;
+
+@optional
+- (void)canceledPendingNodeStop;
+
+@optional
 - (void)notificationReceived:(Notification *)notification;
 
 @optional
