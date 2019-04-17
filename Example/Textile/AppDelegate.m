@@ -77,4 +77,12 @@
   NSLog(@"delegate - node online");
 }
 
+- (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds {
+  NSLog(@"delegate - will stop node after delay: %f", seconds);
+}
+
+- (void)canceledPendingNodeStop {
+  NSLog(@"canceled pending stop");
+}
+
 @end
