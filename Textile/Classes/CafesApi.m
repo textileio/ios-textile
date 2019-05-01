@@ -16,6 +16,9 @@
 
 - (CafeSession *)session:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node cafeSession:peerId error:error];
+  if(!data) {
+    return nil;
+  }
   return [[CafeSession alloc] initWithData:data error:error];
 }
 
@@ -26,6 +29,9 @@
 
 - (CafeSession *)refreshSession:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node refreshCafeSession:peerId error:error];
+  if(!data) {
+    return nil;
+  }
   return [[CafeSession alloc] initWithData:data error:error];
 }
 
