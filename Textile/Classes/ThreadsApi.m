@@ -25,6 +25,9 @@
 
 - (Thread *)get:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node thread:threadId error:error];
+  if(!data) {
+    return nil;
+  }
   return [[Thread alloc] initWithData:data error:error];
 }
 
