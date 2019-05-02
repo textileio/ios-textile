@@ -15,8 +15,12 @@
 }
 
 - (CafeSession *)session:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
+  /*
+   * cafeSession returns nil and no error if no session is found.
+   * If we get no data back or there was an error, return nil.
+   */
   NSData *data = [self.node cafeSession:peerId error:error];
-  if(!data) {
+  if (!data || error) {
     return nil;
   }
   return [[CafeSession alloc] initWithData:data error:error];
@@ -28,8 +32,12 @@
 }
 
 - (CafeSession *)refreshSession:(NSString *)peerId error:(NSError * _Nullable __autoreleasing *)error {
+  /*
+   * refreshCafeSession returns nil and no error if no session is found.
+   * If we get no data back or there was an error, return nil.
+   */
   NSData *data = [self.node refreshCafeSession:peerId error:error];
-  if(!data) {
+  if (!data || error) {
     return nil;
   }
   return [[CafeSession alloc] initWithData:data error:error];

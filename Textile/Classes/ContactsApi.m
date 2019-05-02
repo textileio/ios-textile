@@ -15,8 +15,13 @@
 }
 
 - (Contact *)get:(NSString *)address error:(NSError * _Nullable __autoreleasing *)error {
-  NSData *data = [self.node contact:address error:error];
-  if(!data) {
+  /*
+   * contact returns an error if no contact is found.
+   */
+  NSError *nodeError;
+  NSData *data = [self.node contact:address error:&nodeError];
+  if (nodeError) {
+    *error = nodeError;
     return nil;
   }
   return [[Contact alloc] initWithData:data error:error];
