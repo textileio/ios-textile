@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Textile : NSObject
 
 + (nullable NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
++ (nullable NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk seed:(NSString *)seed error:(NSError **)error;
 + (Textile *)instance;
 
 @property (nonatomic, strong, nullable) id<TextileDelegate> delegate;

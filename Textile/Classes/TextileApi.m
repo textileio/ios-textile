@@ -71,6 +71,24 @@
   return nil;
 }
 
++ (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk seed:(NSString *)seed error:(NSError * _Nullable __autoreleasing *)error {
+  if (Textile.instance.node) {
+    return nil;
+  }
+  NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+  NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+  Textile.instance.repoPath = repoPath;
+  Textile.instance.messenger = [[Messenger alloc] init];
+  [Textile.instance newTextile:repoPath debug:debug error:error];
+  if (*error && (*error).code == 1) {
+    [Textile.instance initRepo:seed repoPath:repoPath logToDisk:logToDisk debug:debug error:error];
+    [Textile.instance newTextile:repoPath debug:debug error:error];
+    [Textile.instance createNodeDependants];
+    return recoveryPhrase;
+  }
+  [Textile.instance createNodeDependants];
+}
+
 + (Textile *)instance {
   static Textile *instnace = nil;
   static dispatch_once_t onceToken;
