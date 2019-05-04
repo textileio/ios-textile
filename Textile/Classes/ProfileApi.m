@@ -12,6 +12,9 @@
 
 - (Peer *)get:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node profile:error];
+  if (*error) {
+    return nil;
+  }
   return [[Peer alloc] initWithData:data error:error];
 }
 
