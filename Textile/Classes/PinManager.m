@@ -76,7 +76,17 @@
     request.URL = url;
     request.allHTTPHeaderFields = httpRequest.headers;
     request.HTTPBody = httpRequest.body;
-    request.HTTPMethod = @"PUT";
+    switch (httpRequest.type) {
+      case CafeHTTPRequest_Type_Put:
+        request.HTTPMethod = @"PUT";
+        break;
+      case CafeHTTPRequest_Type_Post:
+        request.HTTPMethod = @"POST";
+      case CafeHTTPRequest_Type_Delete:
+        request.HTTPMethod = @"DELETE";
+      default:
+        break;
+    }
     NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromData:httpRequest.body];
     [task resume];
     break;
