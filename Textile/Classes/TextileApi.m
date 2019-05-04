@@ -9,6 +9,9 @@
 #import "TextileApi.h"
 #import "Messenger.h"
 #import "LifecycleManager.h"
+#import "PinManager.h"
+
+NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 @interface Textile()
 
@@ -130,10 +133,13 @@
 }
 
 - (void)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
+  PinManager *pinManager = [[PinManager alloc] init];
   MobileRunConfig *config = [[MobileRunConfig alloc] init];
   config.repoPath = repoPath;
   config.debug = debug;
+  config.cafeOutboxHandler = pinManager;
   self.node = MobileNewTextile(config, self.messenger, error);
+  pinManager.node = self.node;
 }
 
 - (void)start:(NSError *__autoreleasing *)error {

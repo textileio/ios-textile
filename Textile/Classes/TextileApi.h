@@ -26,6 +26,8 @@
 #import "SchemasApi.h"
 #import "ThreadsApi.h"
 
+extern NSString *const TEXTILE_BACKGROUND_SESSION_ID;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Textile : NSObject
@@ -53,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, strong) SchemasApi *schemas;
 @property (nonatomic, readonly, strong) ThreadsApi *threads;
 @property (nonatomic, readonly, strong) NSString *repoPath;
+
+@property (nonatomic, copy, nullable) void (^backgroundCompletionHandler)(void);
 
 - (NSString *)version;
 - (NSString *)gitSummary;

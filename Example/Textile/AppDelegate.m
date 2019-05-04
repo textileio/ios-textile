@@ -57,6 +57,12 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler {
+  if ([identifier isEqualToString:TEXTILE_BACKGROUND_SESSION_ID]) {
+    Textile.instance.backgroundCompletionHandler = completionHandler;
+  }
+}
+
 - (void)nodeStarted {
   NSLog(@"delegate - node started");
 }
@@ -75,6 +81,7 @@
 
 - (void)nodeOnline {
   NSLog(@"delegate - node online");
+  [self testSomeThings];
 }
 
 - (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds {
@@ -83,6 +90,50 @@
 
 - (void)canceledPendingNodeStop {
   NSLog(@"canceled pending stop");
+}
+
+- (void)threadAdded:(NSString *)threadId {
+  NSLog(@"thread added: %@", threadId);
+}
+
+- (void)testSomeThings {
+  NSError *registerError;
+  [Textile.instance.cafes register:@"https://us-west-beta.textile.cafe" token:@"ukbN5nU1BhhiDwBPq3XrbUnqakzKnrVRBXc5u2oj1Np3DBttmn757PYsN2u2" error:&registerError];
+  if (registerError) {
+    NSLog(@"registerError: %@", registerError.localizedDescription);
+    return;
+  }
+
+  NSError *threadsListError;
+  ThreadList *threads = [Textile.instance.threads list:&threadsListError];
+  if (threadsListError) {
+    NSLog(@"threadsListError: %@", threadsListError.localizedDescription);
+    return;
+  }
+
+  Thread *thread;
+  NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    return [obj.key isEqualToString:@"test4"];
+  }];
+  if (index == NSNotFound) {
+    AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
+    schema.preset = AddThreadConfig_Schema_Preset_Media;
+    AddThreadConfig *config = [[AddThreadConfig alloc] init];
+    config.key = @"test4";
+    config.name = @"test thread";
+    config.schema = schema;
+    config.type = Thread_Type_Public;
+    config.sharing = Thread_Sharing_Shared;
+    NSError *addThreadError;
+    thread = [Textile.instance.threads add:config error:&addThreadError];
+    if (addThreadError) {
+      NSLog(@"addThreadError: %@", addThreadError.localizedDescription);
+      return;
+    }
+  } else {
+    thread = [threads.itemsArray objectAtIndex:index];
+  }
+  NSLog(@"Thread id: %@", thread.id_p);
 }
 
 @end
