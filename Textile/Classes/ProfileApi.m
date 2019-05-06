@@ -7,6 +7,7 @@
 //
 
 #import "ProfileApi.h"
+#import "TextileApi.h"
 
 @implementation ProfileApi
 
@@ -30,8 +31,35 @@
   return [self.node avatar:error];
 }
 
-- (void)setAvatar:(NSString *)hash error:(NSError * _Nullable __autoreleasing *)error {
-  [self.node setAvatar:hash error:error];
+- (Block *)setAvatar:(Directory *)directory error:(NSError * _Nullable __autoreleasing *)error {
+  Thread *accountThread = [self accountThread:error];
+  if (*error) {
+    return nil;
+  }
+  return [Textile.instance.files add:directory threadId:accountThread.id_p caption:nil error:error];
+}
+
+- (Block *)setAvatarByTarget:(NSString *)hash error:(NSError * _Nullable __autoreleasing *)error {
+  Thread *accountThread = [self accountThread:error];
+  if (*error) {
+    return nil;
+  }
+  return [Textile.instance.files addByTarget:hash threadId:accountThread.id_p caption:nil error:error];
+}
+
+- (Thread *)accountThread:(NSError * _Nullable __autoreleasing *)error {
+  ThreadList *threads = [Textile.instance.threads list:error];
+  if (*error) {
+    return nil;
+  }
+  NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    return [obj.key isEqualToString:@"account"];
+  }];
+  if (index == NSNotFound) {
+    *error = [[NSError alloc] initWithDomain:@"io.textile.profile" code:0 userInfo:@{ NSLocalizedDescriptionKey : @"no account thread found"}];
+    return nil;
+  }
+  return [threads.itemsArray objectAtIndex:index];
 }
 
 @end
