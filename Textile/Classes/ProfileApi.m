@@ -48,18 +48,11 @@
 }
 
 - (Thread *)accountThread:(NSError * _Nullable __autoreleasing *)error {
-  ThreadList *threads = [Textile.instance.threads list:error];
+  NSData *data = [self.node accountThread:error];
   if (*error) {
     return nil;
   }
-  NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-    return [obj.key isEqualToString:@"account"];
-  }];
-  if (index == NSNotFound) {
-    *error = [[NSError alloc] initWithDomain:@"io.textile.profile" code:0 userInfo:@{ NSLocalizedDescriptionKey : @"no account thread found"}];
-    return nil;
-  }
-  return [threads.itemsArray objectAtIndex:index];
+  return [[Thread alloc] initWithData:data error:error];
 }
 
 @end
