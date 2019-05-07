@@ -69,8 +69,8 @@
   return [[Block alloc] initWithData:data error:error];
 }
 
-- (FilesList *)list:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
-  NSData *data = [self.node files:offset != nil ? offset : @"" limit:limit threadId:threadId error:error];
+- (FilesList *)list:(NSString *)threadId offset:(NSString *)offset limit:(long)limit error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node files:threadId offset:offset != nil ? offset : @"" limit:limit error:error];
   if (*error) {
     return nil;
   }
