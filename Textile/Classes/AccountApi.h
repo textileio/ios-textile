@@ -15,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AccountApi : NodeDependant
 
 - (NSString *)address;
-- (NSString *)seed;
-- (nullable NSData *)encrypt:(NSData *)data error:(NSError **)error;
-- (nullable NSData *)decrypt:(NSData *)data error:(NSError **)error;
 - (Contact *)contact:(NSError **)error;
+- (nullable NSData *)decrypt:(NSData *)data error:(NSError **)error;
+- (void)delete:(NSString *)repoPath address:(NSString *)address error:(NSError **)error;
+- (nullable NSData *)encrypt:(NSData *)data error:(NSError **)error;
+- (NSString *)seed;
 - (MobileSearchHandle *)sync:(QueryOptions *)options error:(NSError **)error;
 
 @end
