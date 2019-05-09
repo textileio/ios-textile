@@ -8,17 +8,17 @@ jobs:
       - checkout
       - run: bundle install
       - run:
-        name: Fetch CocoaPods Specs
-        command: |
-          curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
-        name: install pods
-        working_directory: Example
-        command: bundle exec pod install
+          name: install pods
+          working_directory: Example
+          command: bundle exec pod install
       - run:
-        name: test
-        working_directory: Example
-        command: bundle exec fastlane test
+          name: test
+          working_directory: Example
+          command: bundle exec fastlane test
 
   publish-pod:
     macos:
@@ -27,17 +27,17 @@ jobs:
       - checkout
       - run: bundle install
       - run:
-        name: Fetch CocoaPods Specs
-        command: |
-          curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
-        name: update podspec
-        command: |
-          sed -i.bak "s/0.0.1-dev/${CIRCLE_TAG}/g" Textile.podspec
+          name: update podspec
+          command: |
+            sed -i.bak "s/0.0.1-dev/${CIRCLE_TAG}/g" Textile.podspec
       - run:
-        name: publish podspec
-        command: |
-          pod trunk push --allow-warnings
+          name: publish podspec
+          command: |
+            pod trunk push --allow-warnings
 
 workflows:
   version: 2
@@ -45,10 +45,10 @@ workflows:
     jobs:
       - tests
       - publish-pod:
-        requires:
-          - tests
-        filters:
-          tags:
-            only: /^[0-9.]+(-rc[0-9]+)?/
-          branches:
-            ignore: /.*/
+          requires:
+            - tests
+          filters:
+            tags:
+              only: /^[0-9.]+(-rc[0-9]+)?/
+            branches:
+              ignore: /.*/
