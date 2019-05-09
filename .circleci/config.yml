@@ -45,8 +45,6 @@ workflows:
     jobs:
       - tests
       - publish-pod:
-          requires:
-            - tests
           filters:
             tags:
               only: /^[0-9.]+(-rc[0-9]+)?/
