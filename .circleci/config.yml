@@ -37,7 +37,7 @@ jobs:
       - run:
           name: publish podspec
           command: |
-            pod trunk push --allow-warnings
+            bundle exec pod trunk push --allow-warnings
 
 workflows:
   version: 2
