@@ -11,3 +11,6 @@ build_docs:
   --umbrella-header Textile/classes/TextileApi.h \
   --framework-root . \
   --module Textile
+
+deploy_docs:
+	git subtree push --prefix docs origin gh-pages
