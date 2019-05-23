@@ -1,0 +1,656 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/FlagsApi.h",
+      "line": 13,
+      "symbol": "FlagsApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/FlagsApi.h",
+      "line": 15,
+      "symbol": "FlagsApi.-add:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/IgnoresApi.h",
+      "line": 13,
+      "symbol": "IgnoresApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/IgnoresApi.h",
+      "line": 15,
+      "symbol": "IgnoresApi.-add:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 14,
+      "symbol": "InvitesApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 16,
+      "symbol": "InvitesApi.-add:address:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 17,
+      "symbol": "InvitesApi.-addExternal:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 18,
+      "symbol": "InvitesApi.-list:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 19,
+      "symbol": "InvitesApi.-accept:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 20,
+      "symbol": "InvitesApi.-acceptExternal:key:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/InvitesApi.h",
+      "line": 21,
+      "symbol": "InvitesApi.-ignore:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/IpfsApi.h",
+      "line": 13,
+      "symbol": "IpfsApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/IpfsApi.h",
+      "line": 15,
+      "symbol": "IpfsApi.-peerId:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/IpfsApi.h",
+      "line": 16,
+      "symbol": "IpfsApi.-dataAtPath:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/LikesApi.h",
+      "line": 13,
+      "symbol": "LikesApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/LikesApi.h",
+      "line": 15,
+      "symbol": "LikesApi.-add:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/LogsApi.h",
+      "line": 14,
+      "symbol": "LogsApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/LogsApi.h",
+      "line": 16,
+      "symbol": "LogsApi.-setLevel:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/MessagesApi.h",
+      "line": 14,
+      "symbol": "MessagesApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/MessagesApi.h",
+      "line": 16,
+      "symbol": "MessagesApi.-add:body:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/MessagesApi.h",
+      "line": 17,
+      "symbol": "MessagesApi.-list:limit:threadId:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NodeDependant.h",
+      "line": 14,
+      "symbol": "NodeDependant",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NodeDependant.h",
+      "line": 16,
+      "symbol": "NodeDependant.node",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NodeDependant.h",
+      "line": 18,
+      "symbol": "NodeDependant.-initWithNode:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 14,
+      "symbol": "NotificationsApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 16,
+      "symbol": "NotificationsApi.-list:limit:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 17,
+      "symbol": "NotificationsApi.-countUnread",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 18,
+      "symbol": "NotificationsApi.-read:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 19,
+      "symbol": "NotificationsApi.-readAll:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 20,
+      "symbol": "NotificationsApi.-acceptInvite:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/NotificationsApi.h",
+      "line": 21,
+      "symbol": "NotificationsApi.-ignoreInvite:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 15,
+      "symbol": "ProfileApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 17,
+      "symbol": "ProfileApi.-get:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 18,
+      "symbol": "ProfileApi.-name:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 19,
+      "symbol": "ProfileApi.-setName:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 20,
+      "symbol": "ProfileApi.-avatar:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ProfileApi.h",
+      "line": 21,
+      "symbol": "ProfileApi.-accountThread:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/SchemasApi.h",
+      "line": 14,
+      "symbol": "SchemasApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/SchemasApi.h",
+      "line": 16,
+      "symbol": "SchemasApi.-add:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 31,
+      "symbol": "Textile",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 33,
+      "symbol": "Textile.+initializeWithDebug:logToDisk:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 34,
+      "symbol": "Textile.+instance",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 36,
+      "symbol": "Textile.delegate",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 38,
+      "symbol": "Textile.account",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 39,
+      "symbol": "Textile.cafes",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 40,
+      "symbol": "Textile.comments",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 41,
+      "symbol": "Textile.contacts",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 42,
+      "symbol": "Textile.feed",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 43,
+      "symbol": "Textile.files",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 44,
+      "symbol": "Textile.flags",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 45,
+      "symbol": "Textile.ignores",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 46,
+      "symbol": "Textile.invites",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 47,
+      "symbol": "Textile.ipfs",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 48,
+      "symbol": "Textile.likes",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 49,
+      "symbol": "Textile.logs",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 50,
+      "symbol": "Textile.messages",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 51,
+      "symbol": "Textile.notifications",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 52,
+      "symbol": "Textile.profile",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 53,
+      "symbol": "Textile.schemas",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 54,
+      "symbol": "Textile.threads",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 55,
+      "symbol": "Textile.repoPath",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 57,
+      "symbol": "Textile.-version",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 58,
+      "symbol": "Textile.-gitSummary",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 59,
+      "symbol": "Textile.-summary:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 60,
+      "symbol": "Textile.-destroy:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 17,
+      "symbol": "TextileDelegate",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 20,
+      "symbol": "TextileDelegate.-nodeStarted",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 23,
+      "symbol": "TextileDelegate.-nodeFailedToStartWithError:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 26,
+      "symbol": "TextileDelegate.-nodeStopped",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 29,
+      "symbol": "TextileDelegate.-nodeFailedToStopWithError:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 32,
+      "symbol": "TextileDelegate.-nodeOnline",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 35,
+      "symbol": "TextileDelegate.-willStopNodeInBackgroundAfterDelay:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 38,
+      "symbol": "TextileDelegate.-canceledPendingNodeStop",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 41,
+      "symbol": "TextileDelegate.-notificationReceived:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 44,
+      "symbol": "TextileDelegate.-threadUpdateReceived:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 47,
+      "symbol": "TextileDelegate.-threadAdded:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 50,
+      "symbol": "TextileDelegate.-threadRemoved:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 53,
+      "symbol": "TextileDelegate.-accountPeerAdded:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 56,
+      "symbol": "TextileDelegate.-accountPeerRemoved:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 59,
+      "symbol": "TextileDelegate.-queryDone:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 62,
+      "symbol": "TextileDelegate.-queryError:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 65,
+      "symbol": "TextileDelegate.-clientThreadQueryResult:thread:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/TextileDelegate.h",
+      "line": 68,
+      "symbol": "TextileDelegate.-contactQueryResult:contact:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 16,
+      "symbol": "ThreadsApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 18,
+      "symbol": "ThreadsApi.-add:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 19,
+      "symbol": "ThreadsApi.-addOrUpdate:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 20,
+      "symbol": "ThreadsApi.-rename:name:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 21,
+      "symbol": "ThreadsApi.-get:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 22,
+      "symbol": "ThreadsApi.-list:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 23,
+      "symbol": "ThreadsApi.-peers:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 24,
+      "symbol": "ThreadsApi.-remove:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 25,
+      "symbol": "ThreadsApi.-snapshot:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/andrewhill/Textile/ios-textile/Textile/Classes/ThreadsApi.h",
+      "line": 26,
+      "symbol": "ThreadsApi.-searchSnapshots:options:error:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/andrewhill/Textile/ios-textile"
+}

@@ -6,11 +6,8 @@ build_docs:
 	jazzy \
   --objc \
   --author Textile \
-  --author_url https://texilte.io \
+  --author_url https://textile.io \
   --github_url https://github.com/textileio/ios-textile \
   --umbrella-header Textile/classes/TextileApi.h \
   --framework-root . \
   --module Textile
-
-deploy_docs:
-	git subtree push --prefix docs origin gh-pages
