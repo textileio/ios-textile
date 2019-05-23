@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ProfileApi Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/ProfileApi" class="dashAnchor"></a>
+    <a title="ProfileApi Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Textile Docs</a> (27% documented)</p>
+        <p class="header-right"><a href="https://github.com/textileio/ios-textile"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Textile Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ProfileApi Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AccountApi.html">AccountApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CafesApi.html">CafesApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CommentsApi.html">CommentsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContactsApi.html">ContactsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FeedApi.html">FeedApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FilesApi.html">FilesApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FlagsApi.html">FlagsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IgnoresApi.html">IgnoresApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InvitesApi.html">InvitesApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/IpfsApi.html">IpfsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LikesApi.html">LikesApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LogsApi.html">LogsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MessagesApi.html">MessagesApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NodeDependant.html">NodeDependant</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NotificationsApi.html">NotificationsApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProfileApi.html">ProfileApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SchemasApi.html">SchemasApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Textile.html">Textile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ThreadsApi.html">ThreadsApi</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/TextileDelegate.html">TextileDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ProfileApi</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">ProfileApi</span> <span class="p">:</span> <span class="nc"><a href="../Classes/NodeDependant.html">NodeDependant</a></span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">Peer</span> <span class="o">*</span><span class="p">)</span><span class="nf">get</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">name</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">avatar</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">Thread</span> <span class="o">*</span><span class="p">)</span><span class="nf">accountThread</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
+
+<span class="k">@end</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)ProfileApi(im)get:"></a>
+                    <a name="//apple_ref/objc/Method/-get:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)ProfileApi(im)get:">-get:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">Peer</span> <span class="o">*</span><span class="p">)</span><span class="nf">get</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">get</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)ProfileApi(im)name:"></a>
+                    <a name="//apple_ref/objc/Method/-name:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)ProfileApi(im)name:">-name:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">name</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">name</span><span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)ProfileApi(im)setName:error:"></a>
+                    <a name="//apple_ref/objc/Method/-setName:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)ProfileApi(im)setName:error:">-setName:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span> <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setName</span><span class="p">(</span><span class="n">_</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)ProfileApi(im)avatar:"></a>
+                    <a name="//apple_ref/objc/Method/-avatar:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)ProfileApi(im)avatar:">-avatar:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">avatar</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">avatar</span><span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)ProfileApi(im)accountThread:"></a>
+                    <a name="//apple_ref/objc/Method/-accountThread:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)ProfileApi(im)accountThread:">-accountThread:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">Thread</span> <span class="o">*</span><span class="p">)</span><span class="nf">accountThread</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">accountThread</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://texilte.io" target="_blank" rel="external">Textile</a>. All rights reserved. (Last updated: 2019-05-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
