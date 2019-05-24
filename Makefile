@@ -10,4 +10,5 @@ build_docs:
   --github_url https://github.com/textileio/ios-textile \
   --umbrella-header Textile/classes/TextileApi.h \
   --framework-root . \
-  --module Textile
+  --module Textile \
+  --exclude=/*/NodeDependant*
