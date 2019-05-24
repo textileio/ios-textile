@@ -1,6 +1,6 @@
 setup:
 	gem install jazzy
-	(cd Example; pod update; pod install)
+	(cd Example; pod install)
 
 build_docs:
 	jazzy \
