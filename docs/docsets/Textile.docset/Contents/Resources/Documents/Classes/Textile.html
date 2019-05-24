@@ -14,7 +14,7 @@
     <a title="Textile Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Textile Docs</a> (27% documented)</p>
+        <p><a href="../index.html">Textile Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/textileio/ios-textile"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -71,9 +71,6 @@
                 <a href="../Classes/MessagesApi.html">MessagesApi</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/NodeDependant.html">NodeDependant</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/NotificationsApi.html">NotificationsApi</a>
               </li>
               <li class="nav-group-task">
@@ -106,42 +103,11 @@
             <h1>Textile</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">Textile</span> <span class="p">:</span> <span class="nc">NSObject</span>
-
-<span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">initializeWithDebug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span> <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span> <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
-<span class="k">+</span> <span class="p">(</span><span class="n">Textile</span> <span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span>
-
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/TextileDelegate.html">TextileDelegate</a></span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span>
-
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/AccountApi.html">AccountApi</a></span> <span class="o">*</span><span class="n">account</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/CafesApi.html">CafesApi</a></span>  <span class="o">*</span><span class="n">cafes</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/CommentsApi.html">CommentsApi</a></span> <span class="o">*</span><span class="n">comments</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ContactsApi.html">ContactsApi</a></span> <span class="o">*</span><span class="n">contacts</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FeedApi.html">FeedApi</a></span> <span class="o">*</span><span class="n">feed</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FilesApi.html">FilesApi</a></span> <span class="o">*</span><span class="n">files</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FlagsApi.html">FlagsApi</a></span> <span class="o">*</span><span class="n">flags</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/IgnoresApi.html">IgnoresApi</a></span> <span class="o">*</span><span class="n">ignores</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/InvitesApi.html">InvitesApi</a></span> <span class="o">*</span><span class="n">invites</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/IpfsApi.html">IpfsApi</a></span> <span class="o">*</span><span class="n">ipfs</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/LikesApi.html">LikesApi</a></span> <span class="o">*</span><span class="n">likes</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/LogsApi.html">LogsApi</a></span> <span class="o">*</span><span class="n">logs</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/MessagesApi.html">MessagesApi</a></span> <span class="o">*</span><span class="n">messages</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/NotificationsApi.html">NotificationsApi</a></span> <span class="o">*</span><span class="n">notifications</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ProfileApi.html">ProfileApi</a></span> <span class="o">*</span><span class="n">profile</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/SchemasApi.html">SchemasApi</a></span> <span class="o">*</span><span class="n">schemas</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ThreadsApi.html">ThreadsApi</a></span> <span class="o">*</span><span class="n">threads</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">repoPath</span><span class="p">;</span>
-
-<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">version</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gitSummary</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="n">Summary</span> <span class="o">*</span><span class="p">)</span><span class="nf">summary</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">destroy</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span>
-
-<span class="k">@end</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">Textile</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Provides top level access to the Textile API</p>
 
           </section>
           <section class="section task-group-section">
@@ -160,14 +126,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize the shared Textile instace, possibly returning the wallet recovery phrase</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">initializeWithDebug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span> <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span> <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">initializeWithDebug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span>
+                                 <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span>
+                                     <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -175,6 +143,53 @@
                           <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">withDebug</span> <span class="nv">debug</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">logToDisk</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>debug</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Sets the log level to debug or not</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>logToDisk</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether or not to write Textile logs to disk</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The wallet recovery phrase if it&rsquo;s the first time the node is being initialize, nil otherwise</p>
                       </div>
                     </section>
                   </div>
@@ -192,14 +207,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The shared Textile instance, should be used for all Textile API access</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">Textile</span> <span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">Textile</span> <span class="o">*</span><span class="p">)</span><span class="n">instance</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -224,14 +239,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The delegate object that can be set to receive callbacks about different Textile events</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/TextileDelegate.html">TextileDelegate</a></span><span class="o">&gt;</span> <span class="n">delegate</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/TextileDelegate.html">TextileDelegate</a></span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -256,14 +271,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile account related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/AccountApi.html">AccountApi</a></span> <span class="o">*</span><span class="n">account</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/AccountApi.html">AccountApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">account</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -288,14 +303,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile cafes related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/CafesApi.html">CafesApi</a></span>  <span class="o">*</span><span class="n">cafes</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/CafesApi.html">CafesApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">cafes</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -320,14 +335,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile comments related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/CommentsApi.html">CommentsApi</a></span> <span class="o">*</span><span class="n">comments</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/CommentsApi.html">CommentsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">comments</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -352,14 +367,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile contacts related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ContactsApi.html">ContactsApi</a></span> <span class="o">*</span><span class="n">contacts</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/ContactsApi.html">ContactsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">contacts</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -384,14 +399,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile feed related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FeedApi.html">FeedApi</a></span> <span class="o">*</span><span class="n">feed</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/FeedApi.html">FeedApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">feed</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -416,14 +431,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile files related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FilesApi.html">FilesApi</a></span> <span class="o">*</span><span class="n">files</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/FilesApi.html">FilesApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">files</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -448,14 +463,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile flags related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/FlagsApi.html">FlagsApi</a></span> <span class="o">*</span><span class="n">flags</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/FlagsApi.html">FlagsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">flags</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -480,14 +495,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile ignores related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/IgnoresApi.html">IgnoresApi</a></span> <span class="o">*</span><span class="n">ignores</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/IgnoresApi.html">IgnoresApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">ignores</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -512,14 +527,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile invites related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/InvitesApi.html">InvitesApi</a></span> <span class="o">*</span><span class="n">invites</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/InvitesApi.html">InvitesApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">invites</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -544,14 +559,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile IPFS related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/IpfsApi.html">IpfsApi</a></span> <span class="o">*</span><span class="n">ipfs</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/IpfsApi.html">IpfsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">ipfs</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -576,14 +591,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile likes related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/LikesApi.html">LikesApi</a></span> <span class="o">*</span><span class="n">likes</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/LikesApi.html">LikesApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">likes</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -608,14 +623,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile logs related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/LogsApi.html">LogsApi</a></span> <span class="o">*</span><span class="n">logs</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/LogsApi.html">LogsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">logs</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -640,14 +655,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile messages related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/MessagesApi.html">MessagesApi</a></span> <span class="o">*</span><span class="n">messages</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/MessagesApi.html">MessagesApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">messages</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -672,14 +687,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile notifications related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/NotificationsApi.html">NotificationsApi</a></span> <span class="o">*</span><span class="n">notifications</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/NotificationsApi.html">NotificationsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">notifications</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -704,14 +719,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile profile related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ProfileApi.html">ProfileApi</a></span> <span class="o">*</span><span class="n">profile</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/ProfileApi.html">ProfileApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">profile</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -736,14 +751,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile schemas related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/SchemasApi.html">SchemasApi</a></span> <span class="o">*</span><span class="n">schemas</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/SchemasApi.html">SchemasApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">schemas</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -768,14 +783,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Provides access to Textile threads related APIs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n"><a href="../Classes/ThreadsApi.html">ThreadsApi</a></span> <span class="o">*</span><span class="n">threads</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/ThreadsApi.html">ThreadsApi</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">threads</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -800,14 +815,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The path to the local Textile repository</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">repoPath</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">repoPath</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -832,14 +847,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">version</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">version</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -847,6 +861,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The version of the Textile node running locally</p>
                       </div>
                     </section>
                   </div>
@@ -864,14 +882,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gitSummary</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gitSummary</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -879,6 +896,10 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">gitSummary</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The git summary of the Textile node running locally</p>
                       </div>
                     </section>
                   </div>
@@ -896,14 +917,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get a summary of the local Textile node and it&rsquo;s data</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">Summary</span> <span class="o">*</span><span class="p">)</span><span class="nf">summary</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">summary</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -911,6 +932,29 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">summary</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A summary of the Textile node running locally</p>
                       </div>
                     </section>
                   </div>
@@ -928,14 +972,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Reset the local Textile node instance so it can be re-initialized</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">destroy</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">destroy</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -943,6 +987,25 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">destroy</span><span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

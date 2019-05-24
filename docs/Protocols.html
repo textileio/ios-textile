@@ -14,7 +14,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Textile Docs</a> (27% documented)</p>
+        <p><a href="index.html">Textile Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/textileio/ios-textile"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -71,9 +71,6 @@
                 <a href="Classes/MessagesApi.html">MessagesApi</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/NodeDependant.html">NodeDependant</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/NotificationsApi.html">NotificationsApi</a>
               </li>
               <li class="nav-group-task">
@@ -123,7 +120,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Protocol that can be implemented in order to receive callbacks from Textile about events of interest</p>
 
                         <a href="Protocols/TextileDelegate.html" class="slightly-smaller">See more</a>
                       </div>
@@ -131,60 +128,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">TextileDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">nodeStarted</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">nodeFailedToStartWithError</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">nodeStopped</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">nodeFailedToStopWithError</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">nodeOnline</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">willStopNodeInBackgroundAfterDelay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">seconds</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">canceledPendingNodeStop</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">notificationReceived</span><span class="o">:</span><span class="p">(</span><span class="n">Notification</span> <span class="o">*</span><span class="p">)</span><span class="n">notification</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">threadUpdateReceived</span><span class="o">:</span><span class="p">(</span><span class="n">FeedItem</span> <span class="o">*</span><span class="p">)</span><span class="n">feedItem</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">threadAdded</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">threadId</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">threadRemoved</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">threadId</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">accountPeerAdded</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">peerId</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">accountPeerRemoved</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">peerId</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">queryDone</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">queryId</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">queryError</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">queryId</span> <span class="n">error</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">clientThreadQueryResult</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">queryId</span> <span class="kr">thread</span><span class="o">:</span><span class="p">(</span><span class="n">Thread</span> <span class="o">*</span><span class="p">)</span><span class="kr">thread</span><span class="p">;</span>
-
-<span class="k">@optional</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">contactQueryResult</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">queryId</span> <span class="n">contact</span><span class="o">:</span><span class="p">(</span><span class="n">Contact</span> <span class="o">*</span><span class="p">)</span><span class="n">contact</span><span class="p">;</span>
-
-<span class="k">@end</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">TextileDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
