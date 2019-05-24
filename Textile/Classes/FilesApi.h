@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to files related Textile APIs
+ * Provides access to Textile files related APIs
  */
 @interface FilesApi : NodeDependant
 

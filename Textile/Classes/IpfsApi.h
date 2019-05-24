@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to IPFS releated Textile APIs
+ * Provides access to Textile IPFS related APIs
  */
 @interface IpfsApi : NodeDependant
 

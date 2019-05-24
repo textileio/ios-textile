@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to messages related Textile APIs
+ * Provides access to Textile messages related APIs
  */
 @interface MessagesApi : NodeDependant
 

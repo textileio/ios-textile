@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to Textile Cafe related APIs
+ * Provides access to Textile cafes related APIs
  */
 @interface CafesApi : NodeDependant
 

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to Flags related Textile APIs
+ * Provides access to Textile flags related APIs
  */
 @interface FlagsApi : NodeDependant
 

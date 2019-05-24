@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to notifications related Textile APIs
+ * Provides access to Textile notifications related APIs
  */
 @interface NotificationsApi : NodeDependant
 

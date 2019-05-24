@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to Feed related Textile APIs
+ * Provides access to Textile feed related APIs
  */
 @interface FeedApi : NodeDependant
 

@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to profile related Textile APIs
+ * Provides access to Textile profile related APIs
  */
 @interface ProfileApi : NodeDependant
 

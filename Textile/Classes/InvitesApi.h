@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to invites related Textile APIs
+ * Provides access to Textile invites related APIs
  */
 @interface InvitesApi : NodeDependant
 

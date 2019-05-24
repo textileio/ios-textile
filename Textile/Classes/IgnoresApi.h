@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to ignores related Textile APIs
+ * Provides access to Textile ignores related APIs
  */
 @interface IgnoresApi : NodeDependant
 

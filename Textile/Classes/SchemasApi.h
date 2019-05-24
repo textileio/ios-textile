@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to schemas related Textile APIs
+ * Provides access to Textile schemas related APIs
  */
 @interface SchemasApi : NodeDependant
 

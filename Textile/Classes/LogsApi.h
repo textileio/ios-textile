@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to logs related Textile APIs
+ * Provides access to Textile logs related APIs
  */
 @interface LogsApi : NodeDependant
 

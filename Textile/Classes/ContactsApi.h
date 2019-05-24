@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to Textile Contacts related APIs
+ * Provides access to Textile contacts related APIs
  */
 @interface ContactsApi : NodeDependant
 

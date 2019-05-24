@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * Provides access to likes related Textile APIs
+ * Provides access to Textile likes related APIs
  */
 @interface LikesApi : NodeDependant
 
