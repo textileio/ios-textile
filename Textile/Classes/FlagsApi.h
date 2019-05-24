@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Flag any data by block
  * @param blockId The id of the Block to flag
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The block id of the new flag
+ * @return The hash of the new flag block
  */
 - (NSString *)add:(NSString *)blockId error:(NSError **)error;
 

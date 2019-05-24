@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param threadId The id of the thread to add the message to
  * @param body The body of the message
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The block id of the newly created message block
+ * @return The hash of the newly created message block
  */
 - (NSString *)add:(NSString *)threadId body:(NSString *)body error:(NSError **)error;
 

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Add a like for a specific block
  * @param blockId The id of the block you want to add a like to
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The block id for the newly created like block
+ * @return The hash of the newly created like block
  */
 - (NSString *)add:(NSString *)blockId error:(NSError **)error;
 

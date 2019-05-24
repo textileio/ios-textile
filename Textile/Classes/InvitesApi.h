@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Accept an invite
  * @param inviteId The id of the invite to accept
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The block id of the new accept invite block
+ * @return The hash of the new thread join block
  */
 - (NSString *)accept:(NSString *)inviteId error:(NSError **)error;
 
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param inviteId The id of the external invite to accept
  * @param key The key associated with the external invite to accept
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The block id of the new accept invite block
+ * @return The hash of the new thread join block
  */
 - (NSString *)acceptExternal:(NSString *)inviteId key:(NSString *)key error:(NSError **)error;
 
