@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (Contact *)get:(NSString *)address error:(NSError **)error;
 
 /**
- * List all exisiting account Contacts
+ * List all existing account Contacts
  * @param error A reference to an error pointer that will be set in the case of an error
  * @return An object containing a list of all account contacts
  */
