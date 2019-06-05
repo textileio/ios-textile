@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 /**
- * Called when the scheduled node stop is cancelled, the node will continute running
+ * Called when the scheduled node stop is cancelled, the node will continue running
  */
 - (void)canceledPendingNodeStop;
 
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 /**
- * Called when any thread recieves an update
+ * Called when any thread receives an update
  * @param feedItem The thread update
  */
 - (void)threadUpdateReceived:(FeedItem *)feedItem;
