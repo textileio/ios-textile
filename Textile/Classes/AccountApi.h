@@ -31,12 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
  * Encrypt raw data with the account private key
  * @param data The data to encrypt
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The encryped data
+ * @return The encrypted data
  */
 - (nullable NSData *)encrypt:(NSData *)data error:(NSError **)error;
 
 /**
- * Decrypt encryped data using the account private key
+ * Decrypt encrypted data using the account private key
  * @param data The encrypted data
  * @param error A reference to an error pointer that will be set in the case of an error
  * @return The decrypted data

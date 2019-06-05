@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Fetches the CafeSession object for a previously registered Textile Cafe node
  * @param peerId The peer id of the previously registered cafe node
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The CafeSession for the previousl registered cafe
+ * @return The CafeSession for the previously registered cafe
  */
 - (CafeSession *)session:(NSString *)peerId error:(NSError **)error;
 
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deregister:(NSString *)peerId error:(NSError **)error;
 
 /**
- * Triggers the async process of cheking for messages from all registered cafes
+ * Triggers the async process of checking for messages from all registered cafes
  * @param error A reference to an error pointer that will be set in the case of an error
  */
 - (void)checkMessages:(NSError **)error;
