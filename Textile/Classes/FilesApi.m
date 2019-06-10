@@ -69,20 +69,20 @@
   return [[Block alloc] initWithData:data error:error];
 }
 
-- (FilesList *)list:(NSString *)offset limit:(long)limit threadId:(NSString *)threadId error:(NSError * _Nullable __autoreleasing *)error {
-  NSData *data = [self.node files:offset != nil ? offset : @"" limit:limit threadId:threadId error:error];
+- (FilesList *)list:(NSString *)threadId offset:(NSString *)offset limit:(long)limit error:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node files:threadId offset:offset != nil ? offset : @"" limit:limit error:error];
   if (*error) {
     return nil;
   }
   return [[FilesList alloc] initWithData:data error:error];
 }
 
-- (NSString *)data:(NSString *)hash error:(NSError * _Nullable __autoreleasing *)error {
-  return [self.node fileData:hash error:error];
+- (NSString *)content:(NSString *)hash error:(NSError * _Nullable __autoreleasing *)error {
+  return [self.node fileContent:hash error:error];
 }
 
-- (NSString *)imageDataForMinWidth:(NSString *)path minWidth:(long)minWidth error:(NSError * _Nullable __autoreleasing *)error {
-  return [self.node imageFileDataForMinWidth:path minWidth:minWidth error:error];
+- (NSString *)imageContentForMinWidth:(NSString *)path minWidth:(long)minWidth error:(NSError * _Nullable __autoreleasing *)error {
+  return [self.node imageFileContentForMinWidth:path minWidth:minWidth error:error];
 }
 
 @end

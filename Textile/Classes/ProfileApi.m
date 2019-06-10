@@ -7,6 +7,7 @@
 //
 
 #import "ProfileApi.h"
+#import "TextileApi.h"
 
 @implementation ProfileApi
 
@@ -30,8 +31,12 @@
   return [self.node avatar:error];
 }
 
-- (void)setAvatar:(NSString *)hash error:(NSError * _Nullable __autoreleasing *)error {
-  [self.node setAvatar:hash error:error];
+- (Thread *)accountThread:(NSError * _Nullable __autoreleasing *)error {
+  NSData *data = [self.node accountThread:error];
+  if (*error) {
+    return nil;
+  }
+  return [[Thread alloc] initWithData:data error:error];
 }
 
 @end
