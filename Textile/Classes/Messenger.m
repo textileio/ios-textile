@@ -26,31 +26,31 @@
     if ([self.delegate respondsToSelector:@selector(nodeOnline)]) {
       [self.delegate nodeOnline];
     }
-  } else if ([event.name isEqual: @"WALLET_UPDATE"]) {
+  } else if ([event.name isEqual: @"ACCOUNT_UPDATE"]) {
     NSError *error;
-    WalletUpdate *walletUpdate = [[WalletUpdate alloc] initWithData:event.data error:&error];
+    AccountUpdate *accountUpdate = [[AccountUpdate alloc] initWithData:event.data error:&error];
     if (error) {
       return;
     }
-    switch (walletUpdate.type) {
-      case WalletUpdate_Type_ThreadAdded:
+    switch (accountUpdate.type) {
+      case AccountUpdate_Type_ThreadAdded:
         if ([self.delegate respondsToSelector:@selector(threadAdded:)]) {
-          [self.delegate threadAdded:walletUpdate.id_p];
+          [self.delegate threadAdded:accountUpdate.id_p];
         }
         break;
-      case WalletUpdate_Type_ThreadRemoved:
+      case AccountUpdate_Type_ThreadRemoved:
         if ([self.delegate respondsToSelector:@selector(threadRemoved:)]) {
-          [self.delegate threadRemoved:walletUpdate.id_p];
+          [self.delegate threadRemoved:accountUpdate.id_p];
         }
         break;
-      case WalletUpdate_Type_AccountPeerAdded:
+      case AccountUpdate_Type_AccountPeerAdded:
         if ([self.delegate respondsToSelector:@selector(accountPeerAdded:)]) {
-          [self.delegate accountPeerAdded:walletUpdate.id_p];
+          [self.delegate accountPeerAdded:accountUpdate.id_p];
         }
         break;
-      case WalletUpdate_Type_AccountPeerRemoved:
+      case AccountUpdate_Type_AccountPeerRemoved:
         if ([self.delegate respondsToSelector:@selector(accountPeerRemoved:)]) {
-          [self.delegate accountPeerRemoved:walletUpdate.id_p];
+          [self.delegate accountPeerRemoved:accountUpdate.id_p];
         }
         break;
       default:
