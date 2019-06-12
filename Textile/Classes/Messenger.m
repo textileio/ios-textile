@@ -14,6 +14,7 @@
 @implementation Messenger
 
 - (void)notify: (MobileEvent *)event {
+  NSLog(@"Evnet: %@:", event.name);
   if ([event.name isEqual: @"NODE_START"]) {
     if ([self.delegate respondsToSelector:@selector(nodeStarted)]) {
       [self.delegate nodeStarted];
@@ -106,6 +107,24 @@
         break;
       default:
         break;
+    }
+  } else if ([event.name isEqualToString:@"CAFE_SYNC_GROUP_UPDATE"]) {
+    NSError *error;
+    CafeSyncGroupStatus *syncGroupStatus = [[CafeSyncGroupStatus alloc] initWithData:event.data error:&error];
+    if (error) {
+      return;
+    }
+    if ([self.delegate respondsToSelector:@selector(cafeSyncGroupUpdate:)]) {
+      [self.delegate cafeSyncGroupUpdate:syncGroupStatus];
+    }
+  } else if ([event.name isEqualToString:@"CAFE_SYNC_GROUP_COMPLETE"]) {
+    NSError *error;
+    CafeSyncGroupStatus *syncGroupStatus = [[CafeSyncGroupStatus alloc] initWithData:event.data error:&error];
+    if (error) {
+      return;
+    }
+    if ([self.delegate respondsToSelector:@selector(cafeSyncGroupComplete:)]) {
+      [self.delegate cafeSyncGroupComplete:syncGroupStatus];
     }
   }
 }
