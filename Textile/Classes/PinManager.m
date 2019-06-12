@@ -7,6 +7,7 @@
 
 #import "PinManager.h"
 #import "TextileApi.h"
+#import "Callback.h"
 
 @interface PinManager () <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
@@ -18,8 +19,8 @@
 
 - (instancetype)init {
   if (self = [super init]) {
-//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:TEXTILE_BACKGROUND_SESSION_ID];
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:TEXTILE_BACKGROUND_SESSION_ID];
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     config.networkServiceType = NSURLNetworkServiceTypeResponsiveData;
     config.allowsCellularAccess = YES; // default
     config.timeoutIntervalForRequest = 60; //default
@@ -47,50 +48,54 @@
 //  5. Run clean up after you mark a batch (or a single one) as “complete”
 //  6. At any time you can get the status of a request group (a photo and all it’s dependent reqs)
   NSError *error;
-//  NSData *cafeRequestsData = [self.node cafeRequests:nil limit:-1 error:&error];
-//  if (error) {
-//    NSLog(@"cafeRequests error: %@", error.localizedDescription);
-//    return;
-//  }
-//
-//  CafeRequestList *cafeRequests = [[CafeRequestList alloc] initWithData:cafeRequestsData error:&error];
-//  if (error) {
-//    NSLog(@"CafeRequestsList error: %@", error.localizedDescription);
-//    return;
-//  }
-//  NSLog(@"cafe requests length: %lu", (unsigned long)cafeRequests.itemsArray.count);
-//  for (CafeRequest *request in cafeRequests.itemsArray) {
-//    NSError *error;
-//    NSData *httpRequestData = [self.node cafeHTTPRequest:request.id_p error:&error];
-//    if (error) {
-//      NSLog(@"cafeHTTPRequest error: %@", error.localizedDescription);
-//      continue;
-//    }
-//    CafeHTTPRequest *httpRequest = [[CafeHTTPRequest alloc] initWithData:httpRequestData error:&error];
-//    if (error) {
-//      NSLog(@"create CafeHTTPRequest error: %@", error.localizedDescription);
-//      continue;
-//    }
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    NSURL *url = [NSURL URLWithString:httpRequest.URL];
-//    request.URL = url;
-//    request.allHTTPHeaderFields = httpRequest.headers;
-//    request.HTTPBody = httpRequest.body;
-//    switch (httpRequest.type) {
-//      case CafeHTTPRequest_Type_Put:
-//        request.HTTPMethod = @"PUT";
-//        break;
-//      case CafeHTTPRequest_Type_Post:
-//        request.HTTPMethod = @"POST";
-//      case CafeHTTPRequest_Type_Delete:
-//        request.HTTPMethod = @"DELETE";
-//      default:
-//        break;
-//    }
-//    NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromData:httpRequest.body];
-//    [task resume];
-//    break;
-//  }
+  NSData *cafeRequestsData = [self.node cafeRequests:10 error:&error];
+  if (error) {
+    NSLog(@"cafeRequests error: %@", error.localizedDescription);
+    return;
+  }
+  Strings *requestIds = [[Strings alloc] initWithData:cafeRequestsData error:&error];
+  if (error) {
+    NSLog(@"cafeRequests error: %@", error.localizedDescription);
+    return;
+  }
+  NSLog(@"cafe requests length: %lu", (unsigned long)requestIds.valuesArray.count);
+  for (NSString *requestId in requestIds.valuesArray) {
+    // should wrap all these in a disptach group. Start a background task before, complete it after the group completes
+    Callback *cb = [[Callback alloc] initWithCompletion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
+      if (error) {
+        NSLog(@"error writing request: %@", error.localizedDescription);
+        return;
+      }
+      CafeHTTPRequest *httpRequest = [[CafeHTTPRequest alloc] initWithData:data error:&error];
+      NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+      NSURL *url = [NSURL URLWithString:httpRequest.URL];
+      request.URL = url;
+      request.allHTTPHeaderFields = httpRequest.headers;
+      switch (httpRequest.type) {
+        case CafeHTTPRequest_Type_Put:
+          request.HTTPMethod = @"PUT";
+          break;
+        case CafeHTTPRequest_Type_Post:
+          request.HTTPMethod = @"POST";
+          break;
+        case CafeHTTPRequest_Type_Delete:
+          request.HTTPMethod = @"DELETE";
+          break;
+        default:
+          break;
+      }
+      NSURL *fileUrl = [NSURL URLWithString:httpRequest.path];
+      NSLog(@"uploading: %@", httpRequest.path);
+//      [self.node cafeRequestPending:requestId error:&error];
+//      if (error) {
+//        NSLog(@"error marking as pending: %@", error.localizedDescription);
+//        return;
+//      }
+//      NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromFile:fileUrl];
+//      [task resume];
+    }];
+    [self.node writeCafeRequest:requestId cb:cb];
+  }
 }
 
 #pragma mark NSURLSessionDelegate

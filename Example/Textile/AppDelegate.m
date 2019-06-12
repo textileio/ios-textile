@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSError *error;
-  NSString *recoveryPhrase = [Textile initializeWithDebug:FALSE logToDisk:FALSE error:&error];
+  NSString *recoveryPhrase = [Textile initializeWithDebug:YES logToDisk:YES error:&error];
   if (recoveryPhrase) {
     NSLog(@"recovery phrase: %@", recoveryPhrase);
   }
@@ -97,43 +97,58 @@
 }
 
 - (void)testSomeThings {
-  NSError *registerError;
-  [Textile.instance.cafes register:@"https://us-west-beta.textile.cafe" token:@"ukbN5nU1BhhiDwBPq3XrbUnqakzKnrVRBXc5u2oj1Np3DBttmn757PYsN2u2" error:&registerError];
-  if (registerError) {
-    NSLog(@"registerError: %@", registerError.localizedDescription);
-    return;
-  }
-
-  NSError *threadsListError;
-  ThreadList *threads = [Textile.instance.threads list:&threadsListError];
-  if (threadsListError) {
-    NSLog(@"threadsListError: %@", threadsListError.localizedDescription);
-    return;
-  }
-
-  Thread *thread;
-  NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-    return [obj.key isEqualToString:@"test4"];
-  }];
-  if (index == NSNotFound) {
-    AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
-    schema.preset = AddThreadConfig_Schema_Preset_Media;
-    AddThreadConfig *config = [[AddThreadConfig alloc] init];
-    config.key = @"test4";
-    config.name = @"test thread";
-    config.schema = schema;
-    config.type = Thread_Type_Public;
-    config.sharing = Thread_Sharing_Shared;
-    NSError *addThreadError;
-    thread = [Textile.instance.threads add:config error:&addThreadError];
-    if (addThreadError) {
-      NSLog(@"addThreadError: %@", addThreadError.localizedDescription);
-      return;
+  NSError *sessionsError;
+  CafeSessionList *sessions = [Textile.instance.cafes sessions:&sessionsError];
+  if (sessions.itemsArray.count == 0) {
+    NSError *registerError;
+    [Textile.instance.cafes
+     register:@"12D3KooWLa7AxqA3dFizfjv2o8T5poLWXAWcniaiy3CrYvzohvEF"
+     token:@"KLE6nNUPsthFYbkfrVR3khbmG9o6Gj9uZAFuHH39NYQXb16YQYqH1bCS7Kuk"
+     error:&registerError];
+    if (!registerError) {
+      NSLog(@"awwwwww yea");
+    } else {
+      NSLog(@"register error: %@", registerError.localizedDescription);
     }
-  } else {
-    thread = [threads.itemsArray objectAtIndex:index];
   }
-  NSLog(@"Thread id: %@", thread.id_p);
+  NSLog(@"hi");
+//  NSError *registerError;
+//  [Textile.instance.cafes register:@"https://us-west-beta.textile.cafe" token:@"ukbN5nU1BhhiDwBPq3XrbUnqakzKnrVRBXc5u2oj1Np3DBttmn757PYsN2u2" error:&registerError];
+//  if (registerError) {
+//    NSLog(@"registerError: %@", registerError.localizedDescription);
+//    return;
+//  }
+//
+//  NSError *threadsListError;
+//  ThreadList *threads = [Textile.instance.threads list:&threadsListError];
+//  if (threadsListError) {
+//    NSLog(@"threadsListError: %@", threadsListError.localizedDescription);
+//    return;
+//  }
+//
+//  Thread *thread;
+//  NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//    return [obj.key isEqualToString:@"test4"];
+//  }];
+//  if (index == NSNotFound) {
+//    AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
+//    schema.preset = AddThreadConfig_Schema_Preset_Media;
+//    AddThreadConfig *config = [[AddThreadConfig alloc] init];
+//    config.key = @"test4";
+//    config.name = @"test thread";
+//    config.schema = schema;
+//    config.type = Thread_Type_Public;
+//    config.sharing = Thread_Sharing_Shared;
+//    NSError *addThreadError;
+//    thread = [Textile.instance.threads add:config error:&addThreadError];
+//    if (addThreadError) {
+//      NSLog(@"addThreadError: %@", addThreadError.localizedDescription);
+//      return;
+//    }
+//  } else {
+//    thread = [threads.itemsArray objectAtIndex:index];
+//  }
+//  NSLog(@"Thread id: %@", thread.id_p);
 }
 
 @end
