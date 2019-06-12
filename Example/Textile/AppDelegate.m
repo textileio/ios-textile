@@ -135,7 +135,7 @@
     return;
   }
 
-  NSString *threadKey = @"test10";
+  NSString *threadKey = @"test12";
   Thread *thread;
   NSUInteger index = [threads.itemsArray indexOfObjectPassingTest:^BOOL(Thread * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
     return [obj.key isEqualToString:threadKey];

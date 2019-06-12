@@ -248,12 +248,12 @@ didCompleteWithError:(nullable NSError *)error {
   NSLog(@"session task didCompleteWithError: %@, %@, %@", task.originalRequest, task.response, error.localizedDescription);
   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
   if (error) {
-    [self.node failCafeRequest:task.description reason:error.localizedDescription error:nil];
+    [self.node failCafeRequest:task.taskDescription reason:error.localizedDescription error:nil];
   } else if (response.statusCode < 200 || response.statusCode > 299) {
     NSString *error = [NSString stringWithFormat:@"status code: %ld", (long)response.statusCode];
-    [self.node failCafeRequest:task.description reason:error error:nil];
+    [self.node failCafeRequest:task.taskDescription reason:error error:nil];
   } else {
-    [self.node completeCafeRequest:task.description error:nil];
+    [self.node completeCafeRequest:task.taskDescription error:nil];
   }
 }
 
