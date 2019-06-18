@@ -30,6 +30,7 @@ typedef enum : NSUInteger {
 @interface FeedItemData : NSObject
 
 @property (nonatomic, assign) FeedItemType type;
+@property (nonatomic, strong) NSString *block;
 @property (nonatomic, strong) Text *text;
 @property (nonatomic, strong) Comment *comment;
 @property (nonatomic, strong) Like *like;
