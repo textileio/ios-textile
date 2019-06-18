@@ -11,11 +11,13 @@
 #define util_h
 
 static inline FeedItemData * feedItemData(FeedItem *feedItem) {
-  FeedItemData *feedItemData = NULL;
+  FeedItemData *feedItemData;
   if ([feedItem.payload.typeURL isEqualToString:@"/Text"]) {
     NSError *e;
     Text *text = [[Text alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeText;
       feedItemData.text = text;
     }
@@ -23,6 +25,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Comment *comment = [[Comment alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeComment;
       feedItemData.comment = comment;
     }
@@ -30,6 +34,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Like *like = [[Like alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeLike;
       feedItemData.like = like;
     }
@@ -37,6 +43,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Files *files = [[Files alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeFiles;
       feedItemData.files = files;
     }
@@ -44,6 +52,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Ignore *ignore = [[Ignore alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeIgnore;
       feedItemData.ignore = ignore;
     }
@@ -51,6 +61,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Join *join = [[Join alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeJoin;
       feedItemData.join = join;
     }
@@ -58,6 +70,8 @@ static inline FeedItemData * feedItemData(FeedItem *feedItem) {
     NSError *e;
     Leave *leave = [[Leave alloc] initWithData:feedItem.payload.value error:&e];
     if (!e) {
+      feedItemData = [[FeedItemData alloc] init];
+      feedItemData.block = feedItem.block;
       feedItemData.type = FeedItemTypeLeave;
       feedItemData.leave = leave;
     }
