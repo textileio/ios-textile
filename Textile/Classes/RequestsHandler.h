@@ -1,5 +1,5 @@
 //
-//  PinManager.h
+//  RequestsHandler.h
 //  Textile
 //
 //  Created by Aaron Sutula on 5/3/19.

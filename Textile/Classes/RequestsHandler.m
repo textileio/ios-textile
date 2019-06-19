@@ -1,5 +1,5 @@
 //
-//  PinManager.m
+//  RequestsHandler.m
 //  Textile
 //
 //  Created by Aaron Sutula on 5/3/19.
@@ -119,7 +119,7 @@ dispatch_queue_t flushQueue;
         dispatch_group_leave(group);
         return;
       }
-      
+
       [task resume];
 
       NSLog(@"Leaving");
