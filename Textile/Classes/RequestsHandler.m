@@ -51,6 +51,10 @@ dispatch_queue_t flushQueue;
 - (void)processQueue {
   NSLog(@"Flushing");
 
+  UIBackgroundTaskIdentifier taskId = [UIApplication.sharedApplication beginBackgroundTaskWithExpirationHandler:^{
+
+  }];
+
   NSError *error;
   NSData *cafeRequestsData = [self.node cafeRequests:-1 error:&error];
   if (error) {
@@ -136,6 +140,8 @@ dispatch_queue_t flushQueue;
   dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 
   NSLog(@"Dispatch group complete");
+
+  [UIApplication.sharedApplication endBackgroundTask:taskId];
 }
 
 #pragma mark NSURLSessionDelegate
