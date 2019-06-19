@@ -23,7 +23,14 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		767F375F39117C4B40316AD7 /* Pods_Textile_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149816C3E29EA97773706D30 /* Pods_Textile_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		93235FE522B1B1840039B0B3 /* STINKIES.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93235FE422B1B1840039B0B3 /* STINKIES.JPG */; };
+		93235FE522B1B1840039B0B3 /* TEST0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93235FE422B1B1840039B0B3 /* TEST0.JPG */; };
+		93765BD322BA34BA00357C72 /* TEST3.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BCC22BA34BA00357C72 /* TEST3.JPG */; };
+		93765BD422BA34BA00357C72 /* TEST4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BCD22BA34BA00357C72 /* TEST4.JPG */; };
+		93765BD522BA34BA00357C72 /* TEST2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BCE22BA34BA00357C72 /* TEST2.JPG */; };
+		93765BD622BA34BA00357C72 /* TEST7.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BCF22BA34BA00357C72 /* TEST7.JPG */; };
+		93765BD722BA34BA00357C72 /* TEST6.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BD022BA34BA00357C72 /* TEST6.JPG */; };
+		93765BD822BA34BA00357C72 /* TEST5.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BD122BA34BA00357C72 /* TEST5.JPG */; };
+		93765BD922BA34BA00357C72 /* TEST1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765BD222BA34BA00357C72 /* TEST1.JPG */; };
 		B50F9773B6A3C0F031086B4F /* Pods_Textile_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD602B3F9AAACD7B5C425C1D /* Pods_Textile_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +70,14 @@
 		7731981FC02BFBB4C1B689BB /* Pods-Textile_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Textile_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Textile_Tests/Pods-Textile_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F5E982B34D9509A95EA6ADD /* Pods-Textile_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Textile_Tests.release.xcconfig"; path = "Target Support Files/Pods-Textile_Tests/Pods-Textile_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		93235FE422B1B1840039B0B3 /* STINKIES.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = STINKIES.JPG; sourceTree = "<group>"; };
+		93235FE422B1B1840039B0B3 /* TEST0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST0.JPG; sourceTree = "<group>"; };
+		93765BCC22BA34BA00357C72 /* TEST3.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST3.JPG; sourceTree = "<group>"; };
+		93765BCD22BA34BA00357C72 /* TEST4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST4.JPG; sourceTree = "<group>"; };
+		93765BCE22BA34BA00357C72 /* TEST2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST2.JPG; sourceTree = "<group>"; };
+		93765BCF22BA34BA00357C72 /* TEST7.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST7.JPG; sourceTree = "<group>"; };
+		93765BD022BA34BA00357C72 /* TEST6.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST6.JPG; sourceTree = "<group>"; };
+		93765BD122BA34BA00357C72 /* TEST5.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST5.JPG; sourceTree = "<group>"; };
+		93765BD222BA34BA00357C72 /* TEST1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TEST1.JPG; sourceTree = "<group>"; };
 		CD602B3F9AAACD7B5C425C1D /* Pods_Textile_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Textile_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E26D5B15970389A548E717 /* Pods-Textile_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Textile_Example.debug.xcconfig"; path = "Target Support Files/Pods-Textile_Example/Pods-Textile_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E66D8AC292129C0F9FC19292 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -134,7 +148,14 @@
 		6003F593195388D20070C39A /* Example for Textile */ = {
 			isa = PBXGroup;
 			children = (
-				93235FE422B1B1840039B0B3 /* STINKIES.JPG */,
+				93235FE422B1B1840039B0B3 /* TEST0.JPG */,
+				93765BD222BA34BA00357C72 /* TEST1.JPG */,
+				93765BCE22BA34BA00357C72 /* TEST2.JPG */,
+				93765BCC22BA34BA00357C72 /* TEST3.JPG */,
+				93765BCD22BA34BA00357C72 /* TEST4.JPG */,
+				93765BD122BA34BA00357C72 /* TEST5.JPG */,
+				93765BD022BA34BA00357C72 /* TEST6.JPG */,
+				93765BCF22BA34BA00357C72 /* TEST7.JPG */,
 				6003F59C195388D20070C39A /* AppDelegate.h */,
 				6003F59D195388D20070C39A /* AppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -285,10 +306,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				93765BD922BA34BA00357C72 /* TEST1.JPG in Resources */,
+				93765BD322BA34BA00357C72 /* TEST3.JPG in Resources */,
+				93765BD822BA34BA00357C72 /* TEST5.JPG in Resources */,
+				93765BD522BA34BA00357C72 /* TEST2.JPG in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				93765BD622BA34BA00357C72 /* TEST7.JPG in Resources */,
+				93765BD422BA34BA00357C72 /* TEST4.JPG in Resources */,
+				93765BD722BA34BA00357C72 /* TEST6.JPG in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				93235FE522B1B1840039B0B3 /* STINKIES.JPG in Resources */,
+				93235FE522B1B1840039B0B3 /* TEST0.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

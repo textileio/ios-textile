@@ -9,7 +9,7 @@
 #import "TextileApi.h"
 #import "Messenger.h"
 #import "LifecycleManager.h"
-#import "PinManager.h"
+#import "RequestsHandler.h"
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
@@ -134,7 +134,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 }
 
 - (void)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
-  PinManager *pinManager = [[PinManager alloc] init];
+  RequestsHandler *pinManager = [[RequestsHandler alloc] init];
   MobileRunConfig *config = [[MobileRunConfig alloc] init];
   config.repoPath = repoPath;
   config.debug = debug;

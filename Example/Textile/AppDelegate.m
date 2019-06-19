@@ -159,6 +159,19 @@
     thread = [threads.itemsArray objectAtIndex:index];
   }
   NSLog(@"Thread id: %@", thread.id_p);
+
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST4" ofType:@"JPG"];
+
+  Strings *strings = [[Strings alloc] init];
+  [strings.valuesArray addObject:path];
+  [Textile.instance.files addFiles:strings threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+    if (error) {
+      NSLog(@"Error adding: %@", error.localizedDescription);
+    } else {
+      NSLog(@"Ok added: %@", block.id_p);
+    }
+  }];
+
 }
 
 @end
