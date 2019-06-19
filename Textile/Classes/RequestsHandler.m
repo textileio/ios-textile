@@ -53,14 +53,14 @@ dispatch_queue_t flushQueue;
 
   NSError *error;
   NSData *cafeRequestsData = [self.node cafeRequests:-1 error:&error];
-  if (!cafeRequestsData) {
+  if (error) {
     NSLog(@"cafeRequests error: %@", error.localizedDescription);
     return;
   }
 
   Strings *requestIds = [[Strings alloc] initWithData:cafeRequestsData error:&error];
   if (!requestIds) {
-    NSLog(@"cafeRequests error: %@", error.localizedDescription);
+    NSLog(@"Error deserializing Strings: %@", error.localizedDescription);
     return;
   }
 
@@ -109,6 +109,8 @@ dispatch_queue_t flushQueue;
       }
 
       NSURL *fileUrl = [NSURL fileURLWithPath:httpRequest.path];
+      NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromFile:fileUrl];
+      [task setTaskDescription:requestId];
 
       BOOL result = [self.node cafeRequestPending:requestId error:&error];
       if (!result) {
@@ -117,9 +119,7 @@ dispatch_queue_t flushQueue;
         dispatch_group_leave(group);
         return;
       }
-
-      NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromFile:fileUrl];
-      [task setTaskDescription:requestId];
+      
       [task resume];
 
       NSLog(@"Leaving");
