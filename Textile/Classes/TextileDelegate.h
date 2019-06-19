@@ -142,14 +142,21 @@ NS_ASSUME_NONNULL_BEGIN
  * Called when there is a cafe sync group status update
  * @param status Object containing information about a cafe sync group
  */
-- (void)cafeSyncGroupUpdate:(CafeSyncGroupStatus *)status;
+- (void)syncUpdate:(CafeSyncGroupStatus *)status;
 
 @optional
 /**
  * Called when a cafe sync group is complete
  * @param status Object containing information about a cafe sync group
  */
-- (void)cafeSyncGroupComplete:(CafeSyncGroupStatus *)status;
+- (void)syncComplete:(CafeSyncGroupStatus *)status;
+
+@optional
+/**
+ * Called when a cafe sync group fails
+ * @param status Object containing information about a cafe sync group
+ */
+- (void)syncFailed:(CafeSyncGroupStatus *)status;
 
 @end
 

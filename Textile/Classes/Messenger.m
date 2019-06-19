@@ -114,8 +114,8 @@
     if (error) {
       return;
     }
-    if ([self.delegate respondsToSelector:@selector(cafeSyncGroupUpdate:)]) {
-      [self.delegate cafeSyncGroupUpdate:syncGroupStatus];
+    if ([self.delegate respondsToSelector:@selector(syncUpdate:)]) {
+      [self.delegate syncUpdate:syncGroupStatus];
     }
   } else if ([event.name isEqualToString:@"CAFE_SYNC_GROUP_COMPLETE"]) {
     NSError *error;
@@ -123,8 +123,17 @@
     if (error) {
       return;
     }
-    if ([self.delegate respondsToSelector:@selector(cafeSyncGroupComplete:)]) {
-      [self.delegate cafeSyncGroupComplete:syncGroupStatus];
+    if ([self.delegate respondsToSelector:@selector(syncComplete:)]) {
+      [self.delegate syncComplete:syncGroupStatus];
+    }
+  } else if ([event.name isEqualToString:@"CAFE_SYNC_GROUP_FAILED"]) {
+    NSError *error;
+    CafeSyncGroupStatus *syncGroupStatus = [[CafeSyncGroupStatus alloc] initWithData:event.data error:&error];
+    if (error) {
+      return;
+    }
+    if ([self.delegate respondsToSelector:@selector(syncFailed:)]) {
+      [self.delegate syncFailed:syncGroupStatus];
     }
   }
 }

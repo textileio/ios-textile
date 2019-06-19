@@ -96,7 +96,7 @@
   NSLog(@"thread added: %@", threadId);
 }
 
-- (void)cafeSyncGroupUpdate:(CafeSyncGroupStatus *)status {
+- (void)syncUpdate:(CafeSyncGroupStatus *)status {
   if (status.error.length > 0) {
     NSLog(@"Status error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
   } else {
@@ -104,11 +104,19 @@
   }
 }
 
-- (void)cafeSyncGroupComplete:(CafeSyncGroupStatus *)status {
+- (void)syncComplete:(CafeSyncGroupStatus *)status {
   if (status.error.length > 0) {
     NSLog(@"Complete error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
   } else {
     NSLog(@"Complete for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
+  }
+}
+
+- (void)syncFailed:(CafeSyncGroupStatus *)status {
+  if (status.error.length > 0) {
+    NSLog(@"Failed with error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+  } else {
+    NSLog(@"Failed witout error message for %@", status.id_p);
   }
 }
 
