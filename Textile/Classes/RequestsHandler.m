@@ -51,9 +51,7 @@ dispatch_queue_t flushQueue;
 - (void)processQueue {
   NSLog(@"Flushing");
 
-  UIBackgroundTaskIdentifier taskId = [UIApplication.sharedApplication beginBackgroundTaskWithExpirationHandler:^{
-
-  }];
+  UIBackgroundTaskIdentifier taskId = [UIApplication.sharedApplication beginBackgroundTaskWithExpirationHandler:nil];
 
   NSError *error;
   NSData *cafeRequestsData = [self.node cafeRequests:-1 error:&error];
