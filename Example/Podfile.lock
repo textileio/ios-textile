@@ -1,5 +1,8 @@
 PODS:
   - Expecta (1.0.6)
+  - OCHamcrest (7.1.1)
+  - OCMockito (5.1.1):
+    - OCHamcrest (~> 7.0)
   - Protobuf (3.7.0)
   - Specta (1.0.7)
   - Textile (0.0.1-dev):
@@ -10,12 +13,15 @@ PODS:
 
 DEPENDENCIES:
   - Expecta
+  - OCMockito
   - Specta
   - Textile (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Expecta
+    - OCHamcrest
+    - OCMockito
     - Protobuf
     - Specta
     - TextileCore
@@ -26,11 +32,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  OCHamcrest: 3506736397451c35d8763ff0a9b13492e544115f
+  OCMockito: eccb29c256cbdd6c7bc206718cbb06ef737daa8b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   Textile: 967b1e770556ef01a0bd585bd32349dcf07ecbb9
   TextileCore: 229a481ba6a3f1a0d9abb1e46b58da8ada33ff5c
 
-PODFILE CHECKSUM: 9b49a030118caed5b52efabd9fef600159fbd3ff
+PODFILE CHECKSUM: 831e3c2f0befac6187a7502d4972fac52964b261
 
 COCOAPODS: 1.6.1
