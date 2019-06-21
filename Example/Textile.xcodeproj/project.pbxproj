@@ -39,6 +39,7 @@
 		93765C2222BB9D3F00357C72 /* TEST1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765C1222BB9CB900357C72 /* TEST1.JPG */; };
 		93765C2322BB9D3F00357C72 /* TEST3.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765C1322BB9CB900357C72 /* TEST3.JPG */; };
 		93765C2422BB9D3F00357C72 /* TEST2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765C1422BB9CB900357C72 /* TEST2.JPG */; };
+		93765C5722BCEB1600357C72 /* TEST1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 93765C1222BB9CB900357C72 /* TEST1.JPG */; };
 		B50F9773B6A3C0F031086B4F /* Pods_Textile_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD602B3F9AAACD7B5C425C1D /* Pods_Textile_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -405,6 +406,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				93765C5722BCEB1600357C72 /* TEST1.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

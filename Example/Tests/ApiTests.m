@@ -72,9 +72,7 @@ describe(@"public api", ^{
   it(@"should add an image", ^{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
     expect(path).toNot.beNil();
-    Strings *strings = [[Strings alloc] init];
-    [strings.valuesArray addObject:path];
-    waitUntilTimeout(5, ^(DoneCallback done) {
+    waitUntilTimeout(20, ^(DoneCallback done) {
       Strings *strings = [[Strings alloc] init];
       [strings.valuesArray addObject:path];
       [Textile.instance.files addFiles:strings threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
