@@ -7,7 +7,7 @@
 
 #import "RequestsHandler.h"
 #import "TextileApi.h"
-#import "Callback.h"
+#import "ProtoCallback.h"
 
 @interface RequestsHandler () <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
@@ -74,7 +74,7 @@ dispatch_queue_t flushQueue;
     // TODO: Is there any reason to call failCafeRequest before it is marked as pending?
     // TODO: Should we mark as pending before writing to disk or after?
 
-    Callback *cb = [[Callback alloc] initWithCompletion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
+    ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
       if (!data) {
         NSLog(@"error writing request: %@", error.localizedDescription);
         NSLog(@"Leaving");

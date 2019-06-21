@@ -23,7 +23,7 @@ describe(@"public api", ^{
 
   it(@"should be initialized", ^{
     NSError *e;
-    NSString *phrase = [Textile initializeWithDebug:NO logToDisk:NO error:&e];
+    NSString *phrase = [Textile initializeWithDebug:YES logToDisk:NO error:&e];
     Textile.instance.delegate = delegate;
     expect(phrase).notTo.beNil();
     expect(phrase.length).beGreaterThan(0);
@@ -36,12 +36,11 @@ describe(@"public api", ^{
   });
 
   it(@"should register a cafe", ^{
-    NSError *e;
     [Textile.instance.cafes
      register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
-     token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo"
-     error:&e];
-    expect(e).beNil();
+     token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
+       expect(error).beNil();
+     }];
   });
 
   it(@"should create a thread", ^{
@@ -73,9 +72,7 @@ describe(@"public api", ^{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
     expect(path).toNot.beNil();
     waitUntilTimeout(20, ^(DoneCallback done) {
-      Strings *strings = [[Strings alloc] init];
-      [strings.valuesArray addObject:path];
-      [Textile.instance.files addFiles:strings threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+      [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
         expect(error).beNil();
         expect(block).notTo.beNil();
         done();

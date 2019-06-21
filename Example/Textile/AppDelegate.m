@@ -121,14 +121,15 @@
 }
 
 - (void)test {
-  NSError *e;
   [Textile.instance.cafes
    register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
-   token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo"
-   error:&e];
-  if (e) {
-    NSLog(@"error registering: %@", e.localizedDescription);
-  }
+   token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
+    if (error) {
+      NSLog(@"error registering cafe: %@", error.localizedDescription);
+    } else {
+      NSLog(@"registered cafe");
+    }
+  }];
   AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
   schema.preset = AddThreadConfig_Schema_Preset_Media;
   AddThreadConfig *config = [[AddThreadConfig alloc] init];
@@ -137,6 +138,7 @@
   config.schema = schema;
   config.type = Thread_Type_Public;
   config.sharing = Thread_Sharing_Shared;
+  NSError *e;
   Thread *thread = [Textile.instance.threads add:config error:&e];
   if (e) {
     NSLog(@"error creating thread: %@", e.localizedDescription);
