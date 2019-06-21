@@ -161,11 +161,11 @@ dispatch_queue_t flushQueue;
  * behavior will be to use the default handling, which may involve user
  * interaction.
  */
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler {
-  NSLog(@"session didReceiveChallenge");
-  completionHandler(NSURLSessionAuthChallengeUseCredential, nil);
-}
+//- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+// completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler {
+//  NSLog(@"session didReceiveChallenge");
+//  completionHandler(NSURLSessionAuthChallengeUseCredential, nil);
+//}
 
 /* If an application has received an
  * -application:handleEventsForBackgroundURLSession:completionHandler:

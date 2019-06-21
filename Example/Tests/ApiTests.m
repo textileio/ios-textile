@@ -17,20 +17,20 @@ SpecBegin(ApiSpecs)
 
 describe(@"public api", ^{
 
+  __block TextileDelegateMock *delegate = [[TextileDelegateMock alloc] init];
   NSString *threadKey = @"threadKey";
   __block Thread *thread;
 
   it(@"should be initialized", ^{
     NSError *e;
     NSString *phrase = [Textile initializeWithDebug:NO logToDisk:NO error:&e];
+    Textile.instance.delegate = delegate;
     expect(phrase).notTo.beNil();
     expect(phrase.length).beGreaterThan(0);
     expect(e).beNil();
   });
 
   it(@"should notify node started and online", ^{
-    TextileDelegateMock *delegate = [[TextileDelegateMock alloc] init];
-    Textile.instance.delegate = delegate;
     assertWithTimeout(5, thatEventually(@(delegate.startedCalled)), isTrue());
     assertWithTimeout(60, thatEventually(@(delegate.onlineCalled)), isTrue());
   });
@@ -58,6 +58,15 @@ describe(@"public api", ^{
     expect(e).beNil();
     expect(thread).notTo.beNil();
     expect(thread.key).equal(threadKey);
+  });
+
+  it(@"should add a message", ^{
+    NSError *e;
+    NSString *val = [Textile.instance.messages add:thread.id_p body:@"heeey" error:&e];
+    expect(e).beNil();
+    expect(val).notTo.beNil();
+    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:val])), isTrue());
+    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:val])), isTrue());
   });
 
   it(@"should add an image", ^{

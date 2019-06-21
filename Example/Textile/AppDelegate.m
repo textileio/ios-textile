@@ -81,6 +81,7 @@
 
 - (void)nodeOnline {
   NSLog(@"delegate - node online");
+//  [self test];
 }
 
 - (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds {
@@ -117,6 +118,34 @@
   } else {
     NSLog(@"Failed witout error message for %@", status.id_p);
   }
+}
+
+- (void)test {
+  NSError *e;
+  [Textile.instance.cafes
+   register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+   token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo"
+   error:&e];
+  if (e) {
+    NSLog(@"error registering: %@", e.localizedDescription);
+  }
+  AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
+  schema.preset = AddThreadConfig_Schema_Preset_Media;
+  AddThreadConfig *config = [[AddThreadConfig alloc] init];
+  config.key = @"myKey";
+  config.name = @"test thread";
+  config.schema = schema;
+  config.type = Thread_Type_Public;
+  config.sharing = Thread_Sharing_Shared;
+  Thread *thread = [Textile.instance.threads add:config error:&e];
+  if (e) {
+    NSLog(@"error creating thread: %@", e.localizedDescription);
+  }
+  NSString *val = [Textile.instance.messages add:thread.id_p body:@"heeey" error:&e];
+  if (e) {
+    NSLog(@"error adding message: %@", e.localizedDescription);
+  }
+  NSLog(@"ok done");
 }
 
 @end

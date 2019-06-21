@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL startedCalled;
 @property (nonatomic, assign) BOOL onlineCalled;
+@property (nonatomic, strong) NSMutableSet *updatedItems;
+@property (nonatomic, strong) NSMutableSet *completeItems;
+@property (nonatomic, strong) NSMutableSet *failedItems;
 
 @end
 
