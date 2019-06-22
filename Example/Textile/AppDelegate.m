@@ -150,9 +150,7 @@
   NSLog(@"ok adding message");
 
   NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
-  Strings *strings = [[Strings alloc] init];
-  [strings.valuesArray addObject:path];
-  [Textile.instance.files addFiles:strings threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+  [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
     if (error) {
       NSLog(@"error adding image: %@", error.localizedDescription);
     } else {

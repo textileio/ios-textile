@@ -36,11 +36,14 @@ describe(@"public api", ^{
   });
 
   it(@"should register a cafe", ^{
-    [Textile.instance.cafes
-     register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
-     token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
-       expect(error).beNil();
-     }];
+    waitUntilTimeout(20, ^(DoneCallback done) {
+      [Textile.instance.cafes
+       register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+       token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
+         expect(error).beNil();
+         done();
+       }];
+    });
   });
 
   it(@"should create a thread", ^{
@@ -71,13 +74,18 @@ describe(@"public api", ^{
   it(@"should add an image", ^{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
     expect(path).toNot.beNil();
+    __block Block *b;
     waitUntilTimeout(20, ^(DoneCallback done) {
       [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
         expect(error).beNil();
         expect(block).notTo.beNil();
+        NSLog(@"block id = %@", block.data_p);
+        b = block;
         done();
       }];
     });
+    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
+    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
   });
 });
 
