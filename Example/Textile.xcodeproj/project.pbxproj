@@ -525,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/bin/xcrun simctl uninstall booted io.textile.TestsContainer\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#/usr/bin/xcrun simctl uninstall booted io.textile.TestsContainer\n";
 		};
 		A8E77F7FC41FFC6D3A3C6881 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
