@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSError *error;
-  NSString *recoveryPhrase = [Textile initializeWithDebug:FALSE logToDisk:FALSE error:&error];
+  NSString *recoveryPhrase = [Textile initializeWithDebug:NO logToDisk:NO error:&error];
   if (recoveryPhrase) {
     NSLog(@"recovery phrase: %@", recoveryPhrase);
   }
@@ -57,6 +57,12 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler {
+  if ([identifier isEqualToString:TEXTILE_BACKGROUND_SESSION_ID]) {
+    Textile.instance.backgroundCompletionHandler = completionHandler;
+  }
+}
+
 - (void)nodeStarted {
   NSLog(@"delegate - node started");
 }
@@ -75,6 +81,7 @@
 
 - (void)nodeOnline {
   NSLog(@"delegate - node online");
+//  [self test];
 }
 
 - (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds {
@@ -83,6 +90,74 @@
 
 - (void)canceledPendingNodeStop {
   NSLog(@"canceled pending stop");
+}
+
+- (void)threadAdded:(NSString *)threadId {
+  NSLog(@"thread added: %@", threadId);
+}
+
+- (void)syncUpdate:(CafeSyncGroupStatus *)status {
+  if (status.error.length > 0) {
+    NSLog(@"Status error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+  } else {
+    NSLog(@"Status for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
+  }
+}
+
+- (void)syncComplete:(CafeSyncGroupStatus *)status {
+  if (status.error.length > 0) {
+    NSLog(@"Complete error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+  } else {
+    NSLog(@"Complete for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
+  }
+}
+
+- (void)syncFailed:(CafeSyncGroupStatus *)status {
+  if (status.error.length > 0) {
+    NSLog(@"Failed with error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+  } else {
+    NSLog(@"Failed witout error message for %@", status.id_p);
+  }
+}
+
+- (void)test {
+  [Textile.instance.cafes
+   register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+   token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
+    if (error) {
+      NSLog(@"error registering cafe: %@", error.localizedDescription);
+    } else {
+      NSLog(@"registered cafe");
+    }
+  }];
+  AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
+  schema.preset = AddThreadConfig_Schema_Preset_Media;
+  AddThreadConfig *config = [[AddThreadConfig alloc] init];
+  config.key = @"myKey";
+  config.name = @"test thread";
+  config.schema = schema;
+  config.type = Thread_Type_Public;
+  config.sharing = Thread_Sharing_Shared;
+  NSError *e;
+  Thread *thread = [Textile.instance.threads add:config error:&e];
+  if (e) {
+    NSLog(@"error creating thread: %@", e.localizedDescription);
+  }
+  NSString *val = [Textile.instance.messages add:thread.id_p body:@"heeey" error:&e];
+  if (e) {
+    NSLog(@"error adding message: %@", e.localizedDescription);
+  }
+  NSLog(@"ok adding message");
+
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
+  [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+    if (error) {
+      NSLog(@"error adding image: %@", error.localizedDescription);
+    } else {
+      NSLog(@"added image: %@", block.id_p);
+    }
+  }];
+
 }
 
 @end

@@ -5,11 +5,15 @@ platform :ios, '10.0'
 target 'Textile_Example' do
   pod 'Textile', :path => '../'
 
+  target 'TestsContainer' do
+  end
+
   target 'Textile_Tests' do
     inherit! :search_paths
 
     pod 'Specta'
     pod 'Expecta'
+    pod 'OCMockito'
   end
 
   post_install do |installer|
