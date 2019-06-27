@@ -7,8 +7,8 @@ PODS:
   - Specta (1.0.7)
   - Textile (0.0.1-dev):
     - Protobuf (~> 3.7)
-    - TextileCore (~> 0.5.1)
-  - TextileCore (0.5.1):
+    - TextileCore (~> 0.5.2)
+  - TextileCore (0.5.2):
     - Protobuf (~> 3.7)
 
 DEPENDENCIES:
@@ -36,8 +36,8 @@ SPEC CHECKSUMS:
   OCMockito: eccb29c256cbdd6c7bc206718cbb06ef737daa8b
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Textile: 304a2e84e12f8f8321b653eaf3b3096682a94235
-  TextileCore: 1c2c6e1e45f7f1f9a50b04c5c5c2496f13f601ea
+  Textile: 67a2c69ad4c13a680a33b7352a09e2b04190794c
+  TextileCore: e23cfa1e59eb17c5e6c0aa6edacb784a641904f4
 
 PODFILE CHECKSUM: 831e3c2f0befac6187a7502d4972fac52964b261
 
