@@ -36,13 +36,41 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Textile : NSObject
 
 /**
- * Initialize the shared Textile instace, possibly returning the wallet recovery phrase
+ * Check if Texile is already initialized
+ * @param repoPath The path to the Textile repo
+ * @return A boolean value indicating if Textile is initialized or not
+ */
++ (BOOL)isInitialized:(NSString *)repoPath;
+
+/**
+ * Initialize the shared Textile instace with an existing account seed
+ * @param repoPath The path to the Textile repo
+ * @param seed The account seed
  * @param debug Sets the log level to debug or not
  * @param logToDisk Whether or not to write Textile logs to disk
  * @param error A reference to an error pointer that will be set in the case of an error
- * @return The wallet recovery phrase if it's the first time the node is being initialize, nil otherwise
+ * @return A boolean value indicating if Textile was initialized successfully
  */
-+ (nullable NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
++ (BOOL)initialize:(NSString *)repoPath seed:(NSString *)seed debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
+
+/**
+ * Initialize the shared Textile instace, creating a new wallet
+ * @param repoPath The path to the Textile repo
+ * @param debug Sets the log level to debug or not
+ * @param logToDisk Whether or not to write Textile logs to disk
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return The wallet recovery phrase or nil if there was an error
+ */
++ (NSString *)initializeCreatingNewWalletAndAccount:(NSString *)repoPath debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
+
+/**
+ * After initialization is complete, launch Textile
+ * @param repoPath The path to the Textile repo
+ * @param debug Sets the log level to debug or not
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return A boolean value indicating if Textile was launched successfully
+ */
++ (BOOL)launch:(NSString *)repoPath debug:(BOOL)debug error:(NSError **)error;
 
 /**
  * The shared Textile instance, should be used for all Textile API access

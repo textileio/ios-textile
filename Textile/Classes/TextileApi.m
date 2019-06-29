@@ -10,6 +10,7 @@
 #import "Messenger.h"
 #import "LifecycleManager.h"
 #import "RequestsHandler.h"
+#import "TEXWallet.h"
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
@@ -42,11 +43,10 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 @property (nonatomic, strong) LifecycleManager *lifecycleManager;
 @property (nonatomic, strong) RequestsHandler *requestsHandler;
 
-- (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
-- (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
-- (void)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError **)error;
++ (BOOL)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError **)error;
++ (BOOL)deleteRepo:(NSString *)repoPath error:(NSError **)error;
 - (void)migrateRepo:(NSString *)repoPath error:(NSError **)error;
-- (void)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError **)error;
+- (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError **)error;
 - (void)start:(NSError **)error;
 - (void)stop:(NSError **)error;
 
@@ -54,41 +54,66 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 @implementation Textile
 
-+ (NSString *)initializeWithDebug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
-  if (Textile.instance.node) {
++ (BOOL)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
+  MobileInitConfig *config = [[MobileInitConfig alloc] init];
+  config.seed = seed;
+  config.repoPath = repoPath;
+  config.logToDisk = logToDisk;
+  config.debug = debug;
+  return MobileInitRepo(config, error);
+}
+
++ (BOOL)deleteRepo:(NSString *)repoPath error:(NSError * _Nullable __autoreleasing *)error {
+  BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:repoPath];
+  if (exists) {
+    return [NSFileManager.defaultManager removeItemAtPath:repoPath error:error];
+  } else {
+    return YES;
+  }
+}
+
++ (BOOL)isInitialized:(NSString *)repoPath {
+  BOOL isDir;
+  BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:repoPath isDirectory:&isDir];
+  return exists && isDir;
+}
+
++ (BOOL)initialize:(NSString *)repoPath seed:(NSString *)seed debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
+  BOOL deleted = [Textile deleteRepo:repoPath error:error];
+  if (!deleted) {
+    return NO;
+  }
+  return [Textile initRepo:seed repoPath:repoPath logToDisk:logToDisk debug:debug error:error];
+}
+
++ (NSString *)initializeCreatingNewWalletAndAccount:(NSString *)repoPath debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
+  NSString *recoveryPhrase = [TEXWallet newWallet:12 error:error];
+  if (!recoveryPhrase) {
     return nil;
   }
-  NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-  NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+  MobileWalletAccount *account = [TEXWallet walletAccountAt:recoveryPhrase index:0 password:@"" error:error];
+  if (!account) {
+    return nil;
+  }
+  BOOL initialized = [Textile initialize:repoPath seed:account.seed debug:debug logToDisk:logToDisk error:error];
+  if (!initialized) {
+    return nil;
+  }
+  return recoveryPhrase;
+}
+
++ (BOOL)launch:(NSString *)repoPath debug:(BOOL)debug error:(NSError * _Nullable __autoreleasing *)error {
   Textile.instance.repoPath = repoPath;
   Textile.instance.requestsHandler = [[RequestsHandler alloc] init];
   Textile.instance.messenger = [[Messenger alloc] init];
-  [Textile.instance newTextile:repoPath debug:debug error:error];
-  if (*error && (*error).code == 1) {
-    *error = nil;
-    NSString *recoveryPhrase = [Textile.instance newWallet:12 error:error];
-    if (*error) {
-      return nil;
-    }
-    MobileWalletAccount *account = [Textile.instance walletAccountAt:recoveryPhrase index:0 password:@"" error:error];
-    if (*error) {
-      return nil;
-    }
-    [Textile.instance initRepo:account.seed repoPath:repoPath logToDisk:logToDisk debug:debug error:error];
-    if (*error) {
-      return nil;
-    }
-    [Textile.instance newTextile:repoPath debug:debug error:error];
-    if (*error) {
-      return nil;
-    }
+  MobileMobile *node = [Textile.instance newTextile:repoPath debug:debug error:error];
+  if (node) {
+    Textile.instance.node = node;
     [Textile.instance createNodeDependants];
-    return recoveryPhrase;
-  } else if (*error) {
-    return nil;
+    return YES;
+  } else {
+    return NO;
   }
-  [Textile.instance createNodeDependants];
-  return nil;
 }
 
 + (Textile *)instance {
@@ -106,41 +131,18 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.messenger.delegate = delegate;
 }
 
-- (NSString *)newWallet:(NSInteger)wordCount error:(NSError *__autoreleasing *)error {
-  NSString *recoveryPhrase = MobileNewWallet(wordCount, error);
-  return recoveryPhrase;
-}
-
-- (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError *__autoreleasing *)error {
-  NSData *data = MobileWalletAccountAt(phrase, index, password, error);
-  if (*error) {
-    return nil;
-  }
-  MobileWalletAccount *account = [[MobileWalletAccount alloc] initWithData:data error:error];
-  return account;
-}
-
-- (void)initRepo:(NSString *)seed repoPath:(NSString *)repoPath logToDisk:(BOOL)logToDisk debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
-  MobileInitConfig *config = [[MobileInitConfig alloc] init];
-  config.seed = seed;
-  config.repoPath = repoPath;
-  config.logToDisk = logToDisk;
-  config.debug = debug;
-  MobileInitRepo(config, error);
-}
-
 - (void)migrateRepo:(NSString *)repoPath error:(NSError *__autoreleasing *)error {
   MobileMigrateConfig *config = [[MobileMigrateConfig alloc] init];
   config.repoPath = repoPath;
   MobileMigrateRepo(config, error);
 }
 
-- (void)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
+- (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug error:(NSError *__autoreleasing *)error {
   MobileRunConfig *config = [[MobileRunConfig alloc] init];
   config.repoPath = repoPath;
   config.debug = debug;
   config.cafeOutboxHandler = self.requestsHandler;
-  self.node = MobileNewTextile(config, self.messenger, error);
+  return MobileNewTextile(config, self.messenger, error);
 }
 
 - (void)start:(NSError *__autoreleasing *)error {
@@ -224,4 +226,3 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 }
 
 @end
-
