@@ -2,8 +2,8 @@
 
 [![Made by Textile](https://img.shields.io/badge/made%20by-Textile-informational.svg?style=popout-square)](https://textile.io)
 [![Chat on Slack](https://img.shields.io/badge/slack-slack.textile.io-informational.svg?style=popout-square)](https://slack.textile.io)
-[![GitHub license](https://img.shields.io/github/license/textileio/android-textile.svg?style=popout-square)](./LICENSE)
-[![CircleCI branch](https://img.shields.io/circleci/project/github/textileio/ios-textile/master.svg?style=popout-square)](https://circleci.com/gh/textileio/go-textile)
+[![GitHub license](https://img.shields.io/github/license/textileio/ios-textile.svg?style=popout-square)](./LICENSE)
+[![CircleCI branch](https://img.shields.io/circleci/project/github/textileio/ios-textile/master.svg?style=popout-square)](https://circleci.com/gh/textileio/ios-textile)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=popout-square)](https://github.com/RichardLitt/standard-readme)
 ![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg?style=popout-square)
 [![Version](https://img.shields.io/cocoapods/v/Textile.svg?style=popout-square)](https://cocoapods.org/pods/Textile)
