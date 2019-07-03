@@ -14,7 +14,7 @@
     <a title="IpfsApi Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Textile Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Textile Docs</a> (80% documented)</p>
         <p class="header-right"><a href="https://github.com/textileio/ios-textile"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -45,6 +45,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FeedApi.html">FeedApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FeedItemData.html">FeedItemData</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FilesApi.html">FilesApi</a>
@@ -88,10 +91,26 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@TEXTILE_BACKGROUND_SESSION_ID">TEXTILE_BACKGROUND_SESSION_ID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/TextileDelegate.html">TextileDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions/FeedItemType.html">FeedItemType</a>
               </li>
             </ul>
           </li>
@@ -171,9 +190,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)IpfsApi(im)dataAtPath:error:"></a>
-                    <a name="//apple_ref/objc/Method/-dataAtPath:error:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)IpfsApi(im)dataAtPath:error:">-dataAtPath:error:</a>
+                    <a name="/c:objc(cs)IpfsApi(im)dataAtPath:completion:"></a>
+                    <a name="//apple_ref/objc/Method/-dataAtPath:completion:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)IpfsApi(im)dataAtPath:completion:">-dataAtPath:completion:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -188,13 +207,14 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nf">dataAtPath</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span>
-                         <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dataAtPath</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span>
+        <span class="nf">completion</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">,</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">,</span>
+                                     <span class="n">NSError</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="n">completion</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">atPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">atPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Data</span><span class="p">?,</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -217,21 +237,17 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>error</em>
+                                <em>completion</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                  <p>A block that will get called with the results of the query</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The raw data</p>
                       </div>
                     </section>
                   </div>
@@ -241,7 +257,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://textile.io" target="_blank" rel="external">Textile</a>. All rights reserved. (Last updated: 2019-05-24)</p>
+          <p>&copy; 2019 <a class="link" href="https://textile.io" target="_blank" rel="external">Textile</a>. All rights reserved. (Last updated: 2019-07-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

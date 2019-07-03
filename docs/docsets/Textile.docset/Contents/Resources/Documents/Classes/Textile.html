@@ -14,7 +14,7 @@
     <a title="Textile Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Textile Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Textile Docs</a> (80% documented)</p>
         <p class="header-right"><a href="https://github.com/textileio/ios-textile"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -45,6 +45,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FeedApi.html">FeedApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FeedItemData.html">FeedItemData</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/FilesApi.html">FilesApi</a>
@@ -88,10 +91,26 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@TEXTILE_BACKGROUND_SESSION_ID">TEXTILE_BACKGROUND_SESSION_ID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/TextileDelegate.html">TextileDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions/FeedItemType.html">FeedItemType</a>
               </li>
             </ul>
           </li>
@@ -116,9 +135,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)Textile(cm)initializeWithDebug:logToDisk:error:"></a>
-                    <a name="//apple_ref/objc/Method/+initializeWithDebug:logToDisk:error:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)Textile(cm)initializeWithDebug:logToDisk:error:">+initializeWithDebug:logToDisk:error:</a>
+                    <a name="/c:objc(cs)Textile(cm)newWallet:error:"></a>
+                    <a name="//apple_ref/objc/Method/+newWallet:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)newWallet:error:">+newWallet:error:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -126,21 +145,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialize the shared Textile instace, possibly returning the wallet recovery phrase</p>
+                        <p>Create a new Textile wallet</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">initializeWithDebug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span>
-                                 <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span>
-                                     <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">newWallet</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">wordCount</span>
+                          <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">withDebug</span> <span class="nv">debug</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">logToDisk</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">newWallet</span><span class="p">(</span><span class="n">_</span> <span class="nv">wordCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -148,6 +166,250 @@
                         <h4>Parameters</h4>
                         <table class="graybox">
                           <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>wordCount</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of words the wallet recovery phrase should contain</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The new wallet recovery phrase</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Textile(cm)walletAccountAt:index:password:error:"></a>
+                    <a name="//apple_ref/objc/Method/+walletAccountAt:index:password:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)walletAccountAt:index:password:error:">+walletAccountAt:index:password:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Resolve a wallet account</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">walletAccountAt</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">phrase</span>
+                <span class="nf">index</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">index</span>
+             <span class="nf">password</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span>
+                <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">walletAccount</span><span class="p">(</span><span class="n">at</span> <span class="nv">phrase</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>phrase</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The wallet recovery phrase</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the account to resolve</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The wallet password or nil if there is no password</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The wallet account</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Textile(cm)isInitialized:"></a>
+                    <a name="//apple_ref/objc/Method/+isInitialized:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)isInitialized:">+isInitialized:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if Texile is already initialized</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">isInitialized</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">repoPath</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">isInitialized</span><span class="p">(</span><span class="n">_</span> <span class="nv">repoPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>repoPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path to the Textile repo</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A boolean value indicating if Textile is initialized or not</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Textile(cm)initialize:seed:debug:logToDisk:error:"></a>
+                    <a name="//apple_ref/objc/Method/+initialize:seed:debug:logToDisk:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)initialize:seed:debug:logToDisk:error:">+initialize:seed:debug:logToDisk:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the shared Textile instace with an existing account seed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">initialize</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">repoPath</span>
+              <span class="nf">seed</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">seed</span>
+             <span class="nf">debug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span>
+         <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span>
+             <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">_</span> <span class="nv">repoPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">seed</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">debug</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">logToDisk</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>repoPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path to the Textile repo</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>seed</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The account seed</p>
+                                </div>
+                              </td>
+                            </tr>
                             <tr>
                               <td>
                                 <code>
@@ -189,7 +451,183 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The wallet recovery phrase if it&rsquo;s the first time the node is being initialize, nil otherwise</p>
+                        <p>A boolean value indicating if Textile was initialized successfully</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Textile(cm)initializeCreatingNewWalletAndAccount:debug:logToDisk:error:"></a>
+                    <a name="//apple_ref/objc/Method/+initializeCreatingNewWalletAndAccount:debug:logToDisk:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)initializeCreatingNewWalletAndAccount:debug:logToDisk:error:">+initializeCreatingNewWalletAndAccount:debug:logToDisk:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the shared Textile instace, creating a new wallet</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span>
+    <span class="nf">initializeCreatingNewWalletAndAccount</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">repoPath</span>
+                                    <span class="nf">debug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span>
+                                <span class="nf">logToDisk</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">logToDisk</span>
+                                    <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initializeCreatingNewWalletAndAccount</span><span class="p">(</span><span class="n">_</span> <span class="nv">repoPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">debug</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">logToDisk</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>repoPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path to the Textile repo</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>debug</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Sets the log level to debug or not</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>logToDisk</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether or not to write Textile logs to disk</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The wallet recovery phrase or nil if there was an error</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Textile(cm)launch:debug:error:"></a>
+                    <a name="//apple_ref/objc/Method/+launch:debug:error:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(cm)launch:debug:error:">+launch:debug:error:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>After initialization is complete, launch Textile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">launch</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">repoPath</span>
+         <span class="nf">debug</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">debug</span>
+         <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">launch</span><span class="p">(</span><span class="n">_</span> <span class="nv">repoPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">debug</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>repoPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path to the Textile repo</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>debug</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Sets the log level to debug or not</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A reference to an error pointer that will be set in the case of an error</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A boolean value indicating if Textile was launched successfully</p>
                       </div>
                     </section>
                   </div>
@@ -805,9 +1243,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)Textile(py)repoPath"></a>
-                    <a name="//apple_ref/objc/Property/repoPath" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)Textile(py)repoPath">repoPath</a>
+                    <a name="/c:objc(cs)Textile(py)backgroundCompletionHandler"></a>
+                    <a name="//apple_ref/objc/Property/backgroundCompletionHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Textile(py)backgroundCompletionHandler">backgroundCompletionHandler</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -815,19 +1253,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The path to the local Textile repository</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">repoPath</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">backgroundCompletionHandler</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">repoPath</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">backgroundCompletionHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1015,7 +1453,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://textile.io" target="_blank" rel="external">Textile</a>. All rights reserved. (Last updated: 2019-05-24)</p>
+          <p>&copy; 2019 <a class="link" href="https://textile.io" target="_blank" rel="external">Textile</a>. All rights reserved. (Last updated: 2019-07-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
