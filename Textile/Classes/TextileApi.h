@@ -36,6 +36,24 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Textile : NSObject
 
 /**
+ * Create a new Textile wallet
+ * @param wordCount The number of words the wallet recovery phrase should contain
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return The new wallet recovery phrase
+ */
++ (NSString *)newWallet:(NSInteger)wordCount error:(NSError **)error;
+
+/**
+ * Resolve a wallet account
+ * @param phrase The wallet recovery phrase
+ * @param index The index of the account to resolve
+ * @param password The wallet password or nil if there is no password
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return The wallet account
+ */
++ (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
+
+/**
  * Check if Texile is already initialized
  * @param repoPath The path to the Textile repo
  * @return A boolean value indicating if Textile is initialized or not
@@ -166,11 +184,6 @@ NS_ASSUME_NONNULL_BEGIN
  * Provides access to Textile threads related APIs
  */
 @property (nonatomic, readonly, strong) ThreadsApi *threads;
-
-/**
- * The path to the local Textile repository
- */
-@property (nonatomic, readonly, strong) NSString *repoPath;
 
 @property (nonatomic, copy, nullable) void (^backgroundCompletionHandler)(void);
 
