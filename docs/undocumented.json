@@ -1,6 +1,229 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 21,
+      "symbol": "",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 21,
+      "symbol": "FeedItemType",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 21,
+      "symbol": "FeedItemType.",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 22,
+      "symbol": ".FeedItemTypeText",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 22,
+      "symbol": "FeedItemType..FeedItemTypeText",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 23,
+      "symbol": ".FeedItemTypeComment",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 23,
+      "symbol": "FeedItemType..FeedItemTypeComment",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 24,
+      "symbol": ".FeedItemTypeLike",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 24,
+      "symbol": "FeedItemType..FeedItemTypeLike",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 25,
+      "symbol": ".FeedItemTypeFiles",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 25,
+      "symbol": "FeedItemType..FeedItemTypeFiles",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 26,
+      "symbol": ".FeedItemTypeIgnore",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 26,
+      "symbol": "FeedItemType..FeedItemTypeIgnore",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 27,
+      "symbol": ".FeedItemTypeJoin",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 27,
+      "symbol": "FeedItemType..FeedItemTypeJoin",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 28,
+      "symbol": ".FeedItemTypeLeave",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 28,
+      "symbol": "FeedItemType..FeedItemTypeLeave",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 29,
+      "symbol": ".FeedItemTypeAnnounce",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 29,
+      "symbol": "FeedItemType..FeedItemTypeAnnounce",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 32,
+      "symbol": "FeedItemData",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 34,
+      "symbol": "FeedItemData.type",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 35,
+      "symbol": "FeedItemData.block",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 36,
+      "symbol": "FeedItemData.text",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 37,
+      "symbol": "FeedItemData.comment",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 38,
+      "symbol": "FeedItemData.like",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 39,
+      "symbol": "FeedItemData.files",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 40,
+      "symbol": "FeedItemData.ignore",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 41,
+      "symbol": "FeedItemData.join",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 42,
+      "symbol": "FeedItemData.leave",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/FeedItemData.h",
+      "line": 43,
+      "symbol": "FeedItemData.announce",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 29,
+      "symbol": "TEXTILE_BACKGROUND_SESSION_ID",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/TextileApi.h",
+      "line": 188,
+      "symbol": "Textile.backgroundCompletionHandler",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/aaron/Documents/Code/Set/ios-textile"
 }

@@ -22,12 +22,20 @@ describe(@"public api", ^{
   __block Thread *thread;
 
   it(@"should be initialized", ^{
+    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+
     NSError *e;
-    NSString *phrase = [Textile initializeWithDebug:YES logToDisk:NO error:&e];
-    Textile.instance.delegate = delegate;
+    NSString *phrase = [Textile initializeCreatingNewWalletAndAccount:repoPath debug:YES logToDisk:NO error:&e];
     expect(phrase).notTo.beNil();
     expect(phrase.length).beGreaterThan(0);
     expect(e).beNil();
+
+    BOOL launched = [Textile launch:repoPath debug:YES error:&e];
+    expect(launched).beTruthy();
+    expect(e).beNil();
+
+    Textile.instance.delegate = delegate;
   });
 
   it(@"should notify node started and online", ^{

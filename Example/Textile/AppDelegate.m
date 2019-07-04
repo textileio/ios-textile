@@ -17,14 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSError *error;
-  NSString *recoveryPhrase = [Textile initializeWithDebug:NO logToDisk:NO error:&error];
-  if (recoveryPhrase) {
+  NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+  NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+
+  if (![Textile isInitialized:repoPath]) {
+    NSError *error;
+    NSString *recoveryPhrase = [Textile initializeCreatingNewWalletAndAccount:repoPath debug:NO logToDisk:NO error:&error];
     NSLog(@"recovery phrase: %@", recoveryPhrase);
   }
-  if (error) {
-    NSLog(@"initialize error: %@", error.localizedDescription);
+
+  NSError *error;
+  BOOL launched = [Textile launch:repoPath debug:NO error:&error];
+  if (!launched) {
+    NSLog(@"launch error: %@", error.localizedDescription);
   }
+  
   Textile.instance.delegate = self;
 
   return YES;
