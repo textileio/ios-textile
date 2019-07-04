@@ -54,14 +54,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (MobileWalletAccount *)walletAccountAt:(NSString *)phrase index:(NSInteger)index password:(NSString *)password error:(NSError **)error;
 
 /**
- * Check if Texile is already initialized
+ * Check if Textile is already initialized
  * @param repoPath The path to the Textile repo
  * @return A boolean value indicating if Textile is initialized or not
  */
 + (BOOL)isInitialized:(NSString *)repoPath;
 
 /**
- * Initialize the shared Textile instace with an existing account seed
+ * Initialize the shared Textile instance with an existing account seed
  * @param repoPath The path to the Textile repo
  * @param seed The account seed
  * @param debug Sets the log level to debug or not
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)initialize:(NSString *)repoPath seed:(NSString *)seed debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError **)error;
 
 /**
- * Initialize the shared Textile instace, creating a new wallet
+ * Initialize the shared Textile instance, creating a new wallet
  * @param repoPath The path to the Textile repo
  * @param debug Sets the log level to debug or not
  * @param logToDisk Whether or not to write Textile logs to disk
