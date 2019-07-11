@@ -19,12 +19,16 @@
 
 const int BATCH_SIZE = 16;
 
+// This serial queue is used to process calls to flush so we only process one at a time
 dispatch_queue_t flushQueue;
+
+// This serial queue is used to process complete http requests one at a time
+dispatch_queue_t processCompleteTaskQueue;
 
 - (instancetype)init {
   if (self = [super init]) {
-    // This serial queue is used to process calls to flush so we only process one at a time
     flushQueue = dispatch_queue_create("io.textile.flushQueue", DISPATCH_QUEUE_SERIAL);
+    processCompleteTaskQueue = dispatch_queue_create("io.textile.processCompleteQueue", DISPATCH_QUEUE_SERIAL);
 
     // Configure and create our NSURLSession used for uplaods
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:TEXTILE_BACKGROUND_SESSION_ID];
@@ -292,22 +296,68 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error {
 //  NSLog(@"session task didCompleteWithError: %@, %@, %@", task.originalRequest, task.response, error.localizedDescription);
+  dispatch_async(processCompleteTaskQueue, ^{
+    [self processCompleteTask:task error:error];
+  });
+}
+
+- (void)processCompleteTask:(NSURLSessionTask *)task error:(nullable NSError *)error {
   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
   if (error) {
     [self.node failCafeRequest:task.taskDescription reason:error.localizedDescription error:nil];
   } else if (response.statusCode < 200 || response.statusCode > 299) {
     NSString *error = [NSString stringWithFormat:@"status code: %ld", (long)response.statusCode];
     [self.node failCafeRequest:task.taskDescription reason:error error:nil];
+  } else if(response.statusCode == 401) {
+    [self process401:task.taskDescription];
   } else {
     [self.node completeCafeRequest:task.taskDescription error:nil];
 
     // We can call flush again if there are no more pending tasks
     [self.session getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> * _Nonnull tasks) {
-      if ([tasks count] == 0) {
+      if (tasks.count == 0) {
         [self flush];
       }
     }];
   }
+}
+
+- (void)process401:(NSString *)requestId {
+  CafeRequest *request = nil; // TODO: Get this from a new api
+  [Textile.instance.cafes refreshSession:request.cafe.peer completion:^(CafeSession * _Nullable session, NSError * _Nonnull error) {
+    if (error) {
+      if (error.code == 0) { // TODO: This should be the code that corresponds to "refresh token expired"
+        // The refresh token is expired, ask the host app to re-register the cafe
+        if ([self.delegate respondsToSelector:@selector(registerCafeWithPeerId:completion:)]) {
+          [self.delegate registerCafeWithPeerId:request.cafe.peer completion:^(NSError *error) {
+            if (error) {
+              // If the delegate failed to register the cafe, fail the cafe request
+              [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
+            } else {
+              // We registered the cafe so release the request to get processed again later using new session
+              NSError *error;
+              BOOL success = [self.node cafeRequestNotPending:requestId error:&error];
+              if (!success) {
+                [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
+              }
+            }
+          }];
+        } else {
+          [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
+        }
+      } else {
+        // Session refresh failed for some other reason so fail the cafe request
+        [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
+      }
+    } else {
+      // We refreshed the session so release the request to get processed again later using new session
+      NSError *error;
+      BOOL success = [self.node cafeRequestNotPending:requestId error:&error];
+      if (!success) {
+        [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
+      }
+    }
+  }];
 }
 
 #pragma mark NSURLSessionDataDelegate

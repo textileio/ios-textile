@@ -127,6 +127,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   _delegate = delegate;
   self.lifecycleManager.delegate = delegate;
   self.messenger.delegate = delegate;
+  self.requestsHandler.delegate = delegate;
 }
 
 - (NSString *)version {
@@ -171,6 +172,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
     self.threads = nil;
 
     self.lifecycleManager = nil;
+    self.requestsHandler = nil;
   }
 }
 

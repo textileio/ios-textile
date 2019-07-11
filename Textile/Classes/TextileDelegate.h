@@ -160,6 +160,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)syncFailed:(CafeSyncGroupStatus *)status;
 
+@optional
+/**
+ * Called when the Textile sdk needs you to register a cafe because the refresh token is expired
+ * @param peerId The peer id of the cafe to register
+ * @param completion A block that must be called after cafe registration, passing in the error if registration failed
+ */
+- (void)registerCafeWithPeerId:(NSString *)peerId completion:(void (^)(NSError *))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END
