@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   # https://stackoverflow.com/questions/50024087/gomobile-bind-producing-library-with-pie-disabled-i386-arch
   s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1', 'OTHER_LDFLAGS[arch=i386]' => '-Wl,-read_only_relocs,suppress' }
   s.dependency 'Protobuf', '~> 3.7'
-  s.dependency 'TextileCore', '~> 0.6.2'
+  s.dependency 'TextileCore', '~> 0.6.4'
 end
