@@ -12,6 +12,9 @@
 
 - (instancetype)init {
   if (self = [super init]) {
+    self.startedCalledCount = 0;
+    self.onlineCalledCount = 0;
+    self.stoppedCalledCount = 0;
     self.updatedItems = [[NSMutableSet alloc] init];
     self.completeItems = [[NSMutableSet alloc] init];
     self.failedItems = [[NSMutableSet alloc] init];
@@ -20,11 +23,15 @@
 }
 
 - (void)nodeStarted {
-  self.startedCalled = YES;
+  self.startedCalledCount = self.startedCalledCount + 1;
 }
 
 - (void)nodeOnline {
-  self.onlineCalled = YES;
+  self.onlineCalledCount = self.onlineCalledCount + 1;
+}
+
+- (void)nodeStopped {
+  self.stoppedCalledCount = self.stoppedCalledCount + 1;
 }
 
 - (void)syncUpdate:(CafeSyncGroupStatus *)status {

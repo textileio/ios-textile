@@ -39,8 +39,8 @@ describe(@"public api", ^{
   });
 
   it(@"should notify node started and online", ^{
-    assertWithTimeout(5, thatEventually(@(delegate.startedCalled)), isTrue());
-    assertWithTimeout(60, thatEventually(@(delegate.onlineCalled)), isTrue());
+    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(1));
+    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(1));
   });
 
   it(@"should register a cafe", ^{
@@ -91,6 +91,41 @@ describe(@"public api", ^{
         b = block;
         done();
       }];
+    });
+    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
+    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
+  });
+
+  it(@"should stop", ^{
+    NSError *e;
+    [Textile.instance.node stop:&e];
+    expect(e).beNil();
+    assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
+  });
+
+  it(@"should start again", ^{
+    NSError *e;
+    [Textile.instance.node start:&e];
+    expect(e).beNil();
+    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(2));
+    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
+  });
+
+  it(@"should add another image", ^{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST2" ofType:@"JPG"];
+    expect(path).toNot.beNil();
+    __block Block *b;
+    waitUntilTimeout(20, ^(DoneCallback done) {
+      [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+        expect(error).beNil();
+        expect(block).notTo.beNil();
+        NSLog(@"block id = %@", block.data_p);
+        b = block;
+        done();
+      }];
+      NSError *e;
+      [Textile.instance.node stop:&e];
+      expect(e).beNil();
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
     assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());

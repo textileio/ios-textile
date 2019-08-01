@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TextileDelegateMock : NSObject <TextileDelegate>
 
-@property (nonatomic, assign) BOOL startedCalled;
-@property (nonatomic, assign) BOOL onlineCalled;
+@property (nonatomic, assign) int startedCalledCount;
+@property (nonatomic, assign) int onlineCalledCount;
+@property (nonatomic, assign) int stoppedCalledCount;
 @property (nonatomic, strong) NSMutableSet *updatedItems;
 @property (nonatomic, strong) NSMutableSet *completeItems;
 @property (nonatomic, strong) NSMutableSet *failedItems;
