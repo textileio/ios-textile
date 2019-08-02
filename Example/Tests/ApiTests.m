@@ -43,11 +43,6 @@ describe(@"public api", ^{
     assertWithTimeout(60, thatEventually(@(delegate.onlineCalled)), isTrue());
   });
 
-  it(@"should be the right textile version", ^{
-    NSString *version = [Textile.instance version];
-    expect(version).equal(@"v0.6.7");
-  });
-
   it(@"should register a cafe", ^{
     waitUntilTimeout(20, ^(DoneCallback done) {
       [Textile.instance.cafes
