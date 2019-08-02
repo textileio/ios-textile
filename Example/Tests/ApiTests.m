@@ -96,22 +96,22 @@ describe(@"public api", ^{
     assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
   });
 
-  it(@"should stop", ^{
-    NSError *e;
-    [Textile.instance.node stop:&e];
-    expect(e).beNil();
-    assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
-  });
+//  it(@"should stop", ^{
+//    NSError *e;
+//    [Textile.instance.node stop:&e];
+//    expect(e).beNil();
+//    assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
+//  });
+//
+//  it(@"should start again", ^{
+//    NSError *e;
+//    [Textile.instance.node start:&e];
+//    expect(e).beNil();
+//    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(2));
+//    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
+//  });
 
-  it(@"should start again", ^{
-    NSError *e;
-    [Textile.instance.node start:&e];
-    expect(e).beNil();
-    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(2));
-    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
-  });
-
-  it(@"should add another image", ^{
+  it(@"should add another image before stop", ^{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST2" ofType:@"JPG"];
     expect(path).toNot.beNil();
     __block Block *b;
