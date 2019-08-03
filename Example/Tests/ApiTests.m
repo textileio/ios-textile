@@ -23,7 +23,7 @@ describe(@"public api", ^{
 
   it(@"should be initialized", ^{
     NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+    NSString *repoPath = [documents stringByAppendingPathComponent:@"textile"];
 
     NSError *e;
     NSString *phrase = [Textile initializeCreatingNewWalletAndAccount:repoPath debug:YES logToDisk:NO error:&e];
@@ -56,7 +56,7 @@ describe(@"public api", ^{
 
   it(@"should create a thread", ^{
     AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
-    schema.preset = AddThreadConfig_Schema_Preset_Media;
+    schema.preset = AddThreadConfig_Schema_Preset_Blob;
     AddThreadConfig *config = [[AddThreadConfig alloc] init];
     config.key = threadKey;
     config.name = @"test thread";
@@ -79,12 +79,12 @@ describe(@"public api", ^{
     assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:val])), isTrue());
   });
 
-  it(@"should add an image", ^{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
-    expect(path).toNot.beNil();
+  it(@"should add data", ^{
     __block Block *b;
     waitUntilTimeout(20, ^(DoneCallback done) {
-      [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+      NSData* data = [@"hello again world" dataUsingEncoding:NSUTF8StringEncoding];
+      NSString *dataStr = [data base64EncodedStringWithOptions:0];
+      [Textile.instance.files addData:dataStr threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
         expect(error).beNil();
         expect(block).notTo.beNil();
         NSLog(@"block id = %@", block.data_p);
@@ -111,25 +111,25 @@ describe(@"public api", ^{
     assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
   });
 
-  it(@"should add another image", ^{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST2" ofType:@"JPG"];
-    expect(path).toNot.beNil();
-    __block Block *b;
-    waitUntilTimeout(20, ^(DoneCallback done) {
-      [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
-        expect(error).beNil();
-        expect(block).notTo.beNil();
-        NSLog(@"block id = %@", block.data_p);
-        b = block;
-        done();
-      }];
-      NSError *e;
-      [Textile.instance.node stop:&e];
-      expect(e).beNil();
-    });
-    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
-    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
-  });
+//  it(@"should add an image", ^{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
+//    expect(path).toNot.beNil();
+//    __block Block *b;
+//    waitUntilTimeout(20, ^(DoneCallback done) {
+//      [Textile.instance.files addFiles:path threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+//        expect(error).beNil();
+//        expect(block).notTo.beNil();
+//        NSLog(@"block id = %@", block.data_p);
+//        b = block;
+//        done();
+//      }];
+//      NSError *e;
+//      [Textile.instance.node stop:&e];
+//      expect(e).beNil();
+//    });
+//    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
+//    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
+//  });
 });
 
 SpecEnd
