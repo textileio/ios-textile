@@ -76,7 +76,6 @@ describe(@"public api", ^{
     expect(e).beNil();
     expect(val).notTo.beNil();
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:val])), isTrue());
-    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:val])), isTrue());
   });
 
   it(@"should add data", ^{
@@ -93,7 +92,6 @@ describe(@"public api", ^{
       }];
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
-    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
   });
 
   it(@"should add a file before stopping", ^{
