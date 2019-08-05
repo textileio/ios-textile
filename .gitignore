@@ -19,6 +19,9 @@ DerivedData
 *.hmap
 *.ipa
 
+# Xcode Patch
+**/xcshareddata/WorkspaceSettings.xcsettings
+
 # Bundler
 .bundle
 

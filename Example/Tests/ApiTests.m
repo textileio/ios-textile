@@ -23,7 +23,7 @@ describe(@"public api", ^{
 
   it(@"should be initialized", ^{
     NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *repoPath = [documents stringByAppendingPathComponent:@"textile-go"];
+    NSString *repoPath = [documents stringByAppendingPathComponent:@"textile"];
 
     NSError *e;
     NSString *phrase = [Textile initializeCreatingNewWalletAndAccount:repoPath debug:YES logToDisk:NO error:&e];
@@ -39,8 +39,13 @@ describe(@"public api", ^{
   });
 
   it(@"should notify node started and online", ^{
-    assertWithTimeout(5, thatEventually(@(delegate.startedCalled)), isTrue());
-    assertWithTimeout(60, thatEventually(@(delegate.onlineCalled)), isTrue());
+    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(1));
+    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(1));
+  });
+
+  it(@"should be the right textile version", ^{
+    NSString *version = Textile.instance.version;
+    expect(version).equal(@"v0.6.9");
   });
 
   it(@"should register a cafe", ^{
@@ -56,7 +61,7 @@ describe(@"public api", ^{
 
   it(@"should create a thread", ^{
     AddThreadConfig_Schema *schema = [[AddThreadConfig_Schema alloc] init];
-    schema.preset = AddThreadConfig_Schema_Preset_Media;
+    schema.preset = AddThreadConfig_Schema_Preset_Blob;
     AddThreadConfig *config = [[AddThreadConfig alloc] init];
     config.key = threadKey;
     config.name = @"test thread";
@@ -76,10 +81,25 @@ describe(@"public api", ^{
     expect(e).beNil();
     expect(val).notTo.beNil();
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:val])), isTrue());
-    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:val])), isTrue());
   });
 
-  it(@"should add an image", ^{
+  it(@"should add data", ^{
+    __block Block *b;
+    waitUntilTimeout(20, ^(DoneCallback done) {
+      NSData* data = [@"hello again world" dataUsingEncoding:NSUTF8StringEncoding];
+      NSString *dataStr = [data base64EncodedStringWithOptions:0];
+      [Textile.instance.files addData:dataStr threadId:thread.id_p caption:@"cool" completion:^(Block * _Nullable block, NSError * _Nonnull error) {
+        expect(error).beNil();
+        expect(block).notTo.beNil();
+        NSLog(@"block id = %@", block.data_p);
+        b = block;
+        done();
+      }];
+    });
+    assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
+  });
+
+  it(@"should add a file before stopping", ^{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TEST1" ofType:@"JPG"];
     expect(path).toNot.beNil();
     __block Block *b;
@@ -91,10 +111,29 @@ describe(@"public api", ^{
         b = block;
         done();
       }];
+      NSError *e;
+      [Textile.instance.node stop:&e];
+      expect(e).beNil();
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
-    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
+    assertWithTimeout(60, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
   });
+
+  it(@"should start again", ^{
+    NSError *e;
+    [Textile.instance.node start:&e];
+    expect(e).beNil();
+    assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(2));
+    assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
+  });
+
+  it(@"should stop", ^{
+    NSError *e;
+    [Textile.instance.node stop:&e];
+    expect(e).beNil();
+    assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(2));
+  });
+
 });
 
 SpecEnd
