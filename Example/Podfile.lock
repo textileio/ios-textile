@@ -1,4 +1,7 @@
 PODS:
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
   - Expecta (1.0.6)
   - OCHamcrest (7.1.1)
   - OCMockito (5.1.1):
@@ -6,6 +9,7 @@ PODS:
   - Protobuf (3.8.0)
   - Specta (1.0.7)
   - Textile (0.0.1-dev):
+    - CocoaLumberjack
     - Protobuf (~> 3.7)
     - TextileCore (= 0.6.9)
   - TextileCore (0.6.9):
@@ -19,6 +23,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CocoaLumberjack
     - Expecta
     - OCHamcrest
     - OCMockito
@@ -31,12 +36,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   OCHamcrest: 3506736397451c35d8763ff0a9b13492e544115f
   OCMockito: eccb29c256cbdd6c7bc206718cbb06ef737daa8b
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Textile: 2d2e4deb033ef17a5d6d724dc822e3c3af462327
+  Textile: fe9b05d25ba5e19f78833c6410ed71b36943fe25
   TextileCore: bd6b4c2385346fd4520723d4436c98425d8ad165
 
 PODFILE CHECKSUM: 831e3c2f0befac6187a7502d4972fac52964b261

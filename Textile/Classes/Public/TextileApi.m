@@ -10,6 +10,9 @@
 #import "Messenger.h"
 #import "LifecycleManager.h"
 #import "RequestsHandler.h"
+#import "NodeManager.h"
+
+@import CocoaLumberjack;
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
@@ -37,6 +40,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 @property (nonatomic, strong) LifecycleManager *lifecycleManager;
 @property (nonatomic, strong) RequestsHandler *requestsHandler;
+@property (nonatomic, strong) NodeManager *nodeManager;
 
 + (BOOL)migrateRepo:(NSString *)repoPath error:(NSError **)error;
 + (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError **)error;
@@ -98,6 +102,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 }
 
 + (BOOL)launch:(NSString *)repoPath debug:(BOOL)debug error:(NSError * _Nullable __autoreleasing *)error {
+  DDLogDebug(@"sadf");
   RequestsHandler *requestsHandler = [[RequestsHandler alloc] init];
   Messenger *messenger = [[Messenger alloc] init];
   Textile.instance.requestsHandler = requestsHandler;
@@ -117,13 +122,14 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     instnace = [[self alloc] init];
+    [DDLog addLogger:[DDOSLogger sharedInstance]];
   });
   return instnace;
 }
 
 - (void)setDelegate:(id<TextileDelegate>)delegate {
   _delegate = delegate;
-  self.lifecycleManager.delegate = delegate;
+//  self.lifecycleManager.delegate = delegate;
   self.messenger.delegate = delegate;
 }
 
@@ -169,6 +175,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
     self.threads = nil;
 
     self.lifecycleManager = nil;
+    self.nodeManager = nil;
   }
 }
 
@@ -215,10 +222,12 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.schemas = [[SchemasApi alloc] initWithNode:self.node];
   self.threads = [[ThreadsApi alloc] initWithNode:self.node];
 
-  self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
-  self.lifecycleManager.delegate = self.delegate;
+//  self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
+//  self.lifecycleManager.delegate = self.delegate;
 
-  self.requestsHandler.node = self.node;
+  self.nodeManager = [[NodeManager alloc] initWithNode:self.node];
+
+//  self.requestsHandler.node = self.node;
 }
 
 @end

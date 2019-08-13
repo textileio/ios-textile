@@ -17,4 +17,5 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig   = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1', 'OTHER_LDFLAGS[arch=i386]' => '-Wl,-read_only_relocs,suppress' }
   s.dependency 'Protobuf', '~> 3.7'
   s.dependency 'TextileCore', '0.6.9'
+  s.dependency 'CocoaLumberjack'
 end

@@ -38,22 +38,21 @@ dispatch_queue_t flushQueue;
 - (void)flush {
   // We don't know what thread we're being called on here, so dispatch to our
   // serial queue to make sure only one call to flush can be processed at a time
-  [self.node flushLock];
+  [self.nodeManager.node flushLock];
   dispatch_async(flushQueue, ^{
     [self processQueue];
-    [self.node flushUnlock];
+    [self.nodeManager.node flushUnlock];
   });
 }
 
 - (void)processQueue {
-  NSLog(@"Flushing");
-
-  UIBackgroundTaskIdentifier taskId = [UIApplication.sharedApplication beginBackgroundTaskWithExpirationHandler:nil];
-
+  NSLog(@"Flushing cafe requests queue");
+  UIBackgroundTaskIdentifier taskId = [UIApplication.sharedApplication beginBackgroundTaskWithName:@"processQueue" expirationHandler:nil];
+  NSLog(@"Started background task %lu", (unsigned long)taskId);
   NSError *error;
-  NSData *cafeRequestsData = [self.node cafeRequests:BATCH_SIZE error:&error];
+  NSData *cafeRequestsData = [self.nodeManager.node cafeRequests:BATCH_SIZE error:&error];
   if (error) {
-    NSLog(@"cafeRequests error: %@", error.localizedDescription);
+    NSLog(@"cafeRequests query error: %@", error.localizedDescription);
     return;
   }
 
@@ -67,21 +66,32 @@ dispatch_queue_t flushQueue;
   dispatch_group_t group = dispatch_group_create();
 
   for (NSString *requestId in requestIds.valuesArray) {
-
     ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData * _Nonnull data, NSError * _Nonnull error) {
+      NSError *nodeStartError;
+      [self.nodeManager assureStarted:&nodeStartError];
+      if (nodeStartError) {
+        NSLog(@"failed to assure node started for request %@: %@", requestId, error.localizedDescription);
+        return;
+      }
       if (!data) {
-        NSLog(@"error writing request: %@", error.localizedDescription);
-        [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
-        NSLog(@"Leaving");
+        NSLog(@"failed to write cafe request %@: %@", requestId, error.localizedDescription);
+        NSError *failRequestError;
+        BOOL success = [self.nodeManager.node failCafeRequest:requestId reason:error.localizedDescription error:&failRequestError];
+        if (!success) {
+          NSLog(@"failed to fail cafe request %@: %@", requestId, failRequestError.localizedDescription);
+        }
         dispatch_group_leave(group);
         return;
       }
 
       CafeHTTPRequest *httpRequest = [[CafeHTTPRequest alloc] initWithData:data error:&error];
       if (!httpRequest) {
-        NSLog(@"error unmarshalling CafeHTTPRequest: %@", error.localizedDescription);
-        [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
-        NSLog(@"Leaving");
+        NSLog(@"error unmarshalling CafeHTTPRequest %@: %@", requestId, error.localizedDescription);
+        NSError *failRequestError;
+        BOOL success = [self.nodeManager.node failCafeRequest:requestId reason:error.localizedDescription error:&failRequestError];
+        if (!success) {
+          NSLog(@"failed to fail cafe request %@: %@", requestId, failRequestError.localizedDescription);
+        }
         dispatch_group_leave(group);
         return;
       }
@@ -110,32 +120,33 @@ dispatch_queue_t flushQueue;
       NSURLSessionUploadTask *task = [self.session uploadTaskWithRequest:request fromFile:fileUrl];
       [task setTaskDescription:requestId];
 
-      BOOL result = [self.node cafeRequestPending:requestId error:&error];
-      if (!result) {
-        NSLog(@"error marking as pending: %@", error.localizedDescription);
-        [self.node failCafeRequest:requestId reason:error.localizedDescription error:nil];
-        NSLog(@"Leaving");
+      NSError *markPendingError;
+      BOOL success = [self.nodeManager.node cafeRequestPending:requestId error:&markPendingError];
+      if (!success) {
+        NSLog(@"error marking request %@ as pending: %@", requestId, markPendingError.localizedDescription);
+        NSError *failRequestError;
+        BOOL success = [self.nodeManager.node failCafeRequest:requestId reason:error.localizedDescription error:&failRequestError];
+        if (!success) {
+          NSLog(@"failed to fail cafe request %@: %@", requestId, failRequestError.localizedDescription);
+        }
         dispatch_group_leave(group);
         return;
       }
 
       [task resume];
 
-      NSLog(@"Leaving");
       dispatch_group_leave(group);
     }];
 
-    NSLog(@"Entering");
     dispatch_group_enter(group);
 
-    [self.node writeCafeRequest:requestId cb:cb];
+    [self.nodeManager.node writeCafeRequest:requestId cb:cb];
   }
 
   // Block here until all writeCafeRequest callbacks are complete
   dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 
-  NSLog(@"Dispatch group complete");
-
+  NSLog(@"Ending background task %lu", (unsigned long)taskId);
   [UIApplication.sharedApplication endBackgroundTask:taskId];
 }
 
@@ -174,7 +185,7 @@ dispatch_queue_t flushQueue;
  */
 - (void)URLSession:(NSURLSession *)session taskIsWaitingForConnectivity:(NSURLSessionTask *)task {
   // Could so something cool here to let the client know
-  NSLog(@"session taskIsWaitingForConnectivity");
+  NSLog(@"session task %@ taskIsWaitingForConnectivity", task.description);
 }
 
 /* Sent periodically to notify the delegate of upload progress.  This
@@ -184,8 +195,18 @@ dispatch_queue_t flushQueue;
    didSendBodyData:(int64_t)bytesSent
     totalBytesSent:(int64_t)totalBytesSent
 totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
-//  NSLog(@"session task didSendBodyData: %lld - %lld of %lld", bytesSent, totalBytesSent, totalBytesExpectedToSend);
-  [self.node updateCafeRequestProgress:task.taskDescription transferred:totalBytesSent total:totalBytesExpectedToSend error:nil];
+  NSError *error;
+  [self.nodeManager assureStarted:&error];
+  if (error) {
+    NSLog(@"failed to assure node started for request %@: %@", task.description, error.localizedDescription);
+    return;
+  }
+  NSLog(@"session task %@ didSendBodyData: %lld - %lld of %lld", task.description, bytesSent, totalBytesSent, totalBytesExpectedToSend);
+  BOOL success = [self.nodeManager.node updateCafeRequestProgress:task.taskDescription transferred:totalBytesSent total:totalBytesExpectedToSend error:&error];
+  if (!success) {
+    NSLog(@"failed to updateCafeRequestProgress for request %@: %@", task.description, error.localizedDescription);
+    return;
+  }
 }
 
 /* Sent as the last message related to a specific task.  Error may be
@@ -193,15 +214,32 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
  */
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error {
-//  NSLog(@"session task didCompleteWithError: %@, %@, %@", task.originalRequest, task.response, error.localizedDescription);
+  [self.nodeManager assureStarted:&error];
+  if (error) {
+    NSLog(@"failed to assure node started for request %@: %@", task.description, error.localizedDescription);
+    return;
+  }
+  NSLog(@"session task %@ didCompleteWithError: %@, %@, %@", task.description, task.originalRequest, task.response, error.localizedDescription);
   NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
   if (error) {
-    [self.node failCafeRequest:task.taskDescription reason:error.localizedDescription error:nil];
+    NSError *failRequestError;
+    BOOL success = [self.nodeManager.node failCafeRequest:task.taskDescription reason:error.localizedDescription error:&failRequestError];
+    if (!success) {
+      NSLog(@"failed to failCafeRequest for request %@: %@", task.description, failRequestError.localizedDescription);
+    }
   } else if (response.statusCode < 200 || response.statusCode > 299) {
     NSString *error = [NSString stringWithFormat:@"status code: %ld", (long)response.statusCode];
-    [self.node failCafeRequest:task.taskDescription reason:error error:nil];
+    NSError *failRequestError;
+    BOOL success = [self.nodeManager.node failCafeRequest:task.taskDescription reason:error error:&failRequestError];
+    if (!success) {
+      NSLog(@"failed to failCafeRequest for request %@: %@", task.description, failRequestError.localizedDescription);
+    }
   } else {
-    [self.node completeCafeRequest:task.taskDescription error:nil];
+    NSError *completeRequestError;
+    BOOL success = [self.nodeManager.node completeCafeRequest:task.taskDescription error:&completeRequestError];
+    if (!success) {
+      NSLog(@"failed to completeCafeRequest for request %@: %@", task.description, completeRequestError.localizedDescription);
+    }
 
     // We can call flush again if there are no more pending tasks
     [self.session getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> * _Nonnull tasks) {

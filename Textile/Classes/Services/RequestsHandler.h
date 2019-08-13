@@ -7,12 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import <Mobile/Mobile.h>
+#import "NodeManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestsHandler : NSObject <CoreCafeOutboxHandler>
 
-@property (nonatomic, strong) MobileMobile *node;
+@property(nonatomic, weak) NodeManager *nodeManager;
 
 @end
 
