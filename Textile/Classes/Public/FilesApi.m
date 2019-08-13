@@ -13,42 +13,48 @@
 @implementation FilesApi
 
 - (void)addData:(NSString *)base64 threadId:(NSString *)threadId caption:(NSString *)caption completion:(void (^)(Block * _Nullable, NSError * _Nonnull))completion {
-  ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
-    if (error) {
-      completion(nil, error);
-    } else {
-      NSError *error;
-      Block *block = [[Block alloc] initWithData:data error:&error];
-      completion(block, error);
-    }
-  }];
-  [self.node addData:base64 threadId:threadId caption:caption cb:cb];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
+      if (error) {
+        completion(nil, error);
+      } else {
+        NSError *error;
+        Block *block = [[Block alloc] initWithData:data error:&error];
+        completion(block, error);
+      }
+    }];
+    [self.node addData:base64 threadId:threadId caption:caption cb:cb];
+  });
 }
 
 - (void)addFiles:(NSString *)files threadId:(NSString *)threadId caption:(NSString *)caption completion:(void (^)(Block * _Nullable, NSError * _Nonnull))completion {
-  ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
-    if (error) {
-      completion(nil, error);
-    } else {
-      NSError *error;
-      Block *block = [[Block alloc] initWithData:data error:&error];
-      completion(block, error);
-    }
-  }];
-  [self.node addFiles:files threadId:threadId caption:caption cb:cb];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
+      if (error) {
+        completion(nil, error);
+      } else {
+        NSError *error;
+        Block *block = [[Block alloc] initWithData:data error:&error];
+        completion(block, error);
+      }
+    }];
+    [self.node addFiles:files threadId:threadId caption:caption cb:cb];
+  });
 }
 
 - (void)shareFiles:(NSString *)target threadId:(NSString *)threadId caption:(NSString *)caption completion:(void (^)(Block * _Nullable, NSError * _Nonnull))completion {
-  ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
-    if (error) {
-      completion(nil, error);
-    } else {
-      NSError *error;
-      Block *block = [[Block alloc] initWithData:data error:&error];
-      completion(block, error);
-    }
-  }];
-  [self.node shareFiles:target threadId:threadId caption:caption cb:cb];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
+      if (error) {
+        completion(nil, error);
+      } else {
+        NSError *error;
+        Block *block = [[Block alloc] initWithData:data error:&error];
+        completion(block, error);
+      }
+    }];
+    [self.node shareFiles:target threadId:threadId caption:caption cb:cb];
+  });
 }
 
 - (FilesList *)list:(NSString *)threadId offset:(NSString *)offset limit:(long)limit error:(NSError * _Nullable __autoreleasing *)error {

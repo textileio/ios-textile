@@ -32,16 +32,18 @@
 }
 
 - (void)setAvatar:(NSString *)item completion:(void (^)(Block * _Nullable, NSError * _Nonnull))completion {
-  ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
-    if (error) {
-      completion(nil, error);
-    } else {
-      NSError *error;
-      Block *block = [[Block alloc] initWithData:data error:&error];
-      completion(block, error);
-    }
-  }];
-  [self.node setAvatar:item cb:cb];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
+      if (error) {
+        completion(nil, error);
+      } else {
+        NSError *error;
+        Block *block = [[Block alloc] initWithData:data error:&error];
+        completion(block, error);
+      }
+    }];
+    [self.node setAvatar:item cb:cb];
+  });
 }
 
 - (Thread *)accountThread:(NSError * _Nullable __autoreleasing *)error {
