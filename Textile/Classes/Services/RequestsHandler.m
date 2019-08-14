@@ -11,6 +11,7 @@
 @implementation RequestsHandler
 
 const int BATCH_SIZE = 16;
+const NSString *WAIT_SRC = @"RequestsHandler.flush";
 
 dispatch_queue_t flushQueue;
 
@@ -38,10 +39,10 @@ dispatch_queue_t flushQueue;
 - (void)flush {
   // We don't know what thread we're being called on here, so dispatch to our
   // serial queue to make sure only one call to flush can be processed at a time
-  [self.node flushLock];
+  [self.node waitAdd:1 src:WAIT_SRC];
   dispatch_async(flushQueue, ^{
     [self processQueue];
-    [self.node flushUnlock];
+    [self.node waitDone:WAIT_SRC];
   });
 }
 
