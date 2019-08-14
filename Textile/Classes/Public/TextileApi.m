@@ -14,7 +14,7 @@
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
-@interface Textile()
+@interface Textile() <CoreCafeOutboxHandler>
 
 @property (nonatomic, strong) Messenger *messenger;
 
@@ -41,7 +41,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 @property (nonatomic, strong) NodeManager *nodeManager;
 
 + (BOOL)migrateRepo:(NSString *)repoPath error:(NSError **)error;
-+ (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError **)error;
 - (void)start:(NSError **)error;
 - (void)stop:(NSError **)error;
 
@@ -100,12 +99,13 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 }
 
 + (BOOL)launch:(NSString *)repoPath debug:(BOOL)debug error:(NSError * _Nullable __autoreleasing *)error {
-  DDLogDebug(@"sadf");
-  RequestsHandler *requestsHandler = [[RequestsHandler alloc] init];
   Messenger *messenger = [[Messenger alloc] init];
-  Textile.instance.requestsHandler = requestsHandler;
   Textile.instance.messenger = messenger;
-  MobileMobile *node = [Textile newTextile:repoPath debug:debug requestsHandler:requestsHandler messenger:messenger error:error];
+  MobileRunConfig *config = [[MobileRunConfig alloc] init];
+  config.repoPath = repoPath;
+  config.debug = debug;
+  config.cafeOutboxHandler = Textile.instance;
+  MobileMobile *node = MobileNewTextile(config, messenger, error);
   if (node) {
     Textile.instance.node = node;
     [Textile.instance createNodeDependants];
@@ -120,7 +120,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     instnace = [[self alloc] init];
-    [DDLog addLogger:[DDOSLogger sharedInstance]];
   });
   return instnace;
 }
@@ -183,14 +182,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   MobileMigrateConfig *config = [[MobileMigrateConfig alloc] init];
   config.repoPath = repoPath;
   return MobileMigrateRepo(config, error);
-}
-
-+ (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError *__autoreleasing *)error {
-  MobileRunConfig *config = [[MobileRunConfig alloc] init];
-  config.repoPath = repoPath;
-  config.debug = debug;
-  config.cafeOutboxHandler = requestsHandler;
-  return MobileNewTextile(config, messenger, error);
 }
 
 - (void)start:(NSError *__autoreleasing *)error {

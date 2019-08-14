@@ -1,16 +1,8 @@
 #import <Foundation/Foundation.h>
 #import "NodeDependant.h"
+#import "NodeManagerDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@protocol NodeManagerDelegate <NSObject>
-
-- (void)nodeFailedToStartWithError:(NSError *)error;
-- (void)nodeFailedToStopWithError:(NSError *)error;
-- (void)willStopNodeInBackgroundAfterDelay:(NSTimeInterval)seconds;
-- (void)canceledPendingNodeStop;
-
-@end
 
 @interface NodeManager : NodeDependant
 
