@@ -12,8 +12,6 @@
 #import "RequestsHandler.h"
 #import "NodeManager.h"
 
-@import CocoaLumberjack;
-
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 @interface Textile()

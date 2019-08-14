@@ -26,8 +26,6 @@
 #import "SchemasApi.h"
 #import "ThreadsApi.h"
 
-@import CocoaLumberjack;
-
 static DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 extern  NSString* _Nonnull const TEXTILE_BACKGROUND_SESSION_ID;
