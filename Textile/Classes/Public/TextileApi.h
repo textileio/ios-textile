@@ -208,9 +208,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Reset the local Textile node instance so it can be re-initialized
- * @param completion A block that will get called with a possibly nil error
  */
-- (void)destroy:(void (^)(NSError * _Nonnull))completion;
+- (void)destroy;
 
 @end
 

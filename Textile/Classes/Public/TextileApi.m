@@ -142,35 +142,34 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   return [[Summary alloc] initWithData:data error:error];
 }
 
-- (void)destroy:(void (^)(NSError * _Nonnull))completion {
+- (void)destroy {
   Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
-    if (!error) {
-      self.delegate = nil;
-      self.node = nil;
-      self.messenger = nil;
-
-      self.account = nil;
-      self.cafes = nil;
-      self.comments = nil;
-      self.contacts = nil;
-      self.feed = nil;
-      self.files = nil;
-      self.flags = nil;
-      self.ignores = nil;
-      self.invites = nil;
-      self.ipfs = nil;
-      self.likes = nil;
-      self.logs = nil;
-      self.messages = nil;
-      self.notifications = nil;
-      self.profile = nil;
-      self.schemas = nil;
-      self.threads = nil;
-
-      self.lifecycleManager = nil;
-    }
   }];
   [self.node stop:cb];
+  
+  self.delegate = nil;
+  self.node = nil;
+  self.messenger = nil;
+
+  self.account = nil;
+  self.cafes = nil;
+  self.comments = nil;
+  self.contacts = nil;
+  self.feed = nil;
+  self.files = nil;
+  self.flags = nil;
+  self.ignores = nil;
+  self.invites = nil;
+  self.ipfs = nil;
+  self.likes = nil;
+  self.logs = nil;
+  self.messages = nil;
+  self.notifications = nil;
+  self.profile = nil;
+  self.schemas = nil;
+  self.threads = nil;
+
+  self.lifecycleManager = nil;
 }
 
 #pragma mark Private
