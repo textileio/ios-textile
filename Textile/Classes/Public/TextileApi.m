@@ -11,6 +11,7 @@
 #import "LifecycleManager.h"
 #import "RequestsHandler.h"
 #import "NodeManager.h"
+#import "Callback.h"
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
@@ -41,8 +42,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 @property (nonatomic, strong) NodeManager *nodeManager;
 
 + (BOOL)migrateRepo:(NSString *)repoPath error:(NSError **)error;
-- (void)start:(NSError **)error;
-- (void)stop:(NSError **)error;
 
 @end
 
@@ -146,34 +145,35 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   return [[Summary alloc] initWithData:data error:error];
 }
 
-- (void)destroy:(NSError * _Nullable __autoreleasing *)error {
-  [self.node stop:error];
-  if (!*error) {
-    self.delegate = nil;
-    self.node = nil;
-    self.messenger = nil;
+- (void)destroy {
+  Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
+  }];
+  [self.node stop:cb];
 
-    self.account = nil;
-    self.cafes = nil;
-    self.comments = nil;
-    self.contacts = nil;
-    self.feed = nil;
-    self.files = nil;
-    self.flags = nil;
-    self.ignores = nil;
-    self.invites = nil;
-    self.ipfs = nil;
-    self.likes = nil;
-    self.logs = nil;
-    self.messages = nil;
-    self.notifications = nil;
-    self.profile = nil;
-    self.schemas = nil;
-    self.threads = nil;
+  self.delegate = nil;
+  self.node = nil;
+  self.messenger = nil;
 
-    self.lifecycleManager = nil;
-    self.nodeManager = nil;
-  }
+  self.account = nil;
+  self.cafes = nil;
+  self.comments = nil;
+  self.contacts = nil;
+  self.feed = nil;
+  self.files = nil;
+  self.flags = nil;
+  self.ignores = nil;
+  self.invites = nil;
+  self.ipfs = nil;
+  self.likes = nil;
+  self.logs = nil;
+  self.messages = nil;
+  self.notifications = nil;
+  self.profile = nil;
+  self.schemas = nil;
+  self.threads = nil;
+
+  self.lifecycleManager = nil;
+  self.nodeManager = nil;
 }
 
 #pragma mark Private
@@ -182,14 +182,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   MobileMigrateConfig *config = [[MobileMigrateConfig alloc] init];
   config.repoPath = repoPath;
   return MobileMigrateRepo(config, error);
-}
-
-- (void)start:(NSError *__autoreleasing *)error {
-  [self.node start:error];
-}
-
-- (void)stop:(NSError *__autoreleasing *)error {
-  [self.node stop:error];
 }
 
 - (void)createNodeDependants {

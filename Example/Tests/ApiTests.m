@@ -12,6 +12,7 @@
 #import <OCHamcrest/OCHamcrest.h>
 #import <Textile/TextileApi.h>
 #import "TextileDelegateMock.h"
+#import "Callback.h"
 
 SpecBegin(ApiSpecs)
 
@@ -43,15 +44,10 @@ describe(@"public api", ^{
     assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(1));
   });
 
-  it(@"should be the right textile version", ^{
-    NSString *version = Textile.instance.version;
-    expect(version).equal(@"v0.6.9");
-  });
-
   it(@"should register a cafe", ^{
     waitUntilTimeout(20, ^(DoneCallback done) {
       [Textile.instance.cafes
-       register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+       register:@"https://us-west-dev.textile.cafe"
        token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
          expect(error).beNil();
          done();
@@ -111,9 +107,9 @@ describe(@"public api", ^{
         b = block;
         done();
       }];
-      NSError *e;
-      [Textile.instance.node stop:&e];
-      expect(e).beNil();
+      Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
+      }];
+      [Textile.instance.node stop:cb];
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
     assertWithTimeout(60, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
@@ -128,9 +124,13 @@ describe(@"public api", ^{
   });
 
   it(@"should stop", ^{
-    NSError *e;
-    [Textile.instance.node stop:&e];
-    expect(e).beNil();
+    waitUntilTimeout(20, ^(DoneCallback done) {
+      Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
+        expect(error).beNil();
+        done();
+      }];
+      [Textile.instance.node stop:cb];
+    });
     assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(2));
   });
 
