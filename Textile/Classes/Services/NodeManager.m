@@ -1,6 +1,7 @@
 #import "NodeManager.h"
 #import "AppStateHandler.h"
 #import "RequestsHandler.h"
+#import "Callback.h"
 #import <UIKit/UIKit.h>
 
 typedef NS_CLOSED_ENUM(NSInteger, NodeState) {
@@ -70,11 +71,12 @@ typedef NS_CLOSED_ENUM(NSInteger, NodeState) {
 
 - (void)stopNode {
   NSLog(@"stopping node");
-  NSError *error;
-  BOOL stopped = [self.node stop:&error];
-  if (!stopped) {
-    [self.delegate nodeFailedToStopWithError:error];
-  }
+  Callback *cb = [[Callback alloc] initWithCompletion:^(NSError * _Nonnull error) {
+    if (error) {
+      [self.delegate nodeFailedToStopWithError:error];
+    }
+  }];
+  [self.node stop:cb];
 }
 
 @end
