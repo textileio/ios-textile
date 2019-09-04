@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LifecycleManager : NodeDependant
+@interface LifecycleManagerOld : NodeDependant
 
 @property (nonatomic, weak, nullable) id<TextileDelegate> delegate;
 

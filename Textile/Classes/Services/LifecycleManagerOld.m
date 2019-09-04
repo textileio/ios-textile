@@ -6,7 +6,7 @@
 //  Copyright © 2019 Textile. All rights reserved.
 //
 
-#import "LifecycleManager.h"
+#import "LifecycleManagerOld.h"
 #import <UIKit/UIKit.h>
 #import "Callback.h"
 
@@ -16,14 +16,14 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
   AppStateForeground
 };
 
-@interface LifecycleManager()
+@interface LifecycleManagerOld()
 
 @property (nonatomic, assign) AppState appState;
 @property (nonatomic, strong) NSTimer *timer;
 
 @end
 
-@implementation LifecycleManager
+@implementation LifecycleManagerOld
 
 - (instancetype)initWithNode:(MobileMobile *)node {
   if(self = [super initWithNode:node]) {
@@ -43,7 +43,7 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
       [self processNewState:AppStateBackground];
     }
 
-    __weak LifecycleManager *weakSelf = self;
+    __weak LifecycleManagerOld *weakSelf = self;
 
     [NSNotificationCenter.defaultCenter
      addObserverForName:UIApplicationDidBecomeActiveNotification
@@ -109,7 +109,7 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 }
 
 - (void)stopNodeAfterDelay:(NSTimeInterval)delay {
-  __weak LifecycleManager *weakSelf = self;
+  __weak LifecycleManagerOld *weakSelf = self;
   UIBackgroundTaskIdentifier bgTaskId = [UIApplication.sharedApplication beginBackgroundTaskWithName:@"RunNode" expirationHandler:^{
     [weakSelf stopNode];
   }];

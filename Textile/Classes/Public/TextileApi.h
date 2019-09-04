@@ -207,6 +207,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (Summary *)summary:(NSError **)error;
 
 /**
+ * Start the Textile node
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return A boolean indicating if the node was started successfully
+ */
+- (BOOL)start:(NSError* _Nullable* _Nullable)error;
+
+/**
+ * Stop the Textile node
+ * @param completion A block that gets called after the node is done stopping
+ */
+- (void)stopWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
+
+/**
  * Reset the local Textile node instance so it can be re-initialized
  */
 - (void)destroy;

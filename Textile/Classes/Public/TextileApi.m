@@ -8,9 +8,10 @@
 
 #import "TextileApi.h"
 #import "Messenger.h"
-#import "LifecycleManager.h"
 #import "RequestsHandler.h"
 #import "Callback.h"
+#import "TTELifecycleManager.h"
+#import "TTEAppStateLifecycleManager.h"
 
 NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
@@ -36,8 +37,9 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 @property (nonatomic, strong) SchemasApi *schemas;
 @property (nonatomic, strong) ThreadsApi *threads;
 
-@property (nonatomic, strong) LifecycleManager *lifecycleManager;
 @property (nonatomic, strong) RequestsHandler *requestsHandler;
+
+@property (nonatomic, strong) id<TTELifecycleManager> lifecycleManager;
 
 + (BOOL)migrateRepo:(NSString *)repoPath error:(NSError **)error;
 + (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError **)error;
@@ -122,7 +124,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 - (void)setDelegate:(id<TextileDelegate>)delegate {
   _delegate = delegate;
-  self.lifecycleManager.delegate = delegate;
   self.messenger.delegate = delegate;
 }
 
@@ -140,6 +141,14 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
     return nil;
   }
   return [[Summary alloc] initWithData:data error:error];
+}
+
+- (BOOL)start:(NSError *__autoreleasing  _Nullable *)error {
+  return [self.lifecycleManager start:error];
+}
+
+- (void)stopWithCompletion:(void (^)(BOOL, NSError * _Nullable))completion {
+  [self.lifecycleManager stopWithCompletion:completion];
 }
 
 - (void)destroy {
@@ -168,8 +177,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.profile = nil;
   self.schemas = nil;
   self.threads = nil;
-
-  self.lifecycleManager = nil;
 }
 
 #pragma mark Private
@@ -207,10 +214,10 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.schemas = [[SchemasApi alloc] initWithNode:self.node];
   self.threads = [[ThreadsApi alloc] initWithNode:self.node];
 
-  self.lifecycleManager = [[LifecycleManager alloc] initWithNode:self.node];
-  self.lifecycleManager.delegate = self.delegate;
-
   self.requestsHandler.node = self.node;
+
+  // depending on the context, we can change the the implementation that gets assigned here
+  self.lifecycleManager = [[TTEAppStateLifecycleManager alloc] initWithNode:self.node];
 }
 
 @end
