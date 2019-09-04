@@ -42,7 +42,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 @property (nonatomic, strong) id<TTELifecycleManager> lifecycleManager;
 
 + (BOOL)migrateRepo:(NSString *)repoPath error:(NSError **)error;
-+ (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError **)error;
 
 @end
 
@@ -100,10 +99,17 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 
 + (BOOL)launch:(NSString *)repoPath debug:(BOOL)debug error:(NSError * _Nullable __autoreleasing *)error {
   RequestsHandler *requestsHandler = [[RequestsHandler alloc] init];
+  requestsHandler.textile = Textile.instance;
   Messenger *messenger = [[Messenger alloc] init];
   Textile.instance.requestsHandler = requestsHandler;
   Textile.instance.messenger = messenger;
-  MobileMobile *node = [Textile newTextile:repoPath debug:debug requestsHandler:requestsHandler messenger:messenger error:error];
+
+  MobileRunConfig *config = [[MobileRunConfig alloc] init];
+  config.repoPath = repoPath;
+  config.debug = debug;
+  config.cafeOutboxHandler = requestsHandler;
+
+  MobileMobile *node = MobileNewTextile(config, messenger, error);
   if (node) {
     Textile.instance.node = node;
     [Textile.instance createNodeDependants];
@@ -187,14 +193,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   return MobileMigrateRepo(config, error);
 }
 
-+ (MobileMobile *)newTextile:(NSString *)repoPath debug:(BOOL)debug requestsHandler:(RequestsHandler *)requestsHandler messenger:(Messenger *)messenger error:(NSError *__autoreleasing *)error {
-  MobileRunConfig *config = [[MobileRunConfig alloc] init];
-  config.repoPath = repoPath;
-  config.debug = debug;
-  config.cafeOutboxHandler = requestsHandler;
-  return MobileNewTextile(config, messenger, error);
-}
-
 - (void)createNodeDependants {
   self.account = [[AccountApi alloc] initWithNode:self.node];
   self.cafes = [[CafesApi alloc] initWithNode:self.node];
@@ -213,8 +211,6 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.profile = [[ProfileApi alloc] initWithNode:self.node];
   self.schemas = [[SchemasApi alloc] initWithNode:self.node];
   self.threads = [[ThreadsApi alloc] initWithNode:self.node];
-
-  self.requestsHandler.node = self.node;
 
   // depending on the context, we can change the the implementation that gets assigned here
   self.lifecycleManager = [[TTEAppStateLifecycleManager alloc] initWithNode:self.node];

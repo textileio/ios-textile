@@ -18,7 +18,7 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 
 @implementation TTEAppStateLifecycleManager
 
-- (id)initWithNode:(MobileMobile *)node {
+- (instancetype)initWithNode:(MobileMobile *)node {
   if (self = [super init]) {
     self.node = node;
     self.currentAppState = AppStateNone;
