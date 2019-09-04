@@ -9,7 +9,7 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 
 @interface TTEAppStateLifecycleManager ()
 
-@property (nonatomic, strong) MobileMobile *node;
+@property (nonatomic, weak) Textile *textile;
 @property (nonatomic, assign) AppState currentAppState;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier bgTaskId;
@@ -18,9 +18,9 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 
 @implementation TTEAppStateLifecycleManager
 
-- (instancetype)initWithNode:(MobileMobile *)node {
+- (instancetype)initWithTextile:(Textile *)textile {
   if (self = [super init]) {
-    self.node = node;
+    self.textile = textile;
     self.currentAppState = AppStateNone;
     [self initializeAppState];
     [self setupAppStateSubscriptions];
@@ -84,6 +84,9 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
     [weakSelf stopWithCompletion:nil];
   }];
   NSLog(@"Allowing node to run for %d seconds before stop", (int)runFor);
+  if ([self.textile.delegate respondsToSelector:@selector(willStopNodeInBackgroundAfterDelay:)]) {
+    [self.textile.delegate willStopNodeInBackgroundAfterDelay:runFor];
+  }
   self.timer = [NSTimer scheduledTimerWithTimeInterval:runFor repeats:FALSE block:^(NSTimer * _Nonnull timer) {
     NSLog(@"timer up");
     [weakSelf stopWithCompletion:nil];
@@ -93,16 +96,21 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 - (BOOL)start:(NSError *__autoreleasing  _Nullable *)error {
   if ([self.timer isValid]) {
     NSLog(@"Canceling previous node stop request");
+    if ([self.textile.delegate respondsToSelector:@selector(canceledPendingNodeStop)]) {
+      [self.textile.delegate canceledPendingNodeStop];
+    }
     [self.timer invalidate];
     if (self.bgTaskId) {
       [UIApplication.sharedApplication endBackgroundTask:self.bgTaskId];
     }
   }
   NSLog(@"starting node");
-  BOOL started = [self.node start:error];
+  BOOL started = [self.textile.node start:error];
   if (started && self.currentAppState == AppStateBackground) {
     NSLog(@"started node in background, so requesting stop");
     [self requestStop];
+  } else if (!started && [self.textile.delegate respondsToSelector:@selector(nodeFailedToStartWithError:)]) {
+    [self.textile.delegate nodeFailedToStartWithError:*error];
   }
   return started;
 }
@@ -112,10 +120,16 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
   __weak TTEAppStateLifecycleManager *weakSelf = self;
   Callback *cb = [[Callback alloc] initWithCompletion:^(NSError * _Nullable error) {
     NSLog(@"node stop complete");
+    BOOL success = error == nil;
+
+    if (!success && [self.textile.delegate respondsToSelector:@selector(nodeFailedToStopWithError:)]) {
+      [weakSelf.textile.delegate nodeFailedToStopWithError:error];
+    }
+
     if (completion) {
-      BOOL success = error != nil;
       completion(success, error);
     }
+
     if (weakSelf.bgTaskId) {
       // Dispatch this after a slight delay to allow consumers of the stop node event to process the event before app suspension
       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -124,7 +138,7 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
       });
     }
   }];
-  [self.node stop:cb];
+  [self.textile.node stop:cb];
 }
 
 @end

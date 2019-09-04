@@ -213,7 +213,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
   self.threads = [[ThreadsApi alloc] initWithNode:self.node];
 
   // depending on the context, we can change the the implementation that gets assigned here
-  self.lifecycleManager = [[TTEAppStateLifecycleManager alloc] initWithNode:self.node];
+  self.lifecycleManager = [[TTEAppStateLifecycleManager alloc] initWithTextile:self];
 }
 
 @end
