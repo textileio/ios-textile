@@ -107,9 +107,9 @@ describe(@"public api", ^{
         b = block;
         done();
       }];
-      Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
+      [Textile.instance stopWithCompletion:^(BOOL success, NSError * _Nullable error) {
+        NSLog(@"STOOOOOOOPPED! - %@", error.localizedDescription);
       }];
-      [Textile.instance.node stop:cb];
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
     assertWithTimeout(60, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
@@ -117,7 +117,7 @@ describe(@"public api", ^{
 
   it(@"should start again", ^{
     NSError *e;
-    [Textile.instance.node start:&e];
+    [Textile.instance start:&e];
     expect(e).beNil();
     assertWithTimeout(5, thatEventually(@(delegate.startedCalledCount)), equalToInt(2));
     assertWithTimeout(60, thatEventually(@(delegate.onlineCalledCount)), equalToInt(2));
@@ -125,11 +125,11 @@ describe(@"public api", ^{
 
   it(@"should stop", ^{
     waitUntilTimeout(20, ^(DoneCallback done) {
-      Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
+      [Textile.instance stopWithCompletion:^(BOOL success, NSError * _Nullable error) {
         expect(error).beNil();
+        expect(success).beTruthy();
         done();
       }];
-      [Textile.instance.node stop:cb];
     });
     assertWithTimeout(5, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(2));
   });
