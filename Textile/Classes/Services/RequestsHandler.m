@@ -246,7 +246,7 @@ didCompleteWithError:(nullable NSError *)error {
       NSLog(@"failed to completeCafeRequest for request %@: %@", task.description, completeRequestError.localizedDescription);
     }
   }
-  
+
   // We can call flush again if there are no more pending tasks
   [self.session getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> * _Nonnull tasks) {
     if ([tasks count] == 0) {

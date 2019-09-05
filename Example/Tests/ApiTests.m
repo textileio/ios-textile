@@ -93,6 +93,7 @@ describe(@"public api", ^{
       }];
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
+    assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
   });
 
   it(@"should add a file before stopping", ^{
@@ -112,7 +113,8 @@ describe(@"public api", ^{
       }];
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
-    assertWithTimeout(60, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
+    assertWithTimeout(120, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
+    assertWithTimeout(130, thatEventually(@(delegate.stoppedCalledCount)), equalToInt(1));
   });
 
   it(@"should start again", ^{
