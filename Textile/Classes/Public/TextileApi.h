@@ -95,6 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (Textile *)instance;
 
+@property (nonatomic, strong, nullable) MobileMobile *node;
+
 /**
  * The delegate object that can be set to receive callbacks about different Textile events
  */
@@ -186,8 +188,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, strong) ThreadsApi *threads;
 
 @property (nonatomic, copy, nullable) void (^backgroundCompletionHandler)(void);
-
-@property (nonatomic, strong) MobileMobile *node;
 
 /**
  * @return The version of the Textile node running locally

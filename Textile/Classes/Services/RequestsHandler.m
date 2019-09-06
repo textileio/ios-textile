@@ -4,6 +4,7 @@
 
 @interface RequestsHandler () <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
+@property (nonatomic, weak) Textile *textile;
 @property (nonatomic, strong) NSURLSession *session;
 
 @end
@@ -15,25 +16,29 @@ const NSString *WAIT_SRC = @"RequestsHandler.flush";
 
 dispatch_queue_t flushQueue;
 
-- (instancetype)init {
+- (instancetype)initWithTextile:(Textile *)textile {
   if (self = [super init]) {
+    self.textile = textile;
+
     // This serial queue is used to process calls to flush so we only process one at a time
     flushQueue = dispatch_queue_create("io.textile.flushQueue", DISPATCH_QUEUE_SERIAL);
-
-    // Configure and create our NSURLSession used for uplaods
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:TEXTILE_BACKGROUND_SESSION_ID];
-    config.networkServiceType = NSURLNetworkServiceTypeResponsiveData;
-    config.allowsCellularAccess = YES; // default
-    config.timeoutIntervalForRequest = 60; //default
-    config.timeoutIntervalForResource = 60 * 60 * 24; // 1 day
-    // config.waitsForConnectivity = YES; // defaults to YES for background sessions, not availiable until iOS 11 anyway
-    config.sessionSendsLaunchEvents = YES; // default
-    config.discretionary = NO; // default
-    config.shouldUseExtendedBackgroundIdleMode = YES; // not really sure about this
-    config.HTTPMaximumConnectionsPerHost = 10; // default 4 for ios
-    self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
   }
   return self;
+}
+
+- (void)start {
+  // Configure and create our NSURLSession used for uplaods
+  NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:TEXTILE_BACKGROUND_SESSION_ID];
+  config.networkServiceType = NSURLNetworkServiceTypeResponsiveData;
+  config.allowsCellularAccess = YES; // default
+  config.timeoutIntervalForRequest = 60; //default
+  config.timeoutIntervalForResource = 60 * 60 * 24; // 1 day
+  // config.waitsForConnectivity = YES; // defaults to YES for background sessions, not availiable until iOS 11 anyway
+  config.sessionSendsLaunchEvents = YES; // default
+  config.discretionary = NO; // default
+  config.shouldUseExtendedBackgroundIdleMode = YES; // not really sure about this
+  config.HTTPMaximumConnectionsPerHost = 10; // default 4 for ios
+  self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
 }
 
 - (void)flush {

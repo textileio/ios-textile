@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestsHandler : NSObject <CoreCafeOutboxHandler>
 
-@property (nonatomic, weak) Textile *textile;
+- (instancetype)initWithTextile:(Textile *)textile;
+- (void)start;
 
 @end
 

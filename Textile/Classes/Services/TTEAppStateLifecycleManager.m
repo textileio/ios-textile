@@ -29,36 +29,32 @@ typedef NS_CLOSED_ENUM(NSInteger, AppState) {
 }
 
 - (void)initializeAppState {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    UIApplicationState state = UIApplication.sharedApplication.applicationState;
-    if (state == UIApplicationStateActive || state == UIApplicationStateInactive) {
-      [self processAppStateEvent:AppStateForeground];
-    } else if (state == UIApplicationStateBackground) {
-      [self processAppStateEvent:AppStateBackground];
-    }
-  });
+  UIApplicationState state = UIApplication.sharedApplication.applicationState;
+  if (state == UIApplicationStateActive || state == UIApplicationStateInactive) {
+    [self processAppStateEvent:AppStateForeground];
+  } else if (state == UIApplicationStateBackground) {
+    [self processAppStateEvent:AppStateBackground];
+  }
 }
 
 - (void)setupAppStateSubscriptions {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    __weak TTEAppStateLifecycleManager *weakSelf = self;
+  __weak TTEAppStateLifecycleManager *weakSelf = self;
 
-    [NSNotificationCenter.defaultCenter
-     addObserverForName:UIApplicationDidBecomeActiveNotification
-     object:nil
-     queue:nil
-     usingBlock:^(NSNotification * _Nonnull note) {
-       [weakSelf processAppStateEvent:AppStateForeground];
-     }];
+  [NSNotificationCenter.defaultCenter
+   addObserverForName:UIApplicationDidBecomeActiveNotification
+   object:nil
+   queue:nil
+   usingBlock:^(NSNotification * _Nonnull note) {
+     [weakSelf processAppStateEvent:AppStateForeground];
+   }];
 
-    [NSNotificationCenter.defaultCenter
-     addObserverForName:UIApplicationDidEnterBackgroundNotification
-     object:nil
-     queue:nil
-     usingBlock:^(NSNotification * _Nonnull note) {
-       [weakSelf processAppStateEvent:AppStateBackground];
-     }];
-  });
+  [NSNotificationCenter.defaultCenter
+   addObserverForName:UIApplicationDidEnterBackgroundNotification
+   object:nil
+   queue:nil
+   usingBlock:^(NSNotification * _Nonnull note) {
+     [weakSelf processAppStateEvent:AppStateBackground];
+   }];
 }
 
 - (void)processAppStateEvent:(AppState)appState {

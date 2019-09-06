@@ -129,7 +129,7 @@
 
 - (void)test {
   [Textile.instance.cafes
-   register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+   register:@"https://us-west-dev.textile.cafe"
    token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
     if (error) {
       NSLog(@"error registering cafe: %@", error.localizedDescription);
