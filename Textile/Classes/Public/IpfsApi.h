@@ -23,6 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)peerId:(NSError **)error;
 
 /**
+ * Open a new direct connection to a peer using an IPFS multiaddr
+ * @param multiaddr Peer IPFS multiaddr
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return Whether the peer swarm connect was successfull
+ */
+- (BOOL)swarmConnect:(NSString *)multiaddr error:(NSError **)error;
+
+/**
  * Get raw data stored at an IPFS path
  * @param path The IPFS path for the data you want to retrieve
  * @param completion A block that will get called with the results of the query

@@ -75,7 +75,7 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 + (BOOL)initialize:(NSString *)repoPath seed:(NSString *)seed debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
   MobileInitConfig *config = [[MobileInitConfig alloc] init];
   config.seed = seed;
-  config.repoPath = repoPath;
+  config.baseRepoPath = repoPath;
   config.logToDisk = logToDisk;
   config.debug = debug;
   return MobileInitRepo(config, error);
