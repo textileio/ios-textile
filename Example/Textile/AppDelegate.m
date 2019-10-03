@@ -96,40 +96,40 @@
 }
 
 - (void)canceledPendingNodeStop {
-  NSLog(@"canceled pending stop");
+  NSLog(@"delegate - canceled pending stop");
 }
 
 - (void)threadAdded:(NSString *)threadId {
-  NSLog(@"thread added: %@", threadId);
+  NSLog(@"delegate - thread added: %@", threadId);
 }
 
 - (void)syncUpdate:(CafeSyncGroupStatus *)status {
   if (status.error.length > 0) {
-    NSLog(@"Status error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+    NSLog(@"delegate - Status error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
   } else {
-    NSLog(@"Status for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
+    NSLog(@"delegate - Status for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
   }
 }
 
 - (void)syncComplete:(CafeSyncGroupStatus *)status {
   if (status.error.length > 0) {
-    NSLog(@"Complete error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+    NSLog(@"delegate - Complete error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
   } else {
-    NSLog(@"Complete for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
+    NSLog(@"delegate - Complete for %@: %d/%d (%d pending)", status.id_p, status.numComplete, status.numTotal, status.numPending);
   }
 }
 
 - (void)syncFailed:(CafeSyncGroupStatus *)status {
   if (status.error.length > 0) {
-    NSLog(@"Failed with error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
+    NSLog(@"delegate - Failed with error for %@: %@ (%@)", status.id_p, status.error, status.errorId);
   } else {
-    NSLog(@"Failed witout error message for %@", status.id_p);
+    NSLog(@"delegate - Failed witout error message for %@", status.id_p);
   }
 }
 
 - (void)test {
   [Textile.instance.cafes
-   register:@"12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY"
+   register:@"https://us-west-dev.textile.cafe"
    token:@"uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo" completion:^(NSError * _Nonnull error) {
     if (error) {
       NSLog(@"error registering cafe: %@", error.localizedDescription);

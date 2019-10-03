@@ -219,15 +219,15 @@
     },
     {
       "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/Public/TextileApi.h",
-      "line": 188,
-      "symbol": "Textile.backgroundCompletionHandler",
+      "line": 98,
+      "symbol": "Textile.node",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
       "warning": "undocumented"
     },
     {
       "file": "/Users/aaron/Documents/Code/Set/ios-textile/Textile/Classes/Public/TextileApi.h",
       "line": 190,
-      "symbol": "Textile.node",
+      "symbol": "Textile.backgroundCompletionHandler",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
       "warning": "undocumented"
     }

@@ -95,6 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (Textile *)instance;
 
+@property (nonatomic, strong, nullable) MobileMobile *node;
+
 /**
  * The delegate object that can be set to receive callbacks about different Textile events
  */
@@ -187,8 +189,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, nullable) void (^backgroundCompletionHandler)(void);
 
-@property (nonatomic, strong) MobileMobile *node;
-
 /**
  * @return The version of the Textile node running locally
  */
@@ -207,9 +207,23 @@ NS_ASSUME_NONNULL_BEGIN
 - (Summary *)summary:(NSError **)error;
 
 /**
- * Reset the local Textile node instance so it can be re-initialized
+ * Start the Textile node
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return A boolean indicating if the node was started successfully
  */
-- (void)destroy;
+- (BOOL)start:(NSError* _Nullable* _Nullable)error;
+
+/**
+ * Stop the Textile node
+ * @param completion A block that gets called after the node is done stopping
+ */
+- (void)stopWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
+
+/**
+ * Reset the local Textile node instance so it can be re-initialized
+ * @param completion A block that gets called after the Textile instance is reset
+ */
+- (void)destroyWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
 
 @end
 
