@@ -15,6 +15,11 @@
   return [self.node peerId:error];
 }
 
+- (BOOL)swarmConnect:(NSString *)multiaddr error:(NSError * _Nullable __autoreleasing *)error {
+  NSString *result = [self.node swarmConnect:multiaddr error:error];
+  return [result length] > 0;
+}
+
 - (void)dataAtPath:(NSString *)path completion:(void (^)(NSData * _Nullable, NSString * _Nullable, NSError * _Nonnull))completion {
   DataCallback *cb = [[DataCallback alloc] initWithCompletion:^(NSData *data, NSString *media, NSError *error) {
     if (error) {
