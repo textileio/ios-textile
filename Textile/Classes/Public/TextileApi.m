@@ -67,15 +67,13 @@ NSString *const TEXTILE_BACKGROUND_SESSION_ID = @"textile";
 }
 
 + (BOOL)isInitialized:(NSString *)repoPath {
-  BOOL isDir;
-  BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:repoPath isDirectory:&isDir];
-  return exists && isDir;
+  return MobileRepoExists(repoPath);
 }
 
 + (BOOL)initialize:(NSString *)repoPath seed:(NSString *)seed debug:(BOOL)debug logToDisk:(BOOL)logToDisk error:(NSError * _Nullable __autoreleasing *)error {
   MobileInitConfig *config = [[MobileInitConfig alloc] init];
   config.seed = seed;
-  config.baseRepoPath = repoPath;
+  config.repoPath = repoPath;
   config.logToDisk = logToDisk;
   config.debug = debug;
   return MobileInitRepo(config, error);

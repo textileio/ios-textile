@@ -18,25 +18,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Used to register a remote Textile Cafe node with the local Textile node
- * @param peerId The peer id of the cafe being registered
+ * @param url The url of the cafe being registered
  * @param token The API token for the cafe being registered
  * @param completion A block that will get called with an error
  */
-- (void)register:(NSString *)peerId token:(NSString *)token completion:(void (^)(NSError * _Nonnull))completion;
+- (void)register:(NSString *)url token:(NSString *)token completion:(void (^)(NSError * _Nonnull))completion;
 
 /**
  * Used to deregister a previously registered Textile Cafe
- * @param peerId The peer id of the cafe you want to deregister
+ * @param sessionId The peer id of the cafe you want to deregister
  * @param completion A block that will get called with an error
  */
-- (void)deregister:(NSString *)peerId completion:(void (^)(NSError * _Nonnull))completion;
+- (void)deregister:(NSString *)sessionId completion:(void (^)(NSError * _Nonnull))completion;
 
 /**
  * Used to refresh an individual Textile Cafe session
- * @param peerId The peer id of the cafe who's session you want to refresh
+ * @param sessionId The peer id of the cafe who's session you want to refresh
  * @param completion A block that will get called with the results of the refresh operation
  */
-- (void)refreshSession:(NSString *)peerId completion:(void (^)(CafeSession * _Nullable, NSError * _Nonnull))completion;
+- (void)refreshSession:(NSString *)sessionId completion:(void (^)(CafeSession * _Nullable, NSError * _Nonnull))completion;
 
 /**
  * Check messages from all registered cafes

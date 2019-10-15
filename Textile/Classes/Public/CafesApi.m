@@ -12,21 +12,21 @@
 
 @implementation CafesApi
 
-- (void)register:(NSString *)peerId token:(NSString *)token completion:(void (^)(NSError * _Nonnull))completion {
+- (void)register:(NSString *)url token:(NSString *)token completion:(void (^)(NSError * _Nonnull))completion {
   Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
     completion(error);
   }];
-  [self.node registerCafe:peerId token:token cb:cb];
+  [self.node registerCafe:url token:token cb:cb];
 }
 
-- (void)deregister:(NSString *)peerId completion:(void (^)(NSError * _Nonnull))completion {
+- (void)deregister:(NSString *)sessionId completion:(void (^)(NSError * _Nonnull))completion {
   Callback *cb = [[Callback alloc] initWithCompletion:^(NSError *error) {
     completion(error);
   }];
-  [self.node deregisterCafe:peerId cb:cb];
+  [self.node deregisterCafe:sessionId cb:cb];
 }
 
-- (void)refreshSession:(NSString *)peerId completion:(void (^)(CafeSession * _Nullable, NSError * _Nonnull))completion {
+- (void)refreshSession:(NSString *)sessionId completion:(void (^)(CafeSession * _Nullable, NSError * _Nonnull))completion {
   ProtoCallback *cb = [[ProtoCallback alloc] initWithCompletion:^(NSData *data, NSError *error) {
     if (error) {
       completion(nil, error);
@@ -36,7 +36,7 @@
       completion(session, error);
     }
   }];
-  [self.node refreshCafeSession:peerId cb:cb];
+  [self.node refreshCafeSession:sessionId cb:cb];
 }
 
 - (void)checkMessages:(void (^)(NSError * _Nonnull))completion {
