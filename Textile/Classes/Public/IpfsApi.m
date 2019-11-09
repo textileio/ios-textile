@@ -32,4 +32,16 @@
   [self.node dataAtPath:path cb:cb];
 }
 
+- (void)pubsubPub:(NSString *)topic data:(NSString *)data error:(NSError * _Nullable __autoreleasing *)error {
+  [self.node ipfsPubsubPub:topic data:data error:error];
+}
+
+- (NSString *)pubsubSub:(NSString *)topic error:(NSError * _Nullable __autoreleasing *)error {
+  return [self.node ipfsPubsubSub:topic error:error];
+}
+
+- (void)cancelPubsubSub:(NSString *)queryId error:(NSError * _Nullable __autoreleasing *)error {
+  [self.node cancelIpfsPubsubSub:queryId error:error];
+}
+
 @end

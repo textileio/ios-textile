@@ -105,7 +105,14 @@
       switch (queryEvent.type) {
         case MobileQueryEvent_Type_Data: {
           NSString *type = queryEvent.data_p.value.typeURL;
-          if ([type isEqualToString:@"/Thread"]) {
+          if ([type isEqualToString:@"/Strings"]) {
+            NSError *error;
+            NSString *message = [[[Strings alloc] initWithData:queryEvent.data_p.value.value error:&error].valuesArray firstObject];
+            NSString *messageId = queryEvent.data_p.id_p;
+            if (!error && [self.textile.delegate respondsToSelector:@selector(pubsubQueryResult:message:messageId:)]) {
+              [self.textile.delegate pubsubQueryResult:queryEvent.id_p message:message messageId:messageId];
+            }
+          } else if ([type isEqualToString:@"/Thread"]) {
             NSError *error;
             Thread *thread = [[Thread alloc] initWithData:queryEvent.data_p.value.value error:&error];
             if (!error && [self.textile.delegate respondsToSelector:@selector(clientThreadQueryResult:thread:)]) {
