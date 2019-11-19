@@ -56,9 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Cancel subscribe to messages on a given topic
  * @param queryId The query ID that can be used to cancel the sub
- * @param error A reference to an error pointer that will be set in the case of an error
  */
-- (void)cancelPubsubSub:(NSString *)queryId error:(NSError **)error;
+- (void)cancelPubsubSub:(NSString *)queryId;
 
 @end
 
