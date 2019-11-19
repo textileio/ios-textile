@@ -40,8 +40,8 @@
   return [self.node ipfsPubsubSub:topic error:error];
 }
 
-- (void)cancelPubsubSub:(NSString *)queryId error:(NSError * _Nullable __autoreleasing *)error {
-  [self.node cancelIpfsPubsubSub:queryId error:error];
+- (void)cancelPubsubSub:(NSString *)queryId {
+  [self.node cancelIpfsPubsubSub:queryId];
 }
 
 @end
