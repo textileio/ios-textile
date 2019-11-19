@@ -125,6 +125,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 /**
+ * Called when there is a message query result available
+ * @param queryId The id of the corresponding query
+ * @param message The message text
+ * @param messageId The id of the message
+ */
+- (void)pubsubQueryResult:(NSString *)queryId message:(NSString *)message messageId:(NSString *)messageId;
+
+@optional
+/**
  * Called when there is a thread query result available
  * @param queryId The id of the corresponding query
  * @param thread A thread query result
