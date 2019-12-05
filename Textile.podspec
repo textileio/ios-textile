@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license               = { :type => 'MIT', :file => 'LICENSE' }
   s.author                = { 'Textile' => 'contact@textile.io' }
   s.source                = { :git => 'https://github.com/textileio/ios-textile.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '9.0'
   s.source_files          = 'Textile/Classes/**/*'
   s.requires_arc          = true
   # https://stackoverflow.com/questions/50024087/gomobile-bind-producing-library-with-pie-disabled-i386-arch
