@@ -94,6 +94,11 @@ describe(@"public api", ^{
     });
     assertWithTimeout(60, thatEventually(@([delegate.updatedItems containsObject:b.id_p])), isTrue());
     assertWithTimeout(60, thatEventually(@([delegate.completeItems containsObject:b.id_p])), isTrue());
+    
+    NSError *e;
+    Files *f = [Textile.instance.files file:b.id_p error:&e];
+    expect(f).notTo.beNil();
+    expect(f.block).equal(b.id_p);
   });
 
   it(@"should add a file before stopping", ^{
