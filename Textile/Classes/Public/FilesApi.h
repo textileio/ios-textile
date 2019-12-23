@@ -46,6 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)shareFiles:(NSString *)target threadId:(NSString *)threadId caption:(NSString *)caption completion:(void (^)(Block * _Nullable, NSError * _Nonnull))completion;
 
 /**
+ * Get a top level File by block id
+ * @param blockId The block id of the File to get
+ * @param error A reference to an error pointer that will be set in the case of an error
+ * @return The Files object corresponding to the specified block id
+ */
+- (Files *)file:(NSString *)blockId error:(NSError **)error;
+
+/**
  * Get a list of files data from a thread
  * @param threadId The thread to query
  * @param offset The offset to beging querying from

@@ -51,6 +51,14 @@
   [self.node shareFiles:target threadId:threadId caption:caption cb:cb];
 }
 
+- (Files *)file:(NSString *)blockId error:(NSError * _Nullable __autoreleasing *)error {
+    NSData *data = [self.node file:blockId error:error];
+    if (*error) {
+      return nil;
+    }
+    return [[Files alloc] initWithData:data error:error];
+}
+
 - (FilesList *)list:(NSString *)threadId offset:(NSString *)offset limit:(long)limit error:(NSError * _Nullable __autoreleasing *)error {
   NSData *data = [self.node files:threadId offset:offset != nil ? offset : @"" limit:limit error:error];
   if (*error) {
